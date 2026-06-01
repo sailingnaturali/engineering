@@ -1,0 +1,45 @@
+title: "Sailing Naturali — Engineering"
+tagline: "Building the AI ops stack for an all-electric charter catamaran"
+description: >-
+  Engineering notes from building the boat-agent / marine-AI-ops stack behind
+  Sailing Naturali — Home Assistant, SignalK, MCP servers, local LLMs, and NMEA
+  marine data. Non-obvious fixes, the dead-ends, and the terse solutions.
+url: "https://engineering.sailingnaturali.com"
+baseurl: ""
+
+# Pretty, SEO-friendly URLs that preserve the searchable slug (error strings etc.)
+permalink: /:title/
+
+theme: minima
+minima:
+  skin: dark
+  social_links:
+    - { platform: github, user_url: "https://github.com/sailingnaturali" }
+
+author:
+  name: "Sailing Naturali"
+  url: "https://sailingnaturali.com"
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Show the post list on the home page
+show_excerpts: true
+
+# Markdown / syntax highlighting
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md
+  - .jekyll-cache

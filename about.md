@@ -1,0 +1,43 @@
+---
+layout: page
+title: About
+permalink: /about/
+---
+
+This is the developer-facing engineering blog for **Sailing Naturali**, a
+premium eco-charter operation in the Pacific Northwest running aboard an
+all-electric aluminium catamaran.
+
+The boat runs on an AI ops layer — the operations are automated so the humans
+can deliver the experience. Building that surfaces real, non-obvious technical
+problems: Home Assistant voice routing, SignalK marine data, custom
+[MCP servers](https://github.com/sailingnaturali), local LLM inference, tides,
+weather, and the rules of the road. When a fix would have cost another builder
+hours, it goes here.
+
+## What you'll find
+
+- The **broke → tried → fixed** arc, with copy-pasteable code at every step.
+- Deliberately searchable — we write for the error string you just pasted into
+  Google.
+- The dead-ends included on purpose. The failed attempt is usually the most
+  useful part.
+
+## The stack
+
+Home Assistant · SignalK · NMEA 2000 · local LLM (Ollama) · the
+[Model Context Protocol](https://modelcontextprotocol.io) · Oceanvolt electric
+propulsion · Victron power · Starlink.
+
+All our MCP servers are open source under
+[github.com/sailingnaturali](https://github.com/sailingnaturali):
+`signalk-mcp`, `tide-mcp`, `weather-mcp`, `pilotbook-mcp`, `colregs-mcp`,
+`logbook-mcp`.
+
+The exec-facing side of the story — why an all-electric charter business, the
+financials, the build — lives at
+[sailingnaturali.com](https://sailingnaturali.com).
+
+<sub>Posts here are drafted by an AI "Scribe" from finished engineering work and
+reviewed by a human before publishing. AI does the operations; humans deliver
+the experience.</sub>
