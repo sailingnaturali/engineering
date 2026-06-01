@@ -13,12 +13,17 @@ permalink: /:title/
 theme: minima
 minima:
   skin: dark
-  social_links:
-    - { platform: github, user_url: "https://github.com/sailingnaturali" }
 
-author:
-  name: "Sailing Naturali"
-  url: "https://sailingnaturali.com"
+# String (not a mapping) — minima 2.5.1 prints site.author verbatim in the footer.
+author: "Sailing Naturali"
+
+# Footer social links — rendered by our own _includes/social.html (minima 2.5.1's
+# built-in social.html is keyed by *_username and has no website/TikTok support).
+social_links:
+  - { name: "sailingnaturali.com", url: "https://sailingnaturali.com",            icon: website }
+  - { name: "YouTube",            url: "https://www.youtube.com/@sailingnaturali", icon: youtube }
+  - { name: "Instagram",          url: "https://www.instagram.com/sailingnaturali", icon: instagram }
+  - { name: "TikTok",             url: "https://www.tiktok.com/@sailingnaturali",  icon: tiktok }
 
 plugins:
   - jekyll-seo-tag

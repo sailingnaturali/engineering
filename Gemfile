@@ -13,3 +13,9 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem "tzinfo", ">= 1", "< 3"
   gem "tzinfo-data"
 end
+
+gem 'liquid', '~> 4.0.4'
+
+gem "bigdecimal", "~> 4.1"
+
+gem "csv", "~> 3.3"
