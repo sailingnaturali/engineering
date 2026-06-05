@@ -17,11 +17,13 @@ Usage:
 any existing date prefix. e.g. `bump.py launchd` matches
 `_posts/2026-06-01-launchd-path-mcp-server-silent-fail.md`.
 
-The engineering repo is located automatically, in order:
+This script is vendored in the engineering repo at `script/bump.py`. The repo is
+located automatically, in order:
   1. $ENGINEERING_REPO
-  2. a sibling dir named `engineering` next to this script's repo
+  2. the repo this script lives in (its root, two dirs up from script/bump.py)
   3. ~/src/sailingnaturali/engineering, then ~/src/me/engineering
-so it keeps working if the repo is moved.
+so it keeps working if the repo is moved or the script is run from elsewhere
+(e.g. copied to /tmp by the publisher routine, which sets $ENGINEERING_REPO).
 """
 
 from __future__ import annotations
@@ -43,9 +45,10 @@ def find_engineering_repo() -> Path:
     env = os.environ.get("ENGINEERING_REPO")
     if env:
         candidates.append(Path(env).expanduser())
-    # sibling of this script's repo: planning/scripts/bump.py -> ../../engineering
+    # this script lives in the engineering repo at script/bump.py, so the repo
+    # root is two parents up (skipped when run from /tmp — $ENGINEERING_REPO wins).
     here = Path(__file__).resolve()
-    candidates.append(here.parent.parent.parent / "engineering")
+    candidates.append(here.parent.parent)
     candidates.append(Path.home() / "src" / "sailingnaturali" / "engineering")
     candidates.append(Path.home() / "src" / "me" / "engineering")
     seen = set()
