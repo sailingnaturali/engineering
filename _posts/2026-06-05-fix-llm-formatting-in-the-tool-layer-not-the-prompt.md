@@ -9,7 +9,7 @@ tags:
   - llm
   - claude
   - tool-use
-date: 2026-06-01
+date: 2026-06-05
 canonical: "https://engineering.sailingnaturali.com/fix-llm-formatting-in-the-tool-layer-not-the-prompt/"
 ---
 
