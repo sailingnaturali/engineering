@@ -19,9 +19,11 @@ author: "Sailing Naturali"
 
 # Footer social links — rendered by our own _includes/social.html (minima 2.5.1's
 # built-in social.html is keyed by *_username and has no website/TikTok support).
+# Keep in sync (incl. order) with the canonical list: sailingnaturali/.github → socials.json
 social_links:
-  - { name: "sailingnaturali.com", url: "https://sailingnaturali.com",            icon: website }
   - { name: "YouTube",            url: "https://www.youtube.com/@sailingnaturali", icon: youtube }
+  - { name: "Substack",           url: "https://sailingnaturali.substack.com",     icon: substack }
+  - { name: "sailingnaturali.com", url: "https://sailingnaturali.com",            icon: website }
   - { name: "Instagram",          url: "https://www.instagram.com/sailingnaturali", icon: instagram }
   - { name: "TikTok",             url: "https://www.tiktok.com/@sailingnaturali",  icon: tiktok }
 
