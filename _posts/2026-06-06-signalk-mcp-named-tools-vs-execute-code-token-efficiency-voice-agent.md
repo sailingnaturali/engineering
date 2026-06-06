@@ -10,7 +10,7 @@ tags:
   - llm
   - tool-use
   - marine
-date: 2026-06-05
+date: 2026-06-06
 canonical: "https://engineering.sailingnaturali.com/signalk-mcp-named-tools-vs-execute-code-token-efficiency-voice-agent/"
 ---
 
