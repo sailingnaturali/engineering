@@ -3,7 +3,7 @@ layout: post
 title: "launchd's minimal PATH silently breaks MCP servers — use full paths"
 description: "Your MCP server works by hand but reports no tools when started from a launchd service. The cause is launchd's minimal PATH (/usr/bin:/bin:/usr/sbin:/sbin), which excludes ~/.local/bin and /opt/homebrew/bin, so a bare `command: uv` fails silently. Use absolute paths."
 tags: [macos, launchd, mcp, ai, self-hosted, debugging]
-date: 2026-06-01
+date: 2026-06-16
 canonical: "https://engineering.sailingnaturali.com/launchd-path-mcp-server-silent-fail/"
 ---
 
