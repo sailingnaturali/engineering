@@ -38,7 +38,7 @@ A low-battery condition shows up as a `warn`; a man-overboard lands at `notifica
 
 The problem: **nothing pushes those alarms to your phone when you're not standing in front of the chartplotter.** If you're below, ashore, or asleep, the alarm fires into the void. We wanted one dependable thing — a SignalK notification turning into a push on a phone — and we wanted it on a safety path, which raises the bar.
 
-This is the broke → tried → fixed of getting **SignalK push notifications to your phone**. The punchline: a one-way SignalK→ntfy relay needs *zero* npm dependencies, so we built `signalk-ntfy-relay`.
+This is the broke → tried → fixed of getting **SignalK push notifications to your phone**. The punchline: a one-way SignalK→ntfy relay needs *zero* npm dependencies, so we built [`signalk-ntfy-relay`](https://github.com/sailingnaturali/signalk-ntfy-relay).
 
 ## What we evaluated (and why each fell short)
 
@@ -285,4 +285,4 @@ test('emergency maps to priority 5 / sos', () => {
 
 ## Close
 
-This came out of building the AI and notification plumbing for an all-electric sailing charter — where "the battery alarm fired" needs to reach a phone, not just the chartplotter, and the path it travels has to be auditable end to end. `signalk-ntfy-relay` ships **MIT, zero dependencies, on npm and GitHub** as `signalk-ntfy-relay`. If you've been searching for **SignalK push notifications to your phone** — a **SignalK notification relay** that turns a **SignalK alarm into a phone** push — that's what it's for.
+This came out of building the AI and notification plumbing for an all-electric sailing charter — where "the battery alarm fired" needs to reach a phone, not just the chartplotter, and the path it travels has to be auditable end to end. `signalk-ntfy-relay` is **MIT-licensed and zero-dependency**, on GitHub at [`sailingnaturali/signalk-ntfy-relay`](https://github.com/sailingnaturali/signalk-ntfy-relay) (npm release to follow). If you've been searching for **SignalK push notifications to your phone** — a **SignalK notification relay** that turns a **SignalK alarm into a phone** push — that's what it's for.
