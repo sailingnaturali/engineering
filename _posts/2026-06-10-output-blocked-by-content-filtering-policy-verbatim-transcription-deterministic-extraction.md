@@ -9,7 +9,7 @@ tags:
   - llm
   - mcp
   - python
-date: 2026-06-06
+date: 2026-06-10
 canonical: "https://engineering.sailingnaturali.com/output-blocked-by-content-filtering-policy-verbatim-transcription-deterministic-extraction/"
 ---
 
