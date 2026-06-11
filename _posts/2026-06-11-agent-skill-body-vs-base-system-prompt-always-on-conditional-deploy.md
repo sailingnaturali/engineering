@@ -2,7 +2,7 @@
 layout: post
 title: "Why your agent ignores its own instructions: skill bodies load conditionally, the base system prompt is always-on"
 description: "An AI agent kept calling things by the wrong name even after we fixed the skill prompt and confirmed the runtime SKILL.md was correct. The request dump proved the skill body wasn't even in the prompt for most queries — only the always-on base persona was. Two lessons: put always-on invariants in the always-on layer, and give every runtime prompt artifact a deploy step or it drifts from your repo."
-date: 2026-06-03
+date: 2026-06-11
 tags:
   - ai
   - agents
