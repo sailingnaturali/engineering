@@ -25,14 +25,16 @@ hours, it goes here.
 
 ## The stack
 
-Home Assistant · SignalK · NMEA 2000 · local LLM (Ollama) · the
-[Model Context Protocol](https://modelcontextprotocol.io) · Oceanvolt electric
-propulsion · Victron power · Starlink.
+Open source first: [Signal K](https://signalk.org) for marine data, Home Assistant
+for voice and dashboards, the
+[Model Context Protocol](https://modelcontextprotocol.io) to wire agents to both,
+the Claude API for reasoning, and Whisper, Piper, and Ollama for the local pieces —
+on NMEA 2000, Oceanvolt electric propulsion, Victron power, and Starlink.
 
-All our MCP servers are open source under
-[github.com/sailingnaturali](https://github.com/sailingnaturali):
-`signalk-mcp`, `tide-mcp`, `weather-mcp`, `pilotbook-mcp`, `colregs-mcp`,
-`logbook-mcp`.
+What nothing existing covered, we built and published — the MCP servers and SignalK
+plugins under [github.com/sailingnaturali](https://github.com/sailingnaturali). The
+full map, built and adopted, lives on the
+[org profile](https://github.com/sailingnaturali).
 
 The exec-facing side of the story — why an all-electric charter business, the
 financials, the build — lives at
