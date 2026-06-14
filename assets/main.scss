@@ -30,11 +30,12 @@ body {
   color: var(--sn-text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 h1, h2, h3, h4, h5, h6 {
   color: var(--sn-head);
   font-family: var(--font-display);
-  font-weight: 560;
+  font-weight: 560; /* Fraunces variable-font axis; rounds to ~600 on serif fallback */
   letter-spacing: -0.01em;
   line-height: 1.1;
 }
