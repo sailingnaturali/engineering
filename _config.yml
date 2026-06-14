@@ -11,8 +11,6 @@ baseurl: ""
 permalink: /:title/
 
 theme: minima
-minima:
-  skin: dark
 
 # String (not a mapping) — minima 2.5.1 prints site.author verbatim in the footer.
 author: "Sailing Naturali"

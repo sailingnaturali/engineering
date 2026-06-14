@@ -1,0 +1,25 @@
+---
+---
+
+@import "minima";
+
+/* ───────────────────────────────────────────────
+   Sailing Naturali — engineering blog brand layer
+   Dark "Slate Dim". Overrides minima after import.
+   Palette: planning/brand-palette.md
+   ─────────────────────────────────────────────── */
+:root {
+  --sn-ground: #18222D;
+  --sn-surface: #0E1B25;
+  --sn-surface-2: #11212D;
+  --sn-border: #24384A;
+  --sn-text: #C8D2DA;
+  --sn-head: #E9EEF2;
+  --sn-muted: #7F97A8;
+  --sn-link: #9CC87C;
+  --sn-link-hover: #58A058;
+  --sn-rule: #006030;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", monospace;
+}
