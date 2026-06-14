@@ -235,3 +235,21 @@ pre {
 .highlight .gi { color: #A8D088; }                                              /* diff insert */
 .highlight .gd { color: #D08770; }                                              /* diff delete */
 .highlight .err { color: var(--sn-text); background: transparent; }             /* don't flag as red */
+
+/* ── Footer ───────────────────────────────────── */
+.site-footer {
+  background: var(--sn-surface);
+  border-top: 1px solid var(--sn-border);
+  color: var(--sn-muted);
+}
+.site-footer .footer-heading { color: var(--sn-head); }
+.site-footer a, .site-footer a:visited { color: var(--sn-text); }
+.site-footer a:hover { color: var(--sn-link); }
+.social-media-list .svg-icon { fill: var(--sn-muted); }
+.social-media-list a:hover .svg-icon { fill: var(--sn-link); }
+.feed-subscribe a, .feed-subscribe .svg-icon { color: var(--sn-muted); fill: var(--sn-muted); }
+
+/* ── Motion ───────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
