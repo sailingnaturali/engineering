@@ -156,6 +156,8 @@ pre {
   line-height: 1.55;
   overflow-x: auto;
 }
+/* kill minima's light #eef background (and 15px size) on the inner <code> in fenced blocks */
+.highlight code { background: transparent; background-color: transparent; font-size: inherit; }
 
 /* language label header strip — styling applied ONLY to mapped languages, so
    unmapped/plaintext blocks get no (empty) bar. */
@@ -245,6 +247,7 @@ pre {
 .site-footer .footer-heading { color: var(--sn-head); }
 .site-footer a, .site-footer a:visited { color: var(--sn-text); }
 .site-footer a:hover { color: var(--sn-link); }
+.footer-col-wrapper { color: var(--sn-muted); }
 .social-media-list .svg-icon { fill: var(--sn-muted); }
 .social-media-list a:hover .svg-icon { fill: var(--sn-link); }
 .feed-subscribe a, .feed-subscribe .svg-icon { color: var(--sn-muted); fill: var(--sn-muted); }
