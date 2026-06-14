@@ -40,6 +40,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
 }
 a { color: var(--sn-link); text-decoration: none; }
+a:visited { color: var(--sn-link); }
 a:hover { color: var(--sn-link-hover); text-decoration: underline; }
 hr { border: 0; border-top: 1px solid var(--sn-border); }
 strong { color: var(--sn-head); }
