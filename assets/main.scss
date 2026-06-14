@@ -45,3 +45,28 @@ hr { border: 0; border-top: 1px solid var(--sn-border); }
 strong { color: var(--sn-head); }
 ::selection { background: var(--sn-link); color: var(--sn-ground); }
 :focus-visible { outline: 2px solid var(--sn-link-hover); outline-offset: 3px; }
+
+/* ── Site header ──────────────────────────────── */
+.site-header {
+  background: var(--sn-surface);
+  border-top: 3px solid var(--sn-rule);
+  border-bottom: 1px solid var(--sn-border);
+}
+.site-title,
+.site-title:visited {
+  color: var(--sn-head);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+.site-title:hover { color: var(--sn-head); text-decoration: none; }
+.site-nav { background: transparent; line-height: inherit; }
+.site-nav .page-link,
+.site-nav .page-link:visited { color: var(--sn-muted); }
+.site-nav .page-link:hover { color: var(--sn-link); text-decoration: none; }
+@media (max-width: 600px) {
+  .site-nav {
+    background: var(--sn-surface-2);
+    border: 1px solid var(--sn-border);
+  }
+  .site-nav .menu-icon > svg { fill: var(--sn-muted); }
+}
