@@ -184,9 +184,9 @@ strong { color: var(--sn-head); }
 Run:
 ```bash
 bundle exec jekyll build
-grep -ci "background: *#18222d" _site/assets/main.css
+grep -c "background: var(--sn-ground)" _site/assets/main.css
 ```
-Expected: prints `1` or more.
+Expected: prints `1` or more. (CSS custom properties are NOT resolved at compile time — the `body` rule keeps `var(--sn-ground)`; the `#18222D` literal only lives in `:root`. So we check for the `var()` reference, not the hex.)
 
 - [ ] **Step 3: Visual check**
 
@@ -242,9 +242,9 @@ Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
 Run:
 ```bash
 bundle exec jekyll build
-grep -ci "border-top: *3px solid #006030\|border-top:3px solid #006030" _site/assets/main.css
+grep -c "border-top: 3px solid var(--sn-rule)" _site/assets/main.css
 ```
-Expected: prints `1` or more (the green top rule).
+Expected: prints `1` or more (the green top rule; checks the `var()` reference, not the resolved hex).
 
 - [ ] **Step 3: Visual check**
 
@@ -333,6 +333,8 @@ Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
 .post-content { color: var(--sn-text); }
 .post-content h2,
 .post-content h3 { margin-top: 2rem; }
+/* body-copy links underlined at rest for non-color affordance (a11y) */
+.post-content a { text-decoration: underline; }
 
 blockquote {
   color: var(--sn-muted);
@@ -500,7 +502,7 @@ Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
 .highlight .o, .highlight .ow, .highlight .p { color: var(--sn-text); }         /* operators / punctuation */
 .highlight .nt { color: #7FB0D0; }                                              /* HTML/XML tag names */
 .highlight .na { color: var(--sn-link); }                                       /* attributes */
-.highlight .gp { color: var(--sn-rule); }                                       /* shell prompt */
+.highlight .gp { color: var(--sn-link-hover); }                                 /* shell prompt (legible green on dark panel) */
 .highlight .gi { color: #A8D088; }                                              /* diff insert */
 .highlight .gd { color: #D08770; }                                              /* diff delete */
 .highlight .err { color: var(--sn-text); background: transparent; }             /* don't flag as red */
