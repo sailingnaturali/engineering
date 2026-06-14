@@ -215,3 +215,23 @@ pre {
 .language-markdown > .highlight::before { content: "markdown"; }
 .language-tsx > .highlight::before { content: "tsx"; }
 .language-xml > .highlight::before { content: "xml"; }
+
+/* ── Syntax tokens (Rouge classes) ────────────── */
+.highlight .k, .highlight .kd, .highlight .kn,
+.highlight .kp, .highlight .kr, .highlight .kt { color: var(--sn-link); }      /* keywords - leaf */
+.highlight .nb, .highlight .nx, .highlight .bp { color: var(--sn-link); }      /* builtins/idents - leaf */
+.highlight .s, .highlight .s1, .highlight .s2,
+.highlight .sb, .highlight .sc, .highlight .se,
+.highlight .dl, .highlight .sr { color: #A8D088; }                              /* strings */
+.highlight .nf, .highlight .nd, .highlight .fm { color: #7FB0D0; }              /* functions - steel-sky */
+.highlight .c, .highlight .c1, .highlight .cm,
+.highlight .cp, .highlight .cs { color: #6F8596; font-style: italic; }          /* comments */
+.highlight .mi, .highlight .mf, .highlight .il,
+.highlight .no, .highlight .kc { color: #9FC2DA; }                              /* numbers / constants */
+.highlight .o, .highlight .ow, .highlight .p { color: var(--sn-text); }         /* operators / punctuation */
+.highlight .nt { color: #7FB0D0; }                                              /* HTML/XML tag names */
+.highlight .na { color: var(--sn-link); }                                       /* attributes */
+.highlight .gp { color: var(--sn-link-hover); }                                 /* shell prompt (legible green) */
+.highlight .gi { color: #A8D088; }                                              /* diff insert */
+.highlight .gd { color: #D08770; }                                              /* diff delete */
+.highlight .err { color: var(--sn-text); background: transparent; }             /* don't flag as red */
