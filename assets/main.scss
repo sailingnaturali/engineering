@@ -23,3 +23,24 @@
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "SF Mono", monospace;
 }
+
+/* ── Base ─────────────────────────────────────── */
+body {
+  background: var(--sn-ground);
+  color: var(--sn-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: var(--sn-head);
+  font-family: var(--font-display);
+  font-weight: 560;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+a { color: var(--sn-link); text-decoration: none; }
+a:hover { color: var(--sn-link-hover); text-decoration: underline; }
+hr { border: 0; border-top: 1px solid var(--sn-border); }
+strong { color: var(--sn-head); }
+::selection { background: var(--sn-link); color: var(--sn-ground); }
+:focus-visible { outline: 2px solid var(--sn-link-hover); outline-offset: 3px; }
