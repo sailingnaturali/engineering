@@ -1,0 +1,259 @@
+---
+---
+
+@import "minima";
+
+/* ───────────────────────────────────────────────
+   Sailing Naturali — engineering blog brand layer
+   Dark "Slate Dim". Overrides minima after import.
+   Palette: planning/brand-palette.md
+   ─────────────────────────────────────────────── */
+:root {
+  --sn-ground: #18222D;
+  --sn-surface: #0E1B25;
+  --sn-surface-2: #11212D;
+  --sn-border: #24384A;
+  --sn-text: #C8D2DA;
+  --sn-head: #E9EEF2;
+  --sn-muted: #7F97A8;
+  --sn-link: #9CC87C;
+  --sn-link-hover: #58A058;
+  --sn-rule: #006030;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", monospace;
+}
+
+/* ── Base ─────────────────────────────────────── */
+body {
+  background: var(--sn-ground);
+  color: var(--sn-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: var(--sn-head);
+  font-family: var(--font-display);
+  font-weight: 560; /* Fraunces variable-font axis; rounds to ~600 on serif fallback */
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+a { color: var(--sn-link); text-decoration: none; }
+a:visited { color: var(--sn-link); }
+a:hover { color: var(--sn-link-hover); text-decoration: underline; }
+hr { border: 0; border-top: 1px solid var(--sn-border); }
+strong { color: var(--sn-head); }
+::selection { background: var(--sn-link); color: var(--sn-ground); }
+:focus-visible { outline: 2px solid var(--sn-link-hover); outline-offset: 3px; }
+
+/* ── Site header ──────────────────────────────── */
+.site-header {
+  background: var(--sn-surface);
+  border-top: 3px solid var(--sn-rule);
+  border-bottom: 1px solid var(--sn-border);
+}
+.site-title,
+.site-title:visited {
+  color: var(--sn-head);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+.site-title:hover { color: var(--sn-head); text-decoration: none; }
+.site-nav { background: transparent; line-height: inherit; }
+.site-nav .page-link,
+.site-nav .page-link:visited { color: var(--sn-muted); }
+.site-nav .page-link:hover { color: var(--sn-link); text-decoration: none; }
+@media (max-width: 600px) {
+  .site-nav {
+    background: var(--sn-surface-2);
+    border: 1px solid var(--sn-border);
+  }
+  .site-nav .menu-icon > svg { fill: var(--sn-muted); }
+}
+
+/* ── Home post list ───────────────────────────── */
+.home .post-list-heading { color: var(--sn-head); }
+.post-list { margin-left: 0; list-style: none; }
+.post-list > li {
+  border-bottom: 1px solid var(--sn-border);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.post-list > li:last-child { border-bottom: 0; }
+.post-meta {
+  color: var(--sn-muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.post-link {
+  display: block;
+  margin-top: 0.3rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1.15;
+  color: var(--sn-link);
+}
+.post-link:hover { color: var(--sn-link-hover); text-decoration: none; }
+
+/* ── Post page ────────────────────────────────── */
+.post-title { color: var(--sn-head); letter-spacing: -0.02em; }
+.post-content { color: var(--sn-text); }
+.post-content h2,
+.post-content h3 { margin-top: 2rem; }
+/* body-copy links underlined at rest for non-color affordance (a11y) */
+.post-content a { text-decoration: underline; }
+
+blockquote {
+  color: var(--sn-muted);
+  background: var(--sn-surface);
+  border-left: 4px solid var(--sn-rule);
+  padding: 0.6rem 1rem;
+  font-style: normal;
+}
+
+table { color: var(--sn-text); border-color: var(--sn-border); }
+table th {
+  background: var(--sn-surface);
+  color: var(--sn-head);
+  border-color: var(--sn-border);
+}
+table td { border-color: var(--sn-border); }
+table tr:nth-child(even) { background: rgba(255, 255, 255, 0.02); }
+
+/* inline code (not inside a highlight block) */
+code.highlighter-rouge {
+  background: var(--sn-surface);
+  color: var(--sn-link);
+  border: 1px solid var(--sn-border);
+  border-radius: 4px;
+  padding: 0.08em 0.36em;
+  font-size: 0.85em;
+  font-family: var(--font-mono);
+}
+
+/* ── Code blocks ──────────────────────────────── */
+.highlighter-rouge .highlight,
+figure.highlight {
+  background: var(--sn-surface);
+  border: 1px solid var(--sn-border);
+  border-left: 3px solid var(--sn-rule);
+  border-radius: 7px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+.highlighter-rouge .highlight pre,
+.highlight pre.highlight,
+pre {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  color: var(--sn-text);
+  padding: 14px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  overflow-x: auto;
+}
+/* kill minima's light #eef background (and 15px size) on the inner <code> in fenced blocks */
+.highlight code { background: transparent; background-color: transparent; font-size: inherit; }
+
+/* language label header strip — styling applied ONLY to mapped languages, so
+   unmapped/plaintext blocks get no (empty) bar. */
+.language-shell   > .highlight::before,
+.language-bash    > .highlight::before,
+.language-console > .highlight::before,
+.language-sh      > .highlight::before,
+.language-typescript > .highlight::before,
+.language-ts         > .highlight::before,
+.language-javascript > .highlight::before,
+.language-js         > .highlight::before,
+.language-json  > .highlight::before,
+.language-jsonc > .highlight::before,
+.language-yaml > .highlight::before,
+.language-yml  > .highlight::before,
+.language-python > .highlight::before,
+.language-py     > .highlight::before,
+.language-ruby > .highlight::before,
+.language-rb   > .highlight::before,
+.language-html > .highlight::before,
+.language-css  > .highlight::before,
+.language-scss > .highlight::before,
+.language-diff > .highlight::before,
+.language-markdown > .highlight::before,
+.language-tsx > .highlight::before,
+.language-xml > .highlight::before {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  color: var(--sn-muted);
+  background: var(--sn-surface-2);
+  border-bottom: 1px solid var(--sn-border);
+  padding: 6px 14px;
+}
+.language-shell   > .highlight::before,
+.language-bash    > .highlight::before,
+.language-console > .highlight::before,
+.language-sh      > .highlight::before { content: "shell"; }
+.language-typescript > .highlight::before,
+.language-ts         > .highlight::before { content: "typescript"; }
+.language-javascript > .highlight::before,
+.language-js         > .highlight::before { content: "javascript"; }
+.language-json  > .highlight::before { content: "json"; }
+.language-jsonc > .highlight::before { content: "jsonc"; }
+.language-yaml > .highlight::before,
+.language-yml  > .highlight::before { content: "yaml"; }
+.language-python > .highlight::before,
+.language-py     > .highlight::before { content: "python"; }
+.language-ruby > .highlight::before,
+.language-rb   > .highlight::before { content: "ruby"; }
+.language-html > .highlight::before { content: "html"; }
+.language-css  > .highlight::before,
+.language-scss > .highlight::before { content: "css"; }
+.language-diff > .highlight::before { content: "diff"; }
+.language-markdown > .highlight::before { content: "markdown"; }
+.language-tsx > .highlight::before { content: "tsx"; }
+.language-xml > .highlight::before { content: "xml"; }
+
+/* ── Syntax tokens (Rouge classes) ────────────── */
+.highlight .k, .highlight .kd, .highlight .kn,
+.highlight .kp, .highlight .kr, .highlight .kt { color: var(--sn-link); }      /* keywords - leaf */
+.highlight .nb, .highlight .nx, .highlight .bp { color: var(--sn-link); }      /* builtins/idents - leaf */
+.highlight .s, .highlight .s1, .highlight .s2,
+.highlight .sb, .highlight .sc, .highlight .se,
+.highlight .dl, .highlight .sr { color: #A8D088; }                              /* strings */
+.highlight .nf, .highlight .nd, .highlight .fm { color: #7FB0D0; }              /* functions - steel-sky */
+.highlight .c, .highlight .c1, .highlight .cm,
+.highlight .cp, .highlight .cs { color: #7E94A6; font-style: italic; }          /* comments (AA headroom on panel) */
+.highlight .mi, .highlight .mf, .highlight .il,
+.highlight .no, .highlight .kc { color: #9FC2DA; }                              /* numbers / constants */
+.highlight .o, .highlight .ow, .highlight .p { color: var(--sn-text); }         /* operators / punctuation */
+.highlight .nt { color: #7FB0D0; }                                              /* HTML/XML tag names */
+.highlight .na { color: var(--sn-link); }                                       /* attributes */
+.highlight .gp { color: var(--sn-link-hover); }                                 /* shell prompt (legible green) */
+.highlight .gi { color: #A8D088; }                                              /* diff insert */
+.highlight .gd { color: #D08770; }                                              /* diff delete */
+.highlight .err { color: var(--sn-text); background: transparent; }             /* don't flag as red */
+
+/* ── Footer ───────────────────────────────────── */
+.site-footer {
+  background: var(--sn-surface);
+  border-top: 1px solid var(--sn-border);
+  color: var(--sn-muted);
+}
+.site-footer .footer-heading { color: var(--sn-head); }
+.site-footer a, .site-footer a:visited { color: var(--sn-text); }
+.site-footer a:hover { color: var(--sn-link); }
+.footer-col-wrapper { color: var(--sn-muted); }
+.social-media-list .svg-icon { fill: var(--sn-muted); }
+.social-media-list a:hover .svg-icon { fill: var(--sn-link); }
+.feed-subscribe a, .feed-subscribe .svg-icon { color: var(--sn-muted); fill: var(--sn-muted); }
+
+/* ── Motion ───────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
