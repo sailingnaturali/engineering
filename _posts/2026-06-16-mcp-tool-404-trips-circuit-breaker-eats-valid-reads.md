@@ -2,7 +2,7 @@
 layout: post
 title: "A 404 isn't a tool failure: how raise_for_status on a missing path trips the MCP circuit breaker and eats your valid reads"
 description: "In an agent + MCP stack, a 404 from an upstream HTTP API usually means 'this value isn't published' — a normal not-available result, not a failure. If your tool layer calls raise_for_status() on every response, a burst of 404s (an agent guessing paths) trips the client's consecutive-failure circuit breaker, which then silently drops your valid reads too. Here's the broke → tried → fixed: treat 404 as a null result, keep raising on 5xx."
-date: 2026-06-04
+date: 2026-06-16
 tags:
   - mcp
   - ai
