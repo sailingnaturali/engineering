@@ -2,7 +2,7 @@
 layout: post
 title: "MCP tools not showing up? Isolate the server before blaming the agent — and don't trust the agent's self-report"
 description: "When an LLM agent says an MCP tool isn't available or 'only one server is connected,' the instinct is to restart the runtime or blame the MCP server. But the agent's self-report about its own toolset is unreliable, and a malformed test invocation fakes an 'MCP unreachable' symptom. The fix: isolate the layer — test the server standalone with mcp test / MCP Inspector, then reproduce with the exact production invocation."
-date: 2026-06-04
+date: 2026-07-21
 tags:
   - mcp
   - ai
