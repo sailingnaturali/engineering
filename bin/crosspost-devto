@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+require "yaml"
+require_relative "../lib/devto/client"
+require_relative "../lib/devto/reconcile"
+
+dry_run = ARGV.include?("--dry-run")
+
+api_key = ENV["DEVTO_API_KEY"]
+if api_key.nil? || api_key.empty?
+  warn "DEVTO_API_KEY is not set"
+  exit 1
+end
+
+root = File.expand_path("..", __dir__)
+config = YAML.safe_load_file(File.join(root, "_config.yml"))
+site_url = config.fetch("url").chomp("/")
+
+reconcile = Devto::Reconcile.new(
+  posts_dir: File.join(root, "_posts"),
+  site_url: site_url,
+  client: Devto::Client.new(api_key),
+  dry_run: dry_run
+)
+
+exit reconcile.run
