@@ -28,5 +28,17 @@ module Devto
           .gsub(HTML_ATTR) { "#{$1}#{site_url}#{$2}" }
       end.join
     end
+
+    def build_payload(post, site_url)
+      {
+        article: {
+          title: post.title,
+          body_markdown: absolutize(post.body, site_url),
+          canonical_url: post.canonical_url(site_url),
+          tags: derive_tags(post.tags),
+          published: true
+        }
+      }
+    end
   end
 end

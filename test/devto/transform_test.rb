@@ -1,5 +1,6 @@
 require "minitest/autorun"
 require_relative "../../lib/devto/transform"
+require_relative "../../lib/devto/post"
 
 class TransformTagsTest < Minitest::Test
   def test_squashes_hyphens_and_uppercase
@@ -48,5 +49,25 @@ class TransformAbsolutizeTest < Minitest::Test
     assert_includes out, "[a](#{SITE}/foo)"
     assert_includes out, "[b](/keep-me)"      # untouched inside fence
     assert_includes out, "[c](#{SITE}/bar)"
+  end
+end
+
+class TransformPayloadTest < Minitest::Test
+  SITE = "https://engineering.sailingnaturali.com"
+
+  def sample_post
+    path = File.expand_path("../fixtures/posts/2026-01-02-sample-post.md", __dir__)
+    Devto::Post.parse(path)
+  end
+
+  def test_payload_shape
+    payload = Devto::Transform.build_payload(sample_post, SITE)
+    art = payload[:article]
+    assert_equal "A sample post about MCP and SignalK", art[:title]
+    assert_equal "#{SITE}/sample-post/", art[:canonical_url]
+    assert_equal true, art[:published]
+    assert_equal %w[mcp signalk voiceassistant ai], art[:tags]
+    assert_includes art[:body_markdown], "[the docs](#{SITE}/launchd-minimal-path/)"
+    assert_includes art[:body_markdown], "[x](/keep-me)" # fence preserved
   end
 end
