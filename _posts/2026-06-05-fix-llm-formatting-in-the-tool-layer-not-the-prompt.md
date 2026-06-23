@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Fix LLM formatting in the tool layer, not the prompt: stop your MCP voice agent reading raw lat/long, ISO timestamps, and SOC fractions"
+title: "Fix LLM formatting in the tool layer, not the prompt"
 description: "If your MCP-backed voice agent reads '48.76 degrees north, 123.04...' or 'state of charge zero point six eight' out loud, the fix is not another prompt rule. Prompt formatting instructions are model-dependent and leak — the model reformats any raw field it can still see. Format in the MCP tool response instead: a display field, removing raw fields, and naming keys so they don't leak. With code examples from our open-source signalk-mcp and logbook-mcp servers."
 tags:
   - ai

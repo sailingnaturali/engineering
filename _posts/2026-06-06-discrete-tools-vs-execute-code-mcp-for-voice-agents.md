@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Discrete tools vs execute_code: two ways to put your boat's SignalK on MCP, and when each wins"
+title: "Discrete MCP tools vs execute_code: when each wins"
 description: "There were two ways to expose SignalK marine data to an AI agent over MCP: VesselSense's single execute_code tool that lets the model write JavaScript, or discrete named tools like read_sensor and battery_state. We built the second — not because it's better, but because voice-first agents on small models need reliability and a speech contract more than they need query flexibility. A real comparison, with the failure modes."
 tags:
   - ai

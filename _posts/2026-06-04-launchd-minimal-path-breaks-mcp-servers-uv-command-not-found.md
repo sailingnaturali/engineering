@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "launchd's minimal PATH silently breaks MCP servers: 'uv: command not found' with no error and the model just says tools are unavailable"
-description: "When a launchd-managed agent spawns a stdio MCP server with `command: uv`, the server never starts under launchd's minimal PATH (/usr/bin:/bin:/usr/sbin:/sbin) — uv lives in ~/.local/bin, which isn't on it. There's no stack trace; the model just reports the tools aren't available. Works in your shell, fails under launchd. Here's the trap and the fix: absolute paths, plus a one-liner to reproduce it."
+title: "launchd's minimal PATH breaks MCP servers: uv command not found"
+description: "When a launchd-managed agent spawns a stdio MCP server with `command: uv`, the server dies with `uv: command not found` under launchd's minimal PATH (/usr/bin:/bin:/usr/sbin:/sbin) — uv lives in ~/.local/bin, which isn't on it. There's no stack trace surfaced; the model just reports the tools aren't available. Works in your shell, fails under launchd. Here's the trap and the fix: absolute paths, plus a one-liner to reproduce it."
 date: 2026-06-04
 tags:
   - macos

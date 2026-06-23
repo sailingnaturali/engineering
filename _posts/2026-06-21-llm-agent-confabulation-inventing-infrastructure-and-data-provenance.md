@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Two ways an LLM agent confabulates: inventing infrastructure it can't see, and narrating data provenance it was never told"
+title: "How LLM agents confabulate infrastructure and data provenance"
 description: "A local-LLM agent will confidently describe which host runs what, or append '(this is live data from the real sensor)' to a reading — none of it observed. Confabulation isn't random hallucination; it's the model narrating unobservable gaps. Here's how each failure looked, the prompt fixes that backfired, and the three-layer fix: ground the real facts, don't seed tempting words, and guard in the tool layer."
 date: 2026-06-21
 tags:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Why generic weather MCPs don't work for marine navigation — and the NDBC .spec parse that fixed our buoy gap"
+title: "Why generic weather MCPs fail for marine navigation (use NDBC buoys)"
 description: "An adopt-vs-keep audit of three existing weather MCP servers (Open-Meteo, NOAA CO-OPS, a 12-tool generic) against a purpose-built marine one. None does NDBC nearest-buoy observations, quota-aware premium tools, or a TTS-safe display contract. Then the capability that fell out of the audit: parsing NDBC realtime2 .spec files to split swell from wind waves — ~60 lines that surfaced wave data the standard .txt file had marked missing. With receipts from station 46088."
 tags:
   - mcp

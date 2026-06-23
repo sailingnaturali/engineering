@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "SignalK ntfy: pushing SignalK alarms to your phone with a zero-dependency notification relay"
+title: "Push SignalK alarms to your phone with a zero-dependency relay"
 description: "SignalK raises alarms into notifications.* but nothing pushes them to your phone away from the chartplotter. We evaluated the existing options — a stale signalk-pushover-notification-relay and an early signalk-ntfy proof-of-concept that pulls in node-fetch and ws — and built our own focused, zero-dependency signalk-ntfy-relay instead. Here's what we tried, why each fell short, and the edge-triggered severity-to-priority design we shipped, with real code."
 tags:
   - signalk

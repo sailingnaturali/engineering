@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Logging VHF DSC distress calls in SignalK: the $--DSC/$--DSE and PGN 129808 gaps stock parsers drop"
+title: "Logging VHF DSC distress calls in SignalK (PGN 129808)"
 description: "When a nearby boat hits the red button, its radio broadcasts a DSC distress burst on channel 70 — MMSI, position, nature of distress — readable even when the voice call on 16 is not. Stock SignalK quietly drops most of it: the NMEA 0183 hook misses sparse distress sentences and persists nothing, ignores $--DSE position refinement, and n2k-signalk has no PGN 129808 mapping at all. Here's how signalk-dsc captures, stores, and alarms on every received call — and the century-old radio-log regulation (47 CFR 80.409) that makes logging intercepted distress traffic the right default."
 tags:
   - signalk

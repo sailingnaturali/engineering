@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Home Assistant Voice (Nabu) puck: no audio from tts.speak — use assist_satellite.announce"
+title: "No audio from the Home Assistant Nabu puck: use assist_satellite.announce"
 description: "The Home Assistant Voice (Nabu) puck is an assist_satellite entity, so tts.speak to its media_player updates HA state but produces no sound — the fix is assist_satellite.announce. Plus the two follow-on traps: announcing into a busy satellite, and a silent Piper add-on crash that looks like 'chime plays but no speech.' Here's the broke → tried → fixed."
 tags:
   - homeassistant

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "SEO and GEO on TanStack Start: prerender to static, then everything else"
+title: "SEO and GEO on TanStack Start: prerender to static"
 description: "TanStack Start client-renders by default, which is exactly what classic search (Googlebot) and answer engines (GPTBot, PerplexityBot, ClaudeBot) both choke on. The single highest-leverage fix is prerender-to-static. Here's the working prerender config, JSON-LD via route head.scripts, a build-time sitemap/robots/llms.txt module, the macOS grep gotcha that makes a correct build look broken, and the Cloudflare-grey-cloud cutover that keeps your TLS cert and canonical intact."
 tags:
   - tanstack-start

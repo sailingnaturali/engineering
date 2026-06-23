@@ -27,14 +27,17 @@ Posts are Markdown files in `_posts/`, named `YYYY-MM-DD-slug.md`. Front matter:
 ```yaml
 ---
 layout: post
-title: "A specific, searchable title — include the error string people google"
-description: "1–2 sentence SEO description. Name the real symptoms and versions."
+title: "Clear and useful, one topic, ~8–12 words — keep the core keyword, drop the long tail"
+description: "1–2 sentence SEO description. Name the real symptoms and versions — this is where the full googled error strings live."
 date: 2026-06-01
 tags: [homeassistant, selfhosted, ai]
 ---
 ```
 
-URLs are `/:title/` (the slug from the filename), so make the slug searchable.
+URLs are `/:title/` (the slug from the filename), so build the slug from a full
+SEO headline — pack in the error strings and versions there. The slug and
+description carry the SEO load, which frees `title:` to be clear and useful (one
+topic, ~8–12 words, core keyword in, long tail out). Slug = SEO; title = human.
 `jekyll-seo-tag` derives the canonical URL automatically — don't set one unless
 the post is syndicated and canonical lives elsewhere.
 

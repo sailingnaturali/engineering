@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Named MCP tools vs a single execute_code tool: why we kept discrete SignalK tools over a 96% token saving"
+title: "Why we kept named MCP tools despite a 96% token saving"
 description: "VesselSense's signalk-mcp-server exposes one execute_code tool running agent-written JavaScript in a V8 isolate, claiming a 90–96% token reduction over named MCP tools. For a frontier model that's a real win. For our voice-first agent on a small local model it doesn't bind — a named tool with one argument beats asking an 8B to write correct JavaScript for 'what's my battery?'. Here's the adopt-vs-keep evaluation, the speech-contract and circuit-breaker reasons code execution fails for this agent, and a decision framework other MCP authors can reuse."
 tags:
   - mcp

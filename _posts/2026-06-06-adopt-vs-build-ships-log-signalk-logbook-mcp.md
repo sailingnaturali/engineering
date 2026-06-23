@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "We deleted our working logbook: an adopt-vs-build audit of the SignalK logbook ecosystem"
+title: "Adopt vs build: why we deleted our working logbook for SignalK"
 description: "Our logbook-mcp had a working SQLite store, tests, and a voice agent writing to it. We deleted the storage layer anyway, after auditing meri-imperiumi/signalk-logbook, Saillogger, and postgsail. How we ran the adopt-vs-build decision, why the ship's log belongs on the ship, and the four undocumented integration quirks we hit wiring an MCP server to someone else's plugin — bare 201s, a mandatory 'optional' field, cookie-based author attribution, and an admin-only route gate."
 tags:
   - ai

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "API Error 400: Output blocked by content filtering policy — why Claude won't transcribe your PDF, and what to do instead"
+title: "Why Claude won't transcribe your PDF — and what to do instead"
 description: "Asking Claude to transcribe a document verbatim (PDF to markdown) gets hard-blocked by Anthropic's output-side anti-regurgitation filter: 'API Error: 400 Output blocked by content filtering policy'. It is license-blind — public-domain US-government text trips it exactly like copyrighted prose — and retrying never works because the task shape is the trigger. The fix: stop routing source text through model output. Have Claude write a deterministic parser, and let the parser write the files. With receipts from building an open-source navigation-rules vault."
 tags:
   - ai
