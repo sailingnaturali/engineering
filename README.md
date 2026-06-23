@@ -58,6 +58,31 @@ repo at `.claude/agents/scribe.md`) from finished engineering work and
 voice/accuracy and merges. Never reproduces anything from the private
 `infrastructure` repo.
 
+## Syndication to dev.to
+
+Published posts are mirrored to [dev.to](https://dev.to) as a distribution
+channel; **the blog stays canonical** (each dev.to article sets `canonical_url`
+back here). `.github/workflows/crosspost.yml` runs after a successful Pages
+deploy and calls `bin/crosspost-devto`, which:
+
+- lists what's already on dev.to and creates only the missing posts (idempotent,
+  create-only — re-runs are no-ops, edits are not re-pushed),
+- sets `canonical_url`, derives ≤4 dev.to tags from the post's front matter
+  (first four, lowercased, non-alphanumerics stripped), and rewrites
+  root-relative links to absolute.
+
+One-time setup: generate a dev.to API key (dev.to → Settings → Extensions →
+API Keys) and add it as the repo secret `DEVTO_API_KEY`
+(`gh secret set DEVTO_API_KEY`). Dry-run anytime via the workflow's manual
+"Run workflow" button (check *dry_run*) or locally:
+
+```bash
+DEVTO_API_KEY=... bin/crosspost-devto --dry-run
+```
+
+Logic lives in `lib/devto/`; tests in `test/devto/` run with
+`ruby -e 'Dir.glob("test/**/*_test.rb").each { |f| require File.expand_path(f) }'`.
+
 ## Local preview
 
 ```bash
