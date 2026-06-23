@@ -71,6 +71,13 @@ deploy and calls `bin/crosspost-devto`, which:
   (first four, lowercased, non-alphanumerics stripped), and rewrites
   root-relative links to absolute.
 
+dev.to throttles article creation (300-second windows, strict for new accounts),
+so a single run only gets a couple of posts through before a `429`. That's treated
+as "done for now" — the run logs what's left and exits successfully — and an
+hourly `schedule:` trigger drains any backlog a few posts at a time. Steady state
+(one new post per deploy) goes out on the after-deploy run and never trips the
+limit.
+
 One-time setup: generate a dev.to API key (dev.to → Settings → Extensions →
 API Keys) and add it as the repo secret `DEVTO_API_KEY`
 (`gh secret set DEVTO_API_KEY`). Dry-run anytime via the workflow's manual

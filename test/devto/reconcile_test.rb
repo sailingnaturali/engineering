@@ -1,6 +1,7 @@
 require "minitest/autorun"
 require "date"
 require "set"
+require "tmpdir"
 require_relative "../../lib/devto/reconcile"
 
 class RecorderClient
@@ -26,10 +27,10 @@ class ReconcileTest < Minitest::Test
   FIX = File.expand_path("../fixtures/posts", __dir__)
   SITE = "https://engineering.sailingnaturali.com"
 
-  def reconcile(client:, dry_run: false)
-    r = Devto::Reconcile.new(posts_dir: FIX, site_url: SITE, client: client,
+  def reconcile(client:, dry_run: false, posts_dir: FIX, io: StringIO.new)
+    r = Devto::Reconcile.new(posts_dir: posts_dir, site_url: SITE, client: client,
                              dry_run: dry_run, today: Date.new(2026, 6, 1),
-                             io: StringIO.new, sleep_s: 0)
+                             io: io, sleep_s: 0)
     def r.sleep_for(_) = nil
     r
   end
@@ -64,11 +65,31 @@ class ReconcileTest < Minitest::Test
     assert_raises(RuntimeError) { reconcile(client: client).run }
   end
 
-  def test_retries_once_on_429
+  def test_stops_gracefully_on_429
+    # dev.to throttles article creation hard for new accounts (300s windows).
+    # A 429 is not an error: stop, report what's left, return success (0) so the
+    # next scheduled/after-deploy run resumes. No in-run retry.
+    io = StringIO.new
     client = RecorderClient.new(existing: Set.new,
-                                responses: [Devto::Response.new(429, "slow"),
-                                            Devto::Response.new(201, "{}")])
-    assert_equal 0, reconcile(client: client).run
-    assert_equal 2, client.created.length # first 429, retried to 201
+                                responses: [Devto::Response.new(429, "slow")])
+    assert_equal 0, reconcile(client: client, io: io).run
+    assert_equal 1, client.created.length # the 429 attempt only; no retry
+    assert_match(/throttled/i, io.string)
+    assert_match(/1 post\(s\) remaining/, io.string)
+  end
+
+  def test_429_stops_before_remaining_creates
+    Dir.mktmpdir do |dir|
+      %w[2026-01-01-alpha 2026-01-02-beta].each do |name|
+        File.write(File.join(dir, "#{name}.md"),
+                   "---\ntitle: \"#{name}\"\ndate: #{name[0, 10]}\ntags:\n  - ai\n---\n\nBody.\n")
+      end
+      io = StringIO.new
+      client = RecorderClient.new(existing: Set.new,
+                                  responses: [Devto::Response.new(429, "slow")])
+      assert_equal 0, reconcile(client: client, posts_dir: dir, io: io).run
+      assert_equal 1, client.created.length # stopped after the 429; beta never attempted
+      assert_match(/2 post\(s\) remaining/, io.string)
+    end
   end
 end
