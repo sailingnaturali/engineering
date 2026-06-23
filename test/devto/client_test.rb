@@ -3,7 +3,7 @@ require "json"
 require_relative "../../lib/devto/client"
 
 class FakeTransport
-  attr_reader :posted
+  attr_reader :posted, :get_url, :get_headers
   def initialize(get_response:, post_response: nil)
     @get_response = get_response
     @post_response = post_response
@@ -22,6 +22,18 @@ class FakeTransport
   end
 end
 
+class PagingTransport
+  def get(url, _headers)
+    page = url[/[?&]page=(\d+)/, 1].to_i
+    pages = [
+      [{ "canonical_url" => "https://x/a/" }, { "canonical_url" => "https://x/b/" }], # full page (==per_page)
+      [{ "canonical_url" => "https://x/c/" }]                                          # short page -> stop
+    ]
+    Devto::Response.new(200, JSON.generate(pages[page - 1] || []))
+  end
+  def post(*) = raise "not used"
+end
+
 class ClientTest < Minitest::Test
   def test_existing_canonicals_collects_non_nil
     body = JSON.generate([
@@ -32,12 +44,20 @@ class ClientTest < Minitest::Test
     t = FakeTransport.new(get_response: Devto::Response.new(200, body))
     client = Devto::Client.new("KEY", transport: t)
     assert_equal Set["https://x/a/", "https://x/b/"], client.existing_canonicals
+    assert_includes t.get_url, "/articles/me/all"
+    assert_includes t.get_url, "per_page=1000"
+    assert_equal "KEY", t.get_headers["api-key"]
   end
 
   def test_existing_canonicals_raises_on_non_200
     t = FakeTransport.new(get_response: Devto::Response.new(401, "no"))
     client = Devto::Client.new("KEY", transport: t)
     assert_raises(RuntimeError) { client.existing_canonicals }
+  end
+
+  def test_existing_canonicals_paginates
+    client = Devto::Client.new("KEY", transport: PagingTransport.new, per_page: 2)
+    assert_equal Set["https://x/a/", "https://x/b/", "https://x/c/"], client.existing_canonicals
   end
 
   def test_create_posts_json_with_api_key
