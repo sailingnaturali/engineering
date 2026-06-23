@@ -1,0 +1,41 @@
+# Cross-post published blog posts to dev.to after the site deploys.
+#
+# Chained AFTER "Deploy site to Pages" (pages.yml) via workflow_run so the
+# canonical URL is already live before dev.to is told about it, and a failed
+# build never cross-posts. Create-only + idempotent: re-runs are no-ops.
+# The DEVTO_API_KEY secret stays out of the Pages-permissioned deploy job.
+name: Cross-post to dev.to
+
+on:
+  workflow_run:
+    workflows: ["Deploy site to Pages"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "List what would be created without posting"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  crosspost:
+    runs-on: ubuntu-latest
+    # Manual dispatch always allowed; auto-run only after a successful main deploy.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main')
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+      - name: Run tests
+        run: ruby -e 'Dir.glob("test/**/*_test.rb").each { |f| require File.expand_path(f) }'
+      - name: Cross-post to dev.to
+        run: bin/crosspost-devto ${{ (github.event_name == 'workflow_dispatch' && inputs.dry_run) && '--dry-run' || '' }}
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
