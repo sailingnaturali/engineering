@@ -21,3 +21,32 @@ class TransformTagsTest < Minitest::Test
     assert_equal %w[ai mcp], Devto::Transform.derive_tags(["---", "ai", "  ", "mcp"])
   end
 end
+
+class TransformAbsolutizeTest < Minitest::Test
+  SITE = "https://engineering.sailingnaturali.com"
+
+  def test_rewrites_root_relative_link
+    out = Devto::Transform.absolutize("See [docs](/launchd-minimal-path/).", SITE)
+    assert_includes out, "[docs](#{SITE}/launchd-minimal-path/)"
+  end
+
+  def test_rewrites_root_relative_image_and_html_src
+    md = "![pic](/img/a.png) and <img src=\"/img/b.png\">"
+    out = Devto::Transform.absolutize(md, SITE)
+    assert_includes out, "![pic](#{SITE}/img/a.png)"
+    assert_includes out, "src=\"#{SITE}/img/b.png\""
+  end
+
+  def test_leaves_external_anchor_and_protocol_relative
+    md = "[x](https://example.com) [y](#sec) [z](//cdn.example.com/a.js)"
+    assert_equal md, Devto::Transform.absolutize(md, SITE)
+  end
+
+  def test_does_not_rewrite_inside_code_fence
+    md = "before [a](/foo)\n```\n[b](/keep-me)\n```\nafter [c](/bar)"
+    out = Devto::Transform.absolutize(md, SITE)
+    assert_includes out, "[a](#{SITE}/foo)"
+    assert_includes out, "[b](/keep-me)"      # untouched inside fence
+    assert_includes out, "[c](#{SITE}/bar)"
+  end
+end
