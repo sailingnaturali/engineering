@@ -26,6 +26,7 @@ module Devto
       @io.puts "#{publishable_posts.length} publishable, " \
                "#{existing.length} on dev.to, #{to_create.length} to create"
 
+      created = 0
       to_create.each_with_index do |post, i|
         payload = Transform.build_payload(post, @site_url)
         canonical = post.canonical_url(@site_url)
@@ -33,8 +34,19 @@ module Devto
           @io.puts "would create: #{canonical} tags=#{payload[:article][:tags].inspect}"
           next
         end
-        res = create_with_retry(payload)
+        res = @client.create(payload)
+        # dev.to throttles article creation hard (300s windows, especially for new
+        # accounts). A 429 is expected, not an error: stop here, report what's left,
+        # and return success so the next scheduled / after-deploy run resumes.
+        # Create-only + idempotent means re-runs never duplicate the ones done.
+        if res.code == 429
+          remaining = to_create.length - created
+          @io.puts "throttled by dev.to (HTTP 429): #{remaining} post(s) remaining, " \
+                   "will resume on the next run"
+          return 0
+        end
         raise "create failed for #{canonical}: HTTP #{res.code} #{res.body}" unless res.code == 201
+        created += 1
         @io.puts "created: #{canonical}"
         sleep_for(@sleep_s) unless i == to_create.length - 1
       end
@@ -54,15 +66,6 @@ module Devto
            .map { |p| Post.parse(p) }
            .select { |post| post.publishable?(today: @today) }
            .sort_by(&:date)
-    end
-
-    def create_with_retry(payload)
-      res = @client.create(payload)
-      if res.code == 429
-        sleep_for(@sleep_s)
-        res = @client.create(payload)
-      end
-      res
     end
   end
 end

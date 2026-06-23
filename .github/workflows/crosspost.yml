@@ -4,12 +4,20 @@
 # canonical URL is already live before dev.to is told about it, and a failed
 # build never cross-posts. Create-only + idempotent: re-runs are no-ops.
 # The DEVTO_API_KEY secret stays out of the Pages-permissioned deploy job.
+#
+# dev.to throttles article creation (300s windows, strict for new accounts), so
+# a single run only gets a couple through before a 429. The reconcile treats a
+# 429 as "done for now" (exits 0, logs what's left); the hourly `schedule` drains
+# any backlog a few posts at a time. Steady state (one new post per deploy) is
+# handled by the after-deploy run and never trips the limit.
 name: Cross-post to dev.to
 
 on:
   workflow_run:
     workflows: ["Deploy site to Pages"]
     types: [completed]
+  schedule:
+    - cron: "17 * * * *" # hourly drain of any throttled backlog (offset off the hour)
   workflow_dispatch:
     inputs:
       dry_run:
@@ -23,9 +31,11 @@ permissions:
 jobs:
   crosspost:
     runs-on: ubuntu-latest
-    # Manual dispatch always allowed; auto-run only after a successful main deploy.
+    # Manual dispatch and the hourly schedule always allowed; the workflow_run
+    # auto-run only after a successful main deploy.
     if: >-
       github.event_name == 'workflow_dispatch' ||
+      github.event_name == 'schedule' ||
       (github.event.workflow_run.conclusion == 'success' &&
        github.event.workflow_run.head_branch == 'main')
     steps:
