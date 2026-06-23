@@ -1,8 +1,9 @@
 source "https://rubygems.org"
 
-# Pin to the github-pages gem so local builds match what GitHub Pages serves
-# (native Pages build — no custom Actions workflow). This locks Jekyll, the
-# theme, and the plugin whitelist to GitHub's supported versions.
+# Pin to the github-pages gem so local builds match what CI publishes — the
+# Pages site is built by .github/workflows/pages.yml using this same gem, which
+# locks Jekyll, the theme, and the plugin whitelist to GitHub's supported
+# versions.
 gem "github-pages", group: :jekyll_plugins
 
 # Faster incremental rebuilds locally; harmless on Pages.

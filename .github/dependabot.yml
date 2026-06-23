@@ -1,0 +1,14 @@
+version: 2
+updates:
+  # Keep the Pages build/deploy workflow's actions current — one grouped weekly
+  # PR — so they don't drift behind the Node runtime GitHub forces (the Node 20
+  # deprecation that prompted moving off the auto-managed Pages build). Mirrors
+  # the github-actions updater the @sailingnaturali SignalK plugin repos run.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns:
+          - "*"
