@@ -73,3 +73,30 @@ class ClientTest < Minitest::Test
     assert_equal({ "article" => { "title" => "T" } }, JSON.parse(sent[:body]))
   end
 end
+
+class ClientCommentsTest < Minitest::Test
+  def test_comments_for_fetches_and_parses
+    body = JSON.generate([{ "id_code" => "abc", "body_html" => "<p>hi</p>", "children" => [] }])
+    t = FakeTransport.new(get_response: Devto::Response.new(200, body))
+    client = Devto::Client.new("KEY", transport: t)
+    comments = client.comments_for(123)
+    assert_equal "abc", comments.first["id_code"]
+    assert_includes t.get_url, "/comments?a_id=123"
+    assert_equal "KEY", t.get_headers["api-key"]
+  end
+
+  def test_comments_for_raises_on_non_200
+    t = FakeTransport.new(get_response: Devto::Response.new(500, "boom"))
+    client = Devto::Client.new("KEY", transport: t)
+    assert_raises(RuntimeError) { client.comments_for(123) }
+  end
+
+  def test_my_articles_returns_full_objects
+    body = JSON.generate([{ "id" => 1, "title" => "T", "comments_count" => 2, "canonical_url" => "https://x/a/" }])
+    t = FakeTransport.new(get_response: Devto::Response.new(200, body))
+    client = Devto::Client.new("KEY", transport: t)
+    articles = client.my_articles
+    assert_equal 2, articles.first["comments_count"]
+    assert_equal Set["https://x/a/"], client.existing_canonicals
+  end
+end
