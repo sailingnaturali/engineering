@@ -13,10 +13,16 @@ crowd. Design rationale lives in the `planning` repo:
 ## How it's built & served
 
 - **Static-site generator:** Jekyll (`minima` theme).
-- **Build:** native GitHub Pages build — pushing to `main` rebuilds and
-  publishes. No GitHub Actions workflow. Plugins are limited to the
+- **Build:** `.github/workflows/pages.yml` — pushing to `main` builds with the
+  `github-pages` gem and deploys to Pages (replaced the auto-managed
+  "Deploy from a branch" build so the actions are pinned and dependabot-bumped).
+  Plugins are limited to the
   [Pages whitelist](https://pages.github.com/versions/); we use `jekyll-seo-tag`,
   `jekyll-feed`, and `jekyll-sitemap`.
+- **PR checks:** `.github/workflows/ci.yml` runs on every PR: the same Jekyll
+  build, `script/lint-liquid.py` (see **Liquid vs. template code** below), and
+  the devto unit tests. A red check means the merge would break the deploy or
+  the published content — fix before merging.
 - **Domain:** the `CNAME` file pins `engineering.sailingnaturali.com`. DNS is a
   `CNAME engineering → sailingnaturali.github.io` record.
 
@@ -47,8 +53,27 @@ the post is syndicated and canonical lives elsewhere.
   block, never described in prose.
 - **broke → tried → fixed.** The "what we tried (and why it failed)" beat is
   mandatory — it's the highest-trust, highest-SEO part of the post.
+- **The fix up top.** Open with a 2–3 line TL;DR of the fix for the searcher
+  who arrived from an error string and wants the answer now; the full arc below
+  is what keeps them.
+- **Link related posts** with `{% post_url YYYY-MM-DD-slug %}` (never a
+  hardcoded URL — `post_url` fails the build on a typo and survives renames).
 - Direct, technical, no marketing fluff. Close with a short, non-salesy line
   connecting back to the project.
+
+### Liquid vs. template code
+
+GitHub Pages runs **Liquid over every post body** before Markdown. A post that
+shows Jinja2 / Home Assistant / Go-template syntax will have its `{{ … }}`
+silently rendered to empty strings (blanking the code blocks readers came for),
+and some constructs (`default({})`) are hard Liquid syntax errors that fail the
+whole deploy.
+
+**Rule: if the body contains `{{` or `{%`, wrap it in `{% raw %}` …
+`{% endraw %}`.** Put intentional Liquid — the `{% post_url %}` links above —
+*outside* the raw block (e.g. close the block before the related-links line).
+`script/lint-liquid.py` enforces this and runs in CI; the dev.to crosspost
+strips the raw guards on the way out.
 
 ### The Scribe workflow
 
@@ -57,6 +82,25 @@ repo at `.claude/agents/scribe.md`) from finished engineering work and
 `docs/agent-lessons.md`. The Scribe opens a PR against this repo; a human reviews
 voice/accuracy and merges. Never reproduces anything from the private
 `infrastructure` repo.
+
+Each post branch adds **exactly one `_posts/` file** — staged PRs hang open for
+weeks while `main` moves, and a branch that carries anything else will drag
+stale edits in at merge time.
+
+### Publishing
+
+Merge = publish. `script/publish.py` runs the whole checklist for a staged PR:
+
+```bash
+python3 script/publish.py mqtt                 # rebase on main, bump date to
+                                               # today, lint + build, push, merge
+python3 script/publish.py mqtt --date 2026-07-07
+python3 script/publish.py mqtt --no-merge      # push the rebuilt branch only
+```
+
+It refuses branches that touch more than their one post file. `script/bump.py`
+is the date-bump step on its own. After publishing, move the post to Published
+in the planning repo's `engineering-blog-schedule.md`.
 
 ## Syndication to dev.to
 

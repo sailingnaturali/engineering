@@ -14,6 +14,7 @@ date: 2026-06-05
 canonical: "https://engineering.sailingnaturali.com/seo-geo-tanstack-start-prerender-structured-data-llms-txt/"
 ---
 
+{% raw %}
 We moved the Sailing Naturali apex site off Squarespace and onto a code-owned [TanStack Start](https://tanstack.com/start) app on Vercel. The point wasn't to save the $28/month — it was to stop editing the site through a GUI and start editing it through a git repo: content as files, every change a PR, every PR a Vercel preview, merge to ship. The repo is public: [github.com/sailingnaturali/web](https://github.com/sailingnaturali/web).
 
 The interesting part wasn't the migration. It was discovering that **SEO and GEO are the same problem wearing two hats**, that TanStack Start ships with the one default that breaks both, and that fixing it is a single config block. This is the broke → tried → fixed of getting search engines *and* answer engines to actually see a TanStack Start site — plus the verification gotchas that made a *correct* build look broken.
@@ -258,3 +259,4 @@ The deeper lesson is the spine itself: **don't model SEO and GEO as two backlogs
 ## Close
 
 This is the apex marketing site for an all-electric charter catamaran we're building in the open — but the site itself is just a TanStack Start app, and the SEO/GEO module is reusable on any TanStack Start project. It's all in the public repo: [github.com/sailingnaturali/web](https://github.com/sailingnaturali/web).
+{% endraw %}

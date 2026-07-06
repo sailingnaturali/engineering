@@ -12,6 +12,7 @@ tags:
   - llm
 ---
 
+{% raw %}
 You edit a skill's prompt to fix a behaviour. You confirm the change is in the file the runtime loads. You restart. The agent does the old thing anyway. Not *sometimes* — reliably, for most queries.
 
 The instinct is to edit the prompt harder. The actual problem was that the prompt you edited wasn't in the request at all. On a skill/agent framework with a base system prompt plus conditionally-loaded skill bodies, **a lot of your "prompt" only loads when a skill triggers** — and if the rule needs to hold on *every* query, it has to live in the always-on layer instead. The second half of the same bug: the always-on file had no deploy step, so the running copy had silently drifted from the repo.
@@ -153,3 +154,4 @@ Now a commit that edits either source redeploys it. The runtime can't drift from
 ## Close
 
 This came out of building an AI ops layer for an all-electric charter catamaran — a local LLM with a shared persona and per-job skills over a marine data bus — where the agent had better call the boat by its actual name, on every query, not just navigation ones. The agent skills and deploy scripts are open source: [github.com/sailingnaturali/naturali-agents](https://github.com/sailingnaturali/naturali-agents).
+{% endraw %}
