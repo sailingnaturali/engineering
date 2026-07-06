@@ -12,6 +12,8 @@ tags:
   - selfhosted
 ---
 
+> **TL;DR:** An MQTT trigger's `value_template` is a payload *transformer*, not a filter — with no `payload:` key the trigger fires on **every** message on the topic. And script variables aren't in scope in the per-message render, so a trigger-level match on a runtime variable isn't expressible at all. Fire on everything and loop with `repeat`/`until` instead — [jump to the fix](#the-fix).
+
 {% raw %}
 A Home Assistant script that does a synchronous MQTT round-trip — publish a question, `wait_for_trigger` on the reply topic for the message whose JSON payload carries the matching `trace_id` — passed every end-to-end test for two days. Then a second producer started publishing on the reply topic, and the wait matched the wrong message instantly. The "filter" had never filtered anything, and fixing it properly took peeling three separate layers of HA template semantics. This is the broke → tried → fixed.
 
@@ -177,3 +179,5 @@ None of these failure modes log anything. The trigger that matches everything, t
 
 This round-trip is the spine of a voice assistant for an all-electric charter catamaran — a Home Assistant satellite asking an MCP-backed agent about pilot books and tide windows, with MQTT as the seam between them. The agent daemon side, including the say-topic payload contract with the `interim` flag, is open source: [github.com/sailingnaturali](https://github.com/sailingnaturali).
 {% endraw %}
+
+*Related: [routing all HA voice to a custom agent with a wildcard sentence]({% post_url 2026-06-01-ha-2026.5-hassil-3-wildcard-voice-routing-missinglisterror %}) — the front half of this pipeline — and [the assist_satellite.announce no-audio gotcha]({% post_url 2026-06-01-home-assistant-nabu-voice-no-audio-assist-satellite-announce %}) on the same satellite.*

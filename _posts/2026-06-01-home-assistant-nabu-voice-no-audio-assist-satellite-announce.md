@@ -13,6 +13,7 @@ date: 2026-06-01
 canonical: "https://engineering.sailingnaturali.com/home-assistant-nabu-voice-no-audio-assist-satellite-announce/"
 ---
 
+{% raw %}
 You wire up a local voice pipeline on a Home Assistant Voice (Nabu) puck, fire a `tts.speak` at it from an automation, and nothing comes out. The pipeline runs. Home Assistant reports the TTS call succeeded. There is no speech. Worse, when you poke at it in Developer Tools, the `media_player` entity flips to `playing` exactly like you'd expect — so it *looks* like it's working, and you spend an hour staring at a service call that does nothing audible.
 
 The root cause: the puck isn't a plain media player. It's an `assist_satellite` entity, and that changes how you have to route TTS. Get past that and there are two follow-on traps — announcing into a busy satellite, and a silently-crashed Piper add-on that masquerades as the original "no speech" symptom. Here's the full broke → tried → fixed.
@@ -115,3 +116,4 @@ And the one diagnostic that saves the most time: **when speech goes mute, check 
 ## Close
 
 This came out of building a local voice front-end for the boat-agent stack on *Sailing Naturali* — an all-electric charter catamaran where the helm talks to a local LLM through a Home Assistant Voice puck. The agent and MCP tooling are open source under [github.com/sailingnaturali](https://github.com/sailingnaturali); the voice front-end notes live alongside them.
+{% endraw %}

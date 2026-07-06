@@ -52,6 +52,24 @@ class TransformAbsolutizeTest < Minitest::Test
   end
 end
 
+class TransformStripRawTest < Minitest::Test
+  def test_strips_standalone_raw_and_endraw_lines
+    md = "{% raw %}\nbody with {{ value_json.trace_id }}\n{% endraw %}\n"
+    assert_equal "body with {{ value_json.trace_id }}\n",
+                 Devto::Transform.strip_raw_tags(md)
+  end
+
+  def test_keeps_raw_tags_inside_code_fence
+    md = "{% raw %}\n```\n{% raw %}\n```\n{% endraw %}\n"
+    assert_equal "```\n{% raw %}\n```\n", Devto::Transform.strip_raw_tags(md)
+  end
+
+  def test_noop_without_raw_tags
+    md = "plain body\n```\ncode\n```\n"
+    assert_equal md, Devto::Transform.strip_raw_tags(md)
+  end
+end
+
 class TransformPayloadTest < Minitest::Test
   SITE = "https://engineering.sailingnaturali.com"
 

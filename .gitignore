@@ -6,3 +6,4 @@ Gemfile.lock
 .sass-cache/
 .DS_Store
 .superpowers/
+__pycache__/
