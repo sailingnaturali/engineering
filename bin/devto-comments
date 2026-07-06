@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+# Report comments on our dev.to articles, so replies can be considered.
+#
+# Lists the account's articles, then prints the full comment tree for every
+# article that has comments — author, timestamp, permalink id, and the comment
+# text. Read-only: the Forem/dev.to API has no comment-creation endpoint, so
+# replies are posted by hand at the printed URLs.
+#
+# Usage: DEVTO_API_KEY=... bin/devto-comments
+# In CI:  .github/workflows/devto-comments.yml (manual "Run workflow" button);
+#         the report is the job log.
+
+require "cgi"
+require_relative "../lib/devto/client"
+
+api_key = ENV["DEVTO_API_KEY"]
+if api_key.nil? || api_key.empty?
+  warn "DEVTO_API_KEY is not set"
+  exit 1
+end
+
+def text(body_html)
+  CGI.unescapeHTML(
+    body_html.to_s
+      .gsub(%r{</p>\s*<p>}, "\n")
+      .gsub(/<br\s*\/?>/, "\n")
+      .gsub(/<[^>]+>/, "")
+  ).strip.gsub(/\n{3,}/, "\n\n")
+end
+
+def print_comment(comment, article_url, depth)
+  indent = "  " * depth
+  user = comment["user"] || {}
+  who = user["name"] || user["username"] || "?"
+  who += " (@#{user['username']})" if user["username"] && user["name"]
+  stamp = comment["created_at"].to_s[0, 10]
+  reply_url = "#{article_url}/comments/#{comment['id_code']}"
+  puts "#{indent}- #{who} · #{stamp} · reply at: #{reply_url}"
+  text(comment["body_html"]).each_line { |l| puts "#{indent}    #{l.rstrip}" }
+  (comment["children"] || []).each { |c| print_comment(c, article_url, depth + 1) }
+end
+
+client = Devto::Client.new(api_key)
+articles = client.my_articles.select { |a| a["published"] }
+with_comments = articles.select { |a| a["comments_count"].to_i.positive? }
+
+puts "#{articles.length} published article(s); #{with_comments.length} with comments\n\n"
+
+total = 0
+with_comments.sort_by { |a| -a["comments_count"].to_i }.each do |a|
+  puts "=" * 72
+  puts a["title"]
+  puts "#{a['url']}  (#{a['comments_count']} comment(s), #{a['positive_reactions_count']} reactions)"
+  puts
+  client.comments_for(a["id"]).each { |c| print_comment(c, a["url"], 0) }
+  total += a["comments_count"].to_i
+  puts
+end
+
+puts "#{total} comment(s) across #{with_comments.length} article(s)."

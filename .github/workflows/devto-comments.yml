@@ -1,0 +1,24 @@
+# On-demand report of comments on our dev.to articles (bin/devto-comments).
+# The dev.to API is unreachable from some dev environments, so the check runs
+# here where DEVTO_API_KEY already lives; the report is the job log. Read-only —
+# the Forem API can't post comments, so replies are written by hand on dev.to.
+name: dev.to comments report
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+      - name: Comments report
+        run: bin/devto-comments
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
