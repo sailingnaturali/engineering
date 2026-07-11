@@ -2,7 +2,7 @@
 layout: post
 title: "Your remote coding agent has the repo, not the machine — Tailscale is the missing half"
 description: "A cloud coding session can clone your repo, edit across every package, run the tests, and open the PR — all driven from a phone. Then you ask it to show you the thing running and hit a wall: the sandbox has your code, never your machine. The repo is portable; the running system isn't. A per-host tailnet is what closes that gap, and it's the same tunnel that already reaches a boat stranded behind Starlink CGNAT."
-date: 2026-06-16
+date: 2026-07-11
 tags:
   - ai
   - agents
