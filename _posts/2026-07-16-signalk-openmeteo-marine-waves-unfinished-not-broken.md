@@ -9,7 +9,7 @@ tags:
   - open-source
   - weather
   - architecture
-date: 2026-06-18
+date: 2026-07-16
 canonical: "https://engineering.sailingnaturali.com/signalk-openmeteo-marine-waves-unfinished-not-broken/"
 ---
 
