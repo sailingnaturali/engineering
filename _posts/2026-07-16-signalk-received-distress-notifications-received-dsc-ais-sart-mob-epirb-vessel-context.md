@@ -15,7 +15,7 @@ tags:
 date: 2026-07-16
 ---
 
-> **TL;DR** — a distress alert heard *from another vessel* is not your boat's own alarm state, so don't raise it as plain `notifications.*` on self. The convention we landed on ([signalk-dsc](https://github.com/sailingnaturali/signalk-dsc) v0.7.0, [signalk-ais-distress](https://github.com/sailingnaturali/signalk-ais-distress) v0.3.0): raise the self-side alarm under **`notifications.received.*`** ("received about another vessel"), and *also* write the state record into the **source vessel's own context** — `vessels.<mmsi>.notifications.mob` for MOB, `notifications.distress` for SART/EPIRB. [Jump to the convention](#the-convention-two-writes).
+> **TL;DR** — a distress alert heard *from another vessel* is not your boat's own alarm state, so don't raise it as plain `notifications.*` on self. The convention we landed on ([signalk-dsc](https://github.com/sailingnaturali/signalk-dsc) v0.9.0, [signalk-ais-distress](https://github.com/sailingnaturali/signalk-ais-distress) v0.5.0): raise the self-side alarm under **`notifications.received.*`** ("received about another vessel"), and *also* write the state record into the **source vessel's own context** — `vessels.<mmsi>.notifications.mob` for MOB, `notifications.distress` for SART/EPIRB. [Jump to the convention](#the-convention-two-writes).
 
 Our stack has two plugins that hear other people's emergencies. [`signalk-dsc`](https://github.com/sailingnaturali/signalk-dsc) receives VHF DSC calls — a MAYDAY on channel 70 arrives as `$--DSC` sentences or PGN 129808. [`signalk-ais-distress`](https://github.com/sailingnaturali/signalk-ais-distress) alerts on AIS survival beacons — SART, MOB, and EPIRB devices, recognizable by their MMSI prefixes (970 / 972 / 974). Both are built on a shared library, [`signalk-distress-core`](https://github.com/sailingnaturali/signalk-distress-core).
 
@@ -55,22 +55,34 @@ None of the single-write options work, which is the actual finding: **actuation 
 
 ## The convention: two writes
 
-**Write 1 — self, under `notifications.received.*`.** This is the actuation layer: the path your own alarm chain, voice pipeline, and annunciators subscribe to. The `received` segment says exactly what it is — received *about another vessel*:
+**Write 1 — self, under `notifications.received.*`.** This is the actuation layer: the path your own alarm chain, voice pipeline, and annunciators subscribe to. The `received` segment says exactly what it is — received *about another vessel*. Each call raises its *own* per-call path — the leaf is `<transport>-<id>`, so two concurrent MAYDAYs never stomp one key:
 
 ```
-# signalk-dsc 0.7.0
-vessels.self.notifications.received.dsc.distress          state: emergency
-vessels.self.notifications.received.dsc.urgency           state: alarm
-vessels.self.notifications.received.dsc.safety            state: alert
+# signalk-dsc 0.9.0 — one alarm per call, at its own path
+vessels.self.notifications.received.distress.dsc-<id>     state: emergency
+vessels.self.notifications.received.urgency.dsc-<id>      state: alarm
+vessels.self.notifications.received.safety.dsc-<id>       state: warn
 
-# signalk-ais-distress 0.3.0
-vessels.self.notifications.received.ais.distress.sart     state: emergency
-vessels.self.notifications.received.ais.distress.mob      state: emergency
-vessels.self.notifications.received.ais.distress.epirb    state: emergency
-vessels.self.notifications.received.ais.broadcast.<category>   # AIS Msg 14 relays
+# signalk-ais-distress 0.5.0 — SART, MOB, and EPIRB all raise under distress
+vessels.self.notifications.received.distress.ais-<id>     state: emergency
+vessels.self.notifications.received.<category>.ais-<id>   # AIS Msg 14 relays
 ```
 
-Muting, acknowledging, and clearing these is now unambiguous: you're managing your *response* to someone else's emergency, not your own vessel's condition. (Clearing is still a PUT to the notification path, same as before — only the path moved.)
+`<id>` is `<receivedAt>-<mmsi>` with the ISO timestamp's `.` and `:` stripped, so the whole id stays a single path segment instead of splitting into extra ones.
+
+Clearing now has **two levels**:
+
+- **Per-call ack** — a PUT to the exact per-call path you see (`notifications.received.distress.ais-<id>`) clears *that one call* and stamps the store so a restart re-raise skips it. This is SignalK's standard notification-ack: you acknowledge the alarm in front of you, and only it.
+- **Bulk clear-by-category** — a PUT to a fixed control path drops *every* live call of that category at once:
+
+```
+# control paths — PUT clears all live calls of that type (transport-first)
+vessels.self.notifications.received.dsc.<category>            # dsc.distress / .urgency / .safety
+vessels.self.notifications.received.ais.distress.<beacon>     # ais.distress.sart / .mob / .epirb
+vessels.self.notifications.received.ais.broadcast.<category>  # AIS Msg 14 relays
+```
+
+Note the segment order flips: a *raised* alarm is category-first (`received.distress.dsc-<id>`); a *control* path is transport-first (`received.dsc.distress`). Either way you're managing your *response* to someone else's emergency, not your own vessel's condition.
 
 **Write 2 — the source's own context.** This is the interoperable state record: the distress hung on the vessel it's actually about, exactly as if that vessel had raised it — which, over the radio, it did. From `signalk-ais-distress`:
 
@@ -89,14 +101,24 @@ function notifyTarget(event) {
     context: `vessels.urn:mrn:imo:mmsi:${event.mmsi}`,
     updates: [{ values: [{ path: `notifications.${leaf}`, value }] }],
   });
+  // Also feed the flat legacy self-key so existing MOB subscribers (e.g.
+  // meshtastic waypoint minting) keep firing until they migrate to the
+  // received.* / per-vessel scheme (SK spec thread 2026-07-15). Default
+  // context is self — this is the one deliberate own-vessel double-write.
+  if (leaf === 'mob') {
+    app.handleMessage(plugin.id, {
+      updates: [{ values: [{ path: 'notifications.mob', value }] }],
+    });
+  }
 }
 ```
 
-So a heard MOB beacon (fake MMSI for illustration) produces both:
+So a heard MOB beacon (fake MMSI for illustration) produces three writes — the per-call self alarm, the source-context state record, and the legacy self-key shim:
 
 ```
-vessels.self.notifications.received.ais.distress.mob      ← your alarm fires
+vessels.self.notifications.received.distress.ais-<id>     ← your alarm fires
 vessels.urn:mrn:imo:mmsi:972999999.notifications.mob      ← the beacon's own state
+vessels.self.notifications.mob                            ← legacy self-key (back-compat)
 ```
 
 ## Why those leaves
@@ -108,7 +130,7 @@ vessels.urn:mrn:imo:mmsi:972999999.notifications.mob      ← the beacon's own s
 **DSC → `notifications.<nature>` under the caller.** A DSC distress alert *does* carry a nature-of-distress code, and the ITU table maps almost one-to-one onto the spec's alarm vocabulary — `sinking`, `fire`, `flooding`, `grounding`, `mob`, and so on. So `signalk-dsc` writes the caller-context record at the real nature:
 
 ```
-vessels.self.notifications.received.dsc.distress           ← your alarm fires
+vessels.self.notifications.received.distress.dsc-<id>      ← your alarm fires
 sar.urn:mrn:imo:mmsi:366999999.notifications.sinking       ← the caller's own state
 ```
 
@@ -116,21 +138,23 @@ Note the context prefix: a DSC **distress** caller is emitted under the Search-a
 
 ## Two more beats from the same release train
 
-**Received alerts survive a restart.** SignalK notifications are in-memory — a server bounce mid-incident would silently drop an active MAYDAY. Both plugins re-raise the newest still-fresh alert per notification path on startup (details in the [original signalk-dsc post]({% post_url 2026-06-11-signalk-dsc-distress-call-logging-nmea0183-dse-pgn-129808 %})); the paths moved to `received.*` but the reannounce behavior is unchanged.
+**Received alerts survive a restart.** SignalK notifications are in-memory — a server bounce mid-incident would silently drop an active MAYDAY. Both plugins re-raise every still-fresh, un-acked call on startup, each at its own per-call path (details in the [original signalk-dsc post]({% post_url 2026-06-11-signalk-dsc-distress-call-logging-nmea0183-dse-pgn-129808 %})); a per-call ack stamps the store so the re-raise skips one you've already handled.
 
 **Distress *relays* get attributed to the casualty, not the relaying station.** A coast station retransmitting a distress alert puts the *casualty's* MMSI, nature, and position in different sentence fields than a first-hand alert — the stock parser read the relay's fields as if they were the casualty's, pinning the emergency on the coast station. Fixed upstream in [SignalK/nmea0183-signalk#344](https://github.com/SignalK/nmea0183-signalk/pull/344).
 
 ## The shape of it
 
-| Heard | Self (actuation) | Source's own context (state) |
+| Heard | Self (actuation, one per call) | Source's own context (state) |
 |---|---|---|
-| DSC distress (Ch 70 / PGN 129808) | `notifications.received.dsc.distress` | `sar.<mmsi>` → `notifications.<nature>` |
-| DSC urgency / safety | `notifications.received.dsc.<category>` | `vessels.<mmsi>` → position only |
-| AIS SART / EPIRB (970 / 974) | `notifications.received.ais.distress.<beacon>` | `vessels.<mmsi>` → `notifications.distress` |
-| AIS MOB (972) | `notifications.received.ais.distress.mob` | `vessels.<mmsi>` → `notifications.mob` |
-| AIS Msg 14 broadcast | `notifications.received.ais.broadcast.<category>` | — |
+| DSC distress (Ch 70 / PGN 129808) | `notifications.received.distress.dsc-<id>` | `sar.<mmsi>` → `notifications.<nature>` |
+| DSC urgency / safety | `notifications.received.<category>.dsc-<id>` | `vessels.<mmsi>` → position only |
+| AIS SART / EPIRB (970 / 974) | `notifications.received.distress.ais-<id>` | `vessels.<mmsi>` → `notifications.distress` |
+| AIS MOB (972) | `notifications.received.distress.ais-<id>` | `vessels.<mmsi>` → `notifications.mob` (+ legacy `notifications.mob` on self) |
+| AIS Msg 14 broadcast | `notifications.received.<category>.ais-<id>` | — |
 
-One rule underneath all of it: **a notification's context names whose emergency it is.** Self gets the `received.*` alarm because *you* need to act; the source context gets the spec-native record because *they* are the ones in distress.
+The "Self" column is the *raised* per-call path; a PUT there acks that one call. The matching **bulk clear-by-category control paths** are transport-first and category-tailed — `notifications.received.dsc.<category>`, `notifications.received.ais.distress.<beacon>`, `notifications.received.ais.broadcast.<category>` — and a PUT to one drops every live call of that type.
+
+One rule underneath all of it: **a notification's context names whose emergency it is.** Self gets the `received.*` alarm because *you* need to act; the source context gets the spec-native record because *they* are the ones in distress. The one deliberate exception is MOB: alongside the source-context `notifications.mob`, both plugins *also* write a flat `notifications.mob` on **self** — a back-compat shim so existing MOB subscribers (meshtastic waypoint minting) keep firing until they migrate to the `received.*` / per-vessel scheme. It bends the rule on purpose, and it's the one place a received alarm still lands on a bare self path.
 
 This is one piece of an all-electric charter-catamaran ops stack — when the radio hears someone in trouble, the data model should say so without claiming the trouble is yours. Code: [`signalk-dsc`](https://github.com/sailingnaturali/signalk-dsc), [`signalk-ais-distress`](https://github.com/sailingnaturali/signalk-ais-distress), shared [`signalk-distress-core`](https://github.com/sailingnaturali/signalk-distress-core).
 
