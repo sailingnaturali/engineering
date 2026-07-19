@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Two false walls in NOAA's currents API: empty constituents and \"not available\""
-description: "How I got US tidal-current harmonic constituents and predictions out of NOAA CO-OPS after two dead-ends that both looked terminal. harcon.json returns an EMPTY constituent list until you query the station's currbin instead of bin=0 — empty is not absent. currents_predictions returns \"Currents predictions are not available from the requested station\" for the default fetch/curl User-Agent, under probing-rate-limit 404s, and at the wrong depth bin — the service was never down, my request was wrong. Outcome: XTide dropped entirely, 809 harmonic + ~1670 subordinate stations sourced straight from NOAA, validated to 9.7 min / 0.055 kn against NOAA's own predictions."
+description: "How I got US tidal-current harmonic constituents and predictions out of NOAA CO-OPS after two dead-ends that both looked terminal. harcon.json returns an EMPTY constituent list until you query the station's currbin instead of bin=0 — empty is not absent. currents_predictions returns \"Currents predictions are not available from the requested station\" for the default fetch/curl User-Agent, under probing-rate-limit 404s, and at the wrong depth bin — the service was never down, my request was wrong. Outcome: XTide dropped entirely, 855 harmonic + ~1,700 subordinate stations sourced straight from NOAA, validated to 9.7 min / 0.055 kn against NOAA's own predictions."
 date: 2026-07-18
 tags:
   - currents
@@ -34,7 +34,7 @@ walls that both looked like the end of the road. Neither was.
 > station — including NOAA's own documented example — so it looked like a dead product.
 > Wrong again: **browser User-Agent + a real prediction station + its currbin** and it
 > returns data. The service was never down; my request was. Outcome: **XTide dropped
-> entirely**, 809 harmonic + ~1670 subordinate stations straight from NOAA, validated to
+> entirely**, 855 harmonic + ~1,700 subordinate stations straight from NOAA, validated to
 > **9.7 min / 0.055 kn** against NOAA's own predictions.
 > [Jump to the validation](#the-receipt-vs-noaas-own-predictions).
 
@@ -203,7 +203,7 @@ don't need XTide at all. Everything comes straight from NOAA CO-OPS, public doma
 
 The build-time extractor sweeps NOAA's station list and pulls each station's harcon (at
 its currbin) and offsets, producing a bundled `currents.json` computed offline at runtime
-— **809 harmonic + ~1670 subordinate stations**, all of US waters, including the US Salish
+— **855 harmonic + ~1,700 subordinate stations**, all of US waters, including the US Salish
 Sea passes I set out for: Deception Pass, Rosario, San Juan Channel, Turn Point. No XTide
 data, no `tide` binary, no libtcd, at build time or run time.
 
@@ -232,24 +232,50 @@ high/low slope gives the same answer. But at a weak, non-reversing station a rel
 peak never crosses zero — a −0.3 kn local maximum during a long ebb is *slope-high* but
 it's still an ebb. Label it by sign and you match NOAA's `max_slack` exactly.
 
-## The bug only a batch caught
+## The bugs only a batch caught
 
-Validating one station passed clean. Then I validated a *diverse batch* of subordinate
-stations, and one broke — a real bug the single-station test had walked right past.
+Validating one station passed clean. Then I validated a *diverse batch* — different regions,
+offset signs, speed ratios, harmonic and subordinate — and it broke in two different ways the
+single-station test had walked right past. Both are the same shape: a category I'd treated as
+monolithic turned out to have a second variety, and only the second variety triggered the bug.
 
-A subordinate station references a specific **bin** of its reference station
-(`refStationBin`), because — same lesson as Wall 1 — a current reference is depth-keyed.
-My extractor stored *one* bin's constituents per reference station. That's fine until a
-reference publishes multiple bins with *different* constituents. `SFB1201` publishes bins
-`[26, 20, 10]`, each with its own harmonic set. Storing one silently resolved half the
-subordinates against the *wrong* constituents. The single-station test had happened to hit
-the bin I'd stored, so it passed — and told me nothing.
+**A reference is (station, bin), not just a station.** A subordinate references a specific
+**bin** of its reference station (`refStationBin`) — because, same lesson as Wall 1, a current
+reference is depth-keyed. My extractor stored *one* bin's constituents per reference. That's
+fine until a reference publishes multiple bins with *different* constituents. `SFB1201`
+publishes bins `[26, 20, 10]`, each with its own harmonic set. Storing one silently resolved
+half the subordinates against the *wrong* constituents — ~50 min and ~0.6 kn off. The
+single-station test had happened to hit the bin I'd stored, so it passed and told me nothing.
+Fix: resolve each reference at its exact `refStationBin`.
 
-The fix was to resolve each reference at its exact `refStationBin` rather than assuming one
-bin per station. The lesson is the one that keeps recurring in this engine: **n=1 validation
-hides class bugs.** One passing station proves one station. Validate across the *diversity*
-of the data — multiple stations, multiple bins, harmonic and subordinate — and the class of
-bug that only appears at the second variety finally has somewhere to show up.
+**"Subordinate" doesn't always mean subordinate.** Some NOAA `type: S` stations carry their
+*own* harmonic constituents, and NOAA predicts *those* harmonically — the offset reduction is
+only for stations that have none. `PUG1716` (which references San Juan Channel) is type S but
+has its own 25-constituent harcon; reducing it from San Juan Channel over-shot it by **89 min
+/ 0.7 kn**. Predicted from its own constituents: **6.8 min / 0.06 kn**. Fix: for a type-S
+station, fetch its own harcon first; fall back to the reduction only when it's empty. With
+both fixes, nine genuinely-subordinate stations match NOAA to **0.9–7.7 min**.
+
+The lesson keeps recurring in this engine: **n=1 validation hides class bugs.** One passing
+station proves one station. Validate across the *diversity* of the data — regions, bins, ratios,
+harmonic and subordinate — and the class of bug that only shows up at the second variety finally
+has somewhere to show up.
+
+## The passes I set out for turned out served
+
+There's a fitting last twist. This whole project started to get currents for *my* home passes —
+Deception Pass, Rosario Strait, San Juan Channel, Turn Point. Early on those returned
+`"not available"`, so I filed them as survey stations NOAA doesn't predict and validated them
+only *transitively* — engine-correct-on-other-stations plus faithful constituents. That was Wall
+2 in miniature, and I'd quietly surrendered to it.
+
+Re-checked with the right bin and a browser User-Agent: **every one is served.** They validate
+*directly* against NOAA's own predictions now — Deception Pass to 14 min, Admiralty Inlet to 3.5,
+Race Rocks to 6.0, on the significant currents. (The weak sub-¾-knot relaxation extrema at the
+mixed-tide stations disagree by tens of minutes — but those are ill-conditioned in NOAA's
+computation too, and a boat doesn't care when a third of a knot peaks.) The premise that my home
+water was unreachable was, like every wall in this story, my request being wrong — not the data
+being absent.
 
 ## Five things I'm keeping
 
@@ -263,8 +289,9 @@ bug that only appears at the second variety finally has somewhere to show up.
    architecture — go to the source.
 4. **Verify against a known-good client before you touch your request.** When your request
    matches a working client and still fails, the variable is the target, not the syntax.
-5. **Validate at scale, not n=1.** One passing station hides a bug that only the second
-   *kind* of station triggers. Test across the diversity of the data.
+5. **Validate at scale, not n=1.** One passing station hid *two* bugs here, each triggered
+   only by a second *kind* of station. Test across the diversity of the data — and the passes
+   you gave up on may turn out served all along.
 
 The engine is MIT-licensed and the currents fixtures are reproducible from NOAA's own
 predictions: [**slackwater-engine**](https://github.com/sailingnaturali/slackwater-engine).
