@@ -194,7 +194,7 @@ constituent     f (neaps)     f (utide)     utide vs neaps
 2N2             0.965         1.110         +15%   (+ ~3.6 deg in u)
 ```
 
-utide's 2N2 nodal factor comes out **15% higher** than neaps'. (Stating the direction matters: there's no reference standard here to normalize against, so a bare "15% apart" is ambiguous — relative to utide's value instead it reads 13%. Same numbers, different denominator. Pick one and say which.)
+utide's 2N2 nodal factor comes out **15% higher** than neaps'.
 
 These are also the values **at one instant** — 2025-12-28, the validation-window date both probes above use. `f` and `u` are not constants; they track the 18.6-year regression of the lunar nodes, which is the entire reason they exist. Evaluate the same comparison six months earlier and 2N2 reads 0.964 against 1.075, +11.5% rather than +15%. So pin your date when you quote a nodal factor, and pin the *same* date on both sides of a cross-library comparison — otherwise you are diffing the calendar, not the libraries.
 
