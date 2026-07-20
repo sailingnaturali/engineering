@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Two tidal libraries disagreed: diff their internals, not their outputs"
-description: "Porting a tidal harmonic fit from Python utide to TypeScript @neaps/tide-predictor left slack-water timing 24.6 minutes apart at one station. Dropping constituents one at a time (M3, 2N2, MU2, MSF, MF, J1, T2) never found a culprit. Comparing the engines' own astronomical argument V and nodal correction factors f and u localized it in one step: neaps groups constituents by IHO Annex B nodal-correction code, utide uses Foreman satellite-derived per-constituent factors, and 2N2 splits 13%. Then the regime question cut the shipped impact by 4x."
+description: "Porting a tidal harmonic fit from Python utide to TypeScript @neaps/tide-predictor left slack-water timing 24.6 minutes apart at one station. Dropping constituents one at a time (M3, 2N2, MU2, MSF, MF, J1, T2) never found a culprit. Comparing the engines' own astronomical argument V and nodal correction factors f and u localized it in one step: neaps groups constituents by IHO Annex B nodal-correction code, utide uses Foreman satellite-derived per-constituent factors, and utide's 2N2 nodal factor runs 15% higher than neaps'. Then the regime question cut the shipped impact by 4x."
 date: 2026-07-20
 tags:
   - tides
@@ -162,7 +162,7 @@ for i, name in enumerate(NAMES):
 **Validate the mapping before you trust the diff.** The first run produced utide values that looked wrong, and the honest first question is not "which library is broken" but "is my comparison harness lining up the same waves?" A name-keyed lookup across two independent constituent tables is exactly the place an off-by-one index bug hides, and it will happily produce a beautiful, entirely fictional disagreement. So check identity by a quantity that doesn't depend on your mapping being right — **frequency**:
 
 ```
-speed match, neaps vs utide, all 17 constituents:  < 1e-7 deg/hour
+speed match, neaps vs utide, all 17 constituents:  <= 1e-7 deg/hour
 ```
 
 Same waves. Now the diff means something — and the frequency match doubles as a check on the unit conversion, since a wrong factor on utide's cycles would have thrown the speeds off by exactly that factor.
@@ -190,11 +190,13 @@ Sound. Testing a hypothesis and *clearing* it is real progress even though it mo
 The largest split:
 
 ```
-constituent     f (neaps)     f (utide)     delta
-2N2             0.965         1.110         13%      (+ ~3.6 deg in u)
+constituent     f (neaps)     f (utide)     utide vs neaps
+2N2             0.965         1.110         +15%   (+ ~3.6 deg in u)
 ```
 
-These are the values **at one instant** — 2025-12-28, the validation-window date both probes above use. `f` and `u` are not constants; they track the 18.6-year regression of the lunar nodes, which is the entire reason they exist. Evaluate the same comparison six months earlier and 2N2 reads 0.964 against 1.075, a 10.3% split rather than 13%. So pin your date when you quote a nodal factor, and pin the *same* date on both sides of a cross-library comparison — otherwise you are diffing the calendar, not the libraries.
+utide's 2N2 nodal factor comes out **15% higher** than neaps'. (Stating the direction matters: there's no reference standard here to normalize against, so a bare "15% apart" is ambiguous — relative to utide's value instead it reads 13%. Same numbers, different denominator. Pick one and say which.)
+
+These are also the values **at one instant** — 2025-12-28, the validation-window date both probes above use. `f` and `u` are not constants; they track the 18.6-year regression of the lunar nodes, which is the entire reason they exist. Evaluate the same comparison six months earlier and 2N2 reads 0.964 against 1.075, +11.5% rather than +15%. So pin your date when you quote a nodal factor, and pin the *same* date on both sides of a cross-library comparison — otherwise you are diffing the calendar, not the libraries.
 
 neaps' 0.965 for 2N2 is just M2's value, because in the grouped scheme 2N2 *is* in M2's group. utide computes 2N2's own. Neither is wrong: grouping is the classical approximation — the tradition [Schureman](https://tidesandcurrents.noaa.gov/publications/SpecialPubNo98.pdf) codified and the one IHO's tables carry forward — and satellite-Foreman is the refined one. (Historical nicety for anyone in these waters: [Foreman's manual](https://waves-vagues.dfo-mpo.gc.ca/Library/54866.pdf) came out of the Institute of Ocean Sciences at Patricia Bay, which is about ten miles from the stations that surfaced this.)
 
