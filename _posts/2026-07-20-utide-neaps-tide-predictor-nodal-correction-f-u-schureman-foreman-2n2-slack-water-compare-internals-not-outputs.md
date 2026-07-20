@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Two tidal libraries disagreed: diff their internals, not their outputs"
-description: "Porting a tidal harmonic fit from Python utide to TypeScript @neaps/tide-predictor left slack-water timing 24.6 minutes apart at one station. Dropping constituents one at a time (M3, 2N2, MU2, MSF, MF, J1, T2) never found a culprit. Comparing the engines' own astronomical argument V and nodal correction factors f and u localized it in one step: neaps uses grouped Schureman nodal factors, utide uses Foreman satellite-derived per-constituent factors, and 2N2 splits 13%. Then the regime question cut the shipped impact by 4x."
+description: "Porting a tidal harmonic fit from Python utide to TypeScript @neaps/tide-predictor left slack-water timing 24.6 minutes apart at one station. Dropping constituents one at a time (M3, 2N2, MU2, MSF, MF, J1, T2) never found a culprit. Comparing the engines' own astronomical argument V and nodal correction factors f and u localized it in one step: neaps groups constituents by IHO Annex B nodal-correction code, utide uses Foreman satellite-derived per-constituent factors, and 2N2 splits 13%. Then the regime question cut the shipped impact by 4x."
 date: 2026-07-20
 tags:
   - tides
@@ -154,7 +154,7 @@ for name, i in zip(NAMES, range(len(lind))):
 speed match, neaps vs utide, all 17 constituents:  < 1e-7 deg/hour
 ```
 
-Same waves. Now the diff means something.
+Same waves. Now the diff means something — and the frequency match doubles as a check on the unit conversion, since a wrong factor on utide's cycles would have thrown the speeds off by exactly that factor.
 
 ## Diagnosis
 
@@ -173,7 +173,7 @@ Sound. Testing a hypothesis and *clearing* it is real progress even though it mo
 
 **3. It is the nodal corrections, and it is a convention difference, not a bug in either library.** The nodal pair `f`/`u` corrects for the 18.6-year regression of the lunar nodes, and there are two schools:
 
-- **neaps** applies **grouped** factors in the Schureman tradition: M2, N2, 2N2, MU2 and NU2 all share one `f`/`u` — identical to six decimal places. O1 and Q1 share another.
+- **neaps** applies **grouped** factors: it groups constituents by their [IHO Annex B](https://iho.int/) nodal-correction code, and constituents sharing a code share `f`/`u` *exactly* — M2, N2, 2N2, MU2 and NU2 agree to nine decimal places. O1 and Q1 share another code.
 - **utide** applies **Foreman's satellite-derived per-constituent** factors, where each constituent gets its own, derived from the satellite lines around each main line.
 
 The largest split:
@@ -183,11 +183,35 @@ constituent     f (neaps)     f (utide)     delta
 2N2             0.965         1.110         13%      (+ ~3.6 deg in u)
 ```
 
-neaps' 0.965 for 2N2 is just M2's value, because in the grouped scheme 2N2 *is* M2's group. utide computes 2N2's own. Neither is wrong: grouped-Schureman is the classical approximation, satellite-Foreman is the refined one. (Historical nicety for anyone in these waters: [Foreman's manual](https://waves-vagues.dfo-mpo.gc.ca/Library/54866.pdf) came out of the Institute of Ocean Sciences at Patricia Bay, which is about ten miles from the stations that surfaced this.)
+neaps' 0.965 for 2N2 is just M2's value, because in the grouped scheme 2N2 *is* in M2's group. utide computes 2N2's own. Neither is wrong: grouping is the classical approximation — the tradition [Schureman](https://tidesandcurrents.noaa.gov/publications/SpecialPubNo98.pdf) codified and the one IHO's tables carry forward — and satellite-Foreman is the refined one. (Historical nicety for anyone in these waters: [Foreman's manual](https://waves-vagues.dfo-mpo.gc.ca/Library/54866.pdf) came out of the Institute of Ocean Sciences at Patricia Bay, which is about ten miles from the stations that surfaced this.)
 
 And that is exactly why the ablation was doomed. The disagreement is a grouped-vs-per-constituent scheme difference, so it touches *every* constituent whose group has structure — a little bit each, no dominant term, nothing to bisect onto.
 
-One asymmetry does look like a genuine gap rather than a convention: **utide returns `f = 1.0` and `u = 0.0` exactly for MM, MSF and MF** — no nodal correction at all on the long-period constituents, where neaps applies the Schureman factors. That is the one place I'd say neaps is more likely correct. It barely matters for currents, where those amplitudes are small.
+One asymmetry does look like a genuine gap rather than a convention: **utide returns `f = 1.0` and `u = 0.0` exactly for MM, MSF and MF** — no nodal correction at all on the long-period constituents, where neaps applies real factors. That is the one place I'd say neaps is more likely correct. It barely matters for currents, where those amplitudes are small.
+
+## Check the default before you blame the library
+
+Be careful with the label here, because I nearly got it wrong in a way that would have been quietly wrong forever.
+
+neaps ships **two** fundamentals sets, `iho` and `schureman`, and they are selectable:
+
+```ts
+createTidePredictor(constituents, { nodeCorrections: "schureman" });
+```
+
+The default is `iho` — `correction(astro, fundamentals = ...)` resolves to the IHO set for any falsy argument — and `iho` is what the fit path and every number above actually used. I had originally written this up as "neaps applies Schureman factors," which is a reasonable guess from the fact that a `schureman` export exists, and it is wrong.
+
+It matters, because the two sets are not interchangeable:
+
+```
+switching neaps from iho to schureman
+  J1   moves 7.2%
+  MF   moves 5.5%
+```
+
+Sit that next to the thing this whole post is about. **J1 differs by 7.2% between neaps' own two modes, against 1.5% between neaps and utide.** The intra-library spread is wider than the inter-library spread I spent a day characterizing. "Which nodal convention" turns out to be a bigger lever than "which library" — and if you attribute a discrepancy to a library without checking which convention it defaulted to, you can produce a confident, well-measured, completely misattributed finding.
+
+The only reason I caught it is that the default was spelled out in the type signature. Read it.
 
 ## The regime question — and why 24.6 minutes was 4x too scary
 
@@ -212,7 +236,7 @@ Same logic retires M3. Its scary-looking 180° convention difference drifts by 0
 
 ## Why it matters
 
-Three transferable pieces, none of them about tides.
+Five transferable pieces, none of them about tides.
 
 **1. Ablation cannot find a distributed cause.** Dropping one input at a time is a bisection, and bisection needs the target to be localized. If the true cause is a scheme-level difference touching many terms, ablation returns a flat, uninformative gradient — every removal moves the number a little, nothing is guilty, and you conclude "no single X explains it" without ever learning what does. Recognize that flat gradient as a *signal*, not a stalemate: it's telling you to stop bisecting.
 
@@ -220,7 +244,9 @@ Three transferable pieces, none of them about tides.
 
 **3. Validate the identity mapping before trusting a cross-library comparison.** A name-to-index lookup between two independent tables is a great place for a silent bug, and it produces a diff that looks like a real finding. Verify with something the mapping can't fake — here, matching frequencies to 1e-7 °/h.
 
-**4. Ask which regime your number was measured in.** A difference measured in an artificial setup is not the difference your users see if the shipped path is different. Ours was measured with no re-fitting; the pipeline re-fits, and a fit absorbs any constant offset in a correction factor. That distinction was worth a 4x correction to the severity, and it's the difference between "chase this for a week" and "document it and move on."
+**4. Check which convention your library defaulted to before blaming the library.** neaps' own two nodal sets differ by more on J1 (7.2%) than neaps and utide differ (1.5%). A library is not one implementation — it's a default plus a set of options, and "library A disagrees with library B" is only meaningful once you know which mode each one was in. The default is usually right there in the type signature.
+
+**5. Ask which regime your number was measured in.** A difference measured in an artificial setup is not the difference your users see if the shipped path is different. Ours was measured with no re-fitting; the pipeline re-fits, and a fit absorbs any constant offset in a correction factor. That distinction was worth a 4x correction to the severity, and it's the difference between "chase this for a week" and "document it and move on."
 
 One practical bonus: the event-comparison harness that produced the 24.6 minutes can never live in that repo, because it needs CHS-derived data and the [CHS licence](https://tides.gc.ca/en/licence-agreement) forbids redistributing it. The f/u probe above has that property inverted — **it uses no station data at all**, only the two libraries' own astronomy. Both snippets run standalone. That's a nice general property of internals-diffing: it's usually cheaper to reproduce and share than the output comparison it replaces.
 
