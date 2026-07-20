@@ -101,7 +101,7 @@ import { astro, constituents } from "@neaps/tide-predictor";
 const NAMES = ["M2", "S2", "N2", "2N2", "MU2", "NU2", "K2", "T2",
                "K1", "O1", "P1", "Q1", "J1", "M3", "MM", "MSF", "MF"];
 
-const t = new Date("2025-07-01T00:00:00Z");
+const t = new Date("2025-12-28T00:00:00Z");
 const a = astro(t);
 
 for (const name of NAMES) {
@@ -123,9 +123,8 @@ for (const name of NAMES) {
 from datetime import datetime, timezone
 
 import numpy as np
-from matplotlib.dates import date2num
+from utide import ut_constants
 from utide.harmonics import FUV
-from utide.constituents import ut_constants
 
 NAMES = ["M2", "S2", "N2", "2N2", "MU2", "NU2", "K2", "T2",
          "K1", "O1", "P1", "Q1", "J1", "M3", "MM", "MSF", "MF"]
@@ -133,12 +132,24 @@ NAMES = ["M2", "S2", "N2", "2N2", "MU2", "NU2", "K2", "T2",
 table = [n.strip() for n in ut_constants.const.name]
 lind = np.array([table.index(n) for n in NAMES])
 
-t = np.array([date2num(datetime(2025, 7, 1, tzinfo=timezone.utc))])
+
+def datenum(d):
+    """utide counts days from the proleptic year 0.
+
+    Do NOT reach for matplotlib.dates.date2num here — it changed epoch in
+    matplotlib 3.3 and now returns days since 1970-01-01, which is 719163
+    days short. FUV accepts it happily and prints a plausible, entirely
+    wrong table.
+    """
+    return d.toordinal() + (d.hour * 3600 + d.minute * 60 + d.second) / 86400.0
+
+
+t = np.array([datenum(datetime(2025, 12, 28, tzinfo=timezone.utc))])
 # ngflgs = [nodsatlint, nodsatnone, gwchlint, gwchnone] — all zero means
 # exact nodal/satellite corrections and exact Greenwich phase, no shortcuts.
 F, U, V = FUV(t, t[0], lind, 48.5, [0, 0, 0, 0])
 
-for name, i in zip(NAMES, range(len(lind))):
+for i, name in enumerate(NAMES):
     print("\t".join([
         name,
         f"{ut_constants.const.freq[lind[i]] * 360:.7f}",  # deg/hour
@@ -182,6 +193,8 @@ The largest split:
 constituent     f (neaps)     f (utide)     delta
 2N2             0.965         1.110         13%      (+ ~3.6 deg in u)
 ```
+
+These are the values **at one instant** — 2025-12-28, the validation-window date both probes above use. `f` and `u` are not constants; they track the 18.6-year regression of the lunar nodes, which is the entire reason they exist. Evaluate the same comparison six months earlier and 2N2 reads 0.964 against 1.075, a 10.3% split rather than 13%. So pin your date when you quote a nodal factor, and pin the *same* date on both sides of a cross-library comparison — otherwise you are diffing the calendar, not the libraries.
 
 neaps' 0.965 for 2N2 is just M2's value, because in the grouped scheme 2N2 *is* in M2's group. utide computes 2N2's own. Neither is wrong: grouping is the classical approximation — the tradition [Schureman](https://tidesandcurrents.noaa.gov/publications/SpecialPubNo98.pdf) codified and the one IHO's tables carry forward — and satellite-Foreman is the refined one. (Historical nicety for anyone in these waters: [Foreman's manual](https://waves-vagues.dfo-mpo.gc.ca/Library/54866.pdf) came out of the Institute of Ocean Sciences at Patricia Bay, which is about ten miles from the stations that surfaced this.)
 
