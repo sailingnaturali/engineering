@@ -9,7 +9,7 @@ tags:
   - ai
   - open-source
   - architecture
-date: 2026-07-16
+date: 2026-07-21
 ---
 
 > **TL;DR** — We shipped seven marine MCP servers, *then* ran the ecosystem
