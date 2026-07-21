@@ -2,7 +2,7 @@
 layout: post
 title: "Two tidal libraries disagreed: diff their internals, not their outputs"
 description: "Porting a tidal harmonic fit from Python utide to TypeScript @neaps/tide-predictor left slack-water timing 24.6 minutes apart at one station. Dropping constituents one at a time (M3, 2N2, MU2, MSF, MF, J1, T2) never found a culprit. Comparing the engines' own astronomical argument V and nodal correction factors f and u localized it in one step: neaps groups constituents by IHO Annex B nodal-correction code, utide uses Foreman satellite-derived per-constituent factors, and utide's 2N2 nodal factor runs 15% higher than neaps'. Then the regime question cut the shipped impact by 4x."
-date: 2026-07-20
+date: 2026-07-21
 tags:
   - tides
   - marine
