@@ -12,7 +12,7 @@ tags:
   - epirb
   - notifications
   - data-model
-date: 2026-07-16
+date: 2026-07-26
 ---
 
 > **TL;DR** — a distress alert heard *from another vessel* is not your boat's own alarm state, so don't raise it as plain `notifications.*` on self. The convention we landed on ([signalk-dsc](https://github.com/sailingnaturali/signalk-dsc) v0.9.0, [signalk-ais-distress](https://github.com/sailingnaturali/signalk-ais-distress) v0.5.0): raise the self-side alarm under **`notifications.received.*`** ("received about another vessel"), and *also* write the state record into the **source vessel's own context** — `vessels.<mmsi>.notifications.mob` for MOB, `notifications.distress` for SART/EPIRB. [Jump to the convention](#the-convention-two-writes).
