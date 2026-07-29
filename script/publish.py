@@ -119,13 +119,14 @@ def main() -> None:
     print(f"pushed {branch}")
 
     if args.no_merge:
-        print(f"not merging (--no-merge). When ready: gh pr merge {branch} --squash")
+        print(f"not merging (--no-merge). When ready: gh pr merge {branch} --rebase")
         return
     if not shutil.which("gh"):
-        print(f"gh not found — merge the PR for {branch} by hand (squash). "
+        print(f"gh not found — merge the PR for {branch} by hand (rebase). "
               "Merge = publish; crosspost follows automatically.")
         return
-    subprocess.run(["gh", "pr", "merge", branch, "--squash"], check=True, cwd=repo)
+    # engineering repo allows rebase merges only — squash and merge-commits are disabled.
+    subprocess.run(["gh", "pr", "merge", branch, "--rebase"], check=True, cwd=repo)
     print("merged — Pages will deploy, crosspost will follow. "
           "Now move the post to Published in the planning repo's engineering-blog-schedule.md.")
 
