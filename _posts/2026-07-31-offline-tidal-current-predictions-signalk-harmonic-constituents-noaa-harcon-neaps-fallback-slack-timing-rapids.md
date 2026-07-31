@@ -2,7 +2,7 @@
 layout: post
 title: "Offline tidal currents from harmonic constituents — and when not to trust them"
 description: "Adding an offline harmonic fallback to a SignalK tidal-currents plugin: bundling public-domain NOAA CO-OPS harcon constituents, synthesizing slack/flood/ebb events with @neaps/tide-predictor, and tagging every prediction with source/live/unreliableForTransit provenance. Why constituent-derived slack timing can be off by tens of minutes at constricted passes like Deception Pass and Seymour Narrows, why CHS constituents can't be bundled at all, and how a local harmonic-vs-live discrepancy log measures the fallback against ground truth while the network is still up."
-date: 2026-07-29
+date: 2026-07-31
 tags:
   - signalk
   - marine
