@@ -2,7 +2,7 @@
 layout: post
 title: "A persistent-queue HTTP reporter for distress traffic over flaky internet"
 description: "A DSC distress call your VHF heard may be a copy that shore stations missed — and on a boat, the internet uplink is the least reliable link in the relay chain. How signalk-distress-core v0.5.x delivers reports to DSCWatch through a write-through JSONL queue: append-before-POST crash safety, in-order sequential delivery, a pinned response policy (400/404 = permanent drop, 5xx = capped retry, network error = queue and catch up offline), queue reload across restarts with torn-line skip and maxQueue trim, AbortSignal.timeout on every fetch, and the stale-flusher restart race that could clobber the queue file (fixed in v0.5.1)."
-date: 2026-07-16
+date: 2026-08-01
 tags:
   - signalk
   - dsc
