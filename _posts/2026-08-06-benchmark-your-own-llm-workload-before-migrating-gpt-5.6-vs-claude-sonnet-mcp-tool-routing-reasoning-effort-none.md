@@ -2,7 +2,7 @@
 layout: post
 title: "Bench your own workload before you switch LLM vendors"
 description: "When GPT-5.6 (Sol, Terra, Luna) shipped, we benched all three tiers against our incumbent Claude Sonnet 4.6 on the one thing our voice boat-agent needs: routing correctly across 74 MCP tools. Result: 38.5% vs 92.3% correctness on our 13-ask golden set — under the constraint that GPT-5.6 tool calling on /v1/chat/completions requires reasoning_effort 'none'. Not a capability benchmark; a narrow fit-for-workload test, plus the harness fixes (Bearer auth, reasoning_effort passthrough) a real bench surfaces."
-date: 2026-07-16
+date: 2026-08-06
 tags:
   - ai
   - llm
