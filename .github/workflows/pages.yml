@@ -47,3 +47,28 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v5
+
+  # A failed deploy leaves the live site silently stale — the publish commit is
+  # authored by the publisher bot, so GitHub's own workflow-failure email goes
+  # nowhere a human reads. File an issue instead; that does notify.
+  # (2026-08-06: a hosted-runner outage failed the deploy and the site sat two
+  # days behind with nobody aware.)
+  notify:
+    needs: [build, deploy]
+    if: failure()
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      # ponytail: one issue per failed run, no dedupe — deploy only runs on push
+      # to main, so this can't loop. Add a search-and-comment if it gets noisy.
+      - run: |
+          gh issue create --repo "$GITHUB_REPOSITORY" \
+            --title "Pages deploy failed on ${GITHUB_SHA:0:7}" \
+            --body "The site did not rebuild, so engineering.sailingnaturali.com is stale.
+
+          Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+
+          Re-run with: \`gh run rerun $GITHUB_RUN_ID --failed\`"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
