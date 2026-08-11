@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="300"
+     viewBox="0 0 880 300" role="img"
+     aria-label="Against NOAA CO-OPS predictions at Friday Harbor the engine's worst error over 12 highs and lows is 7.9 minutes and 3.5 cm, roughly half the plus-or-minus 15 minute and 0.15 m tolerance you would accept from a printed tide table.">
+  <rect width="880" height="300" rx="10" fill="#0E1B25"/>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+    <text x="32" y="42" font-size="19" font-weight="600" fill="#E9EEF2">Engine vs NOAA CO-OPS predictions — Friday Harbor (9449880)</text>
+    <text x="32" y="66" font-size="13" fill="#7F97A8">12 highs and lows, 2026-07-15 to 17, computed offline from bundled harmonic constants</text>
+
+    <!-- row 1: time error -->
+    <text x="32" y="127" font-size="15" fill="#C8D2DA">Time error</text>
+    <rect x="200" y="104" width="520" height="34" rx="4" fill="#11212D" stroke="#24384A"/>
+    <rect x="200" y="104" width="274" height="34" rx="4" fill="#88B868"/>
+    <text x="486" y="127" font-size="15" font-weight="600" fill="#E9EEF2">7.9 min</text>
+    <text x="732" y="127" font-size="13" fill="#7F97A8">tolerance ±15 min</text>
+
+    <!-- row 2: height error -->
+    <text x="32" y="191" font-size="15" fill="#C8D2DA">Height error</text>
+    <rect x="200" y="168" width="520" height="34" rx="4" fill="#11212D" stroke="#24384A"/>
+    <rect x="200" y="168" width="121" height="34" rx="4" fill="#88B868"/>
+    <text x="333" y="191" font-size="15" font-weight="600" fill="#E9EEF2">3.5 cm</text>
+    <text x="732" y="191" font-size="13" fill="#7F97A8">tolerance ±0.15 m</text>
+
+    <line x1="32" y1="228" x2="848" y2="228" stroke="#24384A"/>
+    <text x="32" y="252" font-size="13" fill="#7F97A8">Filled bar = measured worst case. Full track = the navigational tolerance you'd accept from a paper table.</text>
+    <text x="32" y="274" font-size="13" fill="#7F97A8">Against the @neaps/tide-predictor oracle — the same algorithm — agreement is 1e-6. This chart is the independent check.</text>
+  </g>
+</svg>

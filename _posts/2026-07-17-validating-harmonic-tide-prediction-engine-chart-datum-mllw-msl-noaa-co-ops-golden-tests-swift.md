@@ -29,6 +29,8 @@ first run it, and authoritative-looking is not the same as correct.
 > printed tide tables, that's usually not a bug — it's the **chart-datum offset**.
 > [Jump to the numbers](#the-receipt-vs-noaas-own-predictions).
 
+![Against NOAA CO-OPS predictions at Friday Harbor the engine's worst error over 12 highs and lows is 7.9 minutes and 3.5 cm, roughly half the plus-or-minus 15 minute and 0.15 m tolerance you would accept from a printed tide table.](/assets/img/validating-harmonic-tide-prediction-engine-chart-datum-mllw-msl-noaa-co-ops-golden-tests-swift/error-vs-tolerance.svg)
+
 ## The trap that makes a correct engine look wrong
 
 Here's the first thing that will convince you your engine is broken when it isn't.
@@ -44,6 +46,8 @@ low water) in the US, **LAT** (lowest astronomical tide) in Canada. Chart datum 
 *below* MSL by design — it's a low-water reference so that charted depths are
 conservative. So a raw harmonic prediction reads higher than the table by exactly the
 distance between the two datums.
+
+![A raw harmonic sum is referenced to mean sea level while printed tide tables use chart datum MLLW, so every unadjusted prediction reads high by exactly the published per-station MSL to MLLW offset.](/assets/img/validating-harmonic-tide-prediction-engine-chart-datum-mllw-msl-noaa-co-ops-golden-tests-swift/chart-datum-offset.svg)
 
 The fix is a single per-station offset. In this engine it's one optional field on the
 station:
@@ -124,6 +128,9 @@ Every layer lands at floating-point agreement (`1e-6`). The algorithm is faithfu
 the reference. But "faithful to the reference" only proves the port is correct — it
 says nothing about whether the *reference* matches the real world. That's the second
 axis.
+
+![The validation harness runs two independent comparisons: golden vectors against the Neaps tide predictor agree to 1e-6, proving the port is faithful, while the same engine with a per-station MSL to MLLW datum offset applied matches NOAA CO-OPS predictions to 7.9 minutes and 3.5 cm.](/assets/img/validating-harmonic-tide-prediction-engine-chart-datum-mllw-msl-noaa-co-ops-golden-tests-swift/validation-harness.svg)
+*The datum offset is a step in the harness, not a footnote — it's the only thing standing between "agrees to a few centimetres" and "off by the whole MSL-to-MLLW gap."*
 
 ## The receipt: vs NOAA's own predictions
 
