@@ -20,7 +20,8 @@ crowd. Design rationale lives in the `planning` repo:
   [Pages whitelist](https://pages.github.com/versions/); we use `jekyll-seo-tag`,
   `jekyll-feed`, and `jekyll-sitemap`.
 - **PR checks:** `.github/workflows/ci.yml` runs on every PR: the same Jekyll
-  build, `script/lint-liquid.py` (see **Liquid vs. template code** below), and
+  build, `script/lint-liquid.py` (the Liquid guard, see **Liquid vs. template
+  code** below, plus the figure-path check from **Figures**), and
   the devto unit tests. A red check means the merge would break the deploy or
   the published content — fix before merging.
 - **Domain:** the `CNAME` file pins `engineering.sailingnaturali.com`. DNS is a
@@ -58,8 +59,50 @@ the post is syndicated and canonical lives elsewhere.
   is what keeps them.
 - **Link related posts** with `{% post_url YYYY-MM-DD-slug %}` (never a
   hardcoded URL — `post_url` fails the build on a typo and survives renames).
+- **Every post ships figures** — see **Figures** below. These posts are long and
+  code-dense; unbroken, they read as work.
 - Direct, technical, no marketing fluff. Close with a short, non-salesy line
   connecting back to the project.
+
+### Figures
+
+One figure minimum, usually two or three, spaced so no full screen is text-only.
+What earns one: **the result** (a chart of the numbers the post is about, placed
+right under the TL;DR — it's the hook and the link-preview image), **the
+mechanism** (the boxes the data crosses and where it broke, in Diagnosis), or
+**state a snippet can't show** (a capability ladder, the timeline of a race). A
+diagram that restates a code block in rounded rectangles is noise — skip it.
+
+Figures are **hand-written SVG**, not generated images and not mermaid (mermaid
+isn't on the Pages plugin whitelist and dev.to won't render it either). SVG is
+text: it diffs in review, stays sharp, costs nothing to serve, and its labels are
+indexable. They live per-post and are referenced root-relative:
+
+```
+assets/img/<post-slug>/<figure-name>.svg
+```
+```markdown
+![Full sentence stating what the figure shows and what it proves.](/assets/img/<post-slug>/alarm-path.svg)
+```
+
+The leading slash is required: GitHub resolves it against the repo root so the
+figure renders in the PR blob preview, and the dev.to crosspost rewrites it to an
+absolute URL on the way out.
+
+The blog is dark, so draw for a dark ground and **paint the background
+explicitly** — the same file has to survive GitHub's and dev.to's chrome.
+Palette (`--sn-*` in `assets/main.scss`; canonical source
+`planning/brand-palette.md`): ground `#0E1B25`, panel `#11212D`, borders
+`#24384A`, labels `#C8D2DA`, titles `#E9EEF2`, muted/"before" `#7F97A8`,
+accent/"after" `#88B868`, second accent `#58A058`, third series `#5888A8`,
+failure `#C86A5A`. **System fonts only** — an SVG loaded through `<img>` can't
+reach the page's webfonts — nothing below 13px, no `<script>`, no
+`<foreignObject>`, no remote references, and never encode meaning in colour
+alone. Alt text is an SEO surface: a full sentence naming the finding, mirrored
+into the SVG's `aria-label`.
+
+`script/lint-liquid.py` fails on a figure path with no file behind it (Jekyll
+builds a missing image silently, and merge = publish).
 
 ### Liquid vs. template code
 
@@ -83,9 +126,10 @@ repo at `.claude/agents/scribe.md`) from finished engineering work and
 voice/accuracy and merges. Never reproduces anything from the private
 `infrastructure` repo.
 
-Each post branch adds **exactly one `_posts/` file** — staged PRs hang open for
-weeks while `main` moves, and a branch that carries anything else will drag
-stale edits in at merge time.
+Each post branch adds **exactly one `_posts/` file, plus that post's figures
+under `assets/img/<slug>/`** — staged PRs hang open for weeks while `main`
+moves, and a branch that carries anything unrelated will drag stale edits in at
+merge time.
 
 ### Publishing
 

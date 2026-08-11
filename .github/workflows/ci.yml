@@ -3,7 +3,8 @@
 # Runs the same Jekyll build as pages.yml (github-pages gem, so a green check
 # means the deploy will build), the Liquid guard lint (script/lint-liquid.py —
 # an unguarded {{ … }} is silently blanked from published code blocks, and some
-# constructs are hard Liquid errors that take the deploy down), and the devto
+# constructs are hard Liquid errors that take the deploy down; it also fails on
+# a figure path with no file behind it, which Jekyll builds silently), and the devto
 # unit tests (otherwise they only run inside the crosspost workflow, after merge).
 name: CI
 
