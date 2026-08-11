@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420"
+     viewBox="0 0 880 420" role="img"
+     font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+     aria-label="Vertical datum ladder at Sidney BC: CHS chart datum, the zero of the tide tables, sits 0.43 m above lowest astronomical tide, the zero of the harmonic record, so the same water surface is reported 0.43 m higher by the harmonic engine.">
+  <rect width="880" height="420" rx="10" fill="#0E1B25"/>
+
+  <text x="40" y="36" font-size="18" fill="#E9EEF2">Two zeros, one water surface — Sidney BC, CHS station 07260</text>
+  <text x="40" y="58" font-size="14" fill="#7F97A8">heights in metres relative to CHS chart datum, from the IWLS station metadata</text>
+
+  <!-- water column -->
+  <rect x="180" y="96" width="390" height="275" fill="#5888A8" opacity="0.13"/>
+  <line x1="180" y1="96" x2="570" y2="96" stroke="#5888A8" stroke-width="2"/>
+  <text x="180" y="88" font-size="13" fill="#5888A8">a predicted tide height — the same water either way</text>
+
+  <!-- the 0.43 m gap -->
+  <rect x="180" y="330" width="390" height="41" fill="#C86A5A" opacity="0.16"/>
+
+  <!-- datum rules -->
+  <line x1="180" y1="131" x2="570" y2="131" stroke="#24384A" stroke-width="1.5"/>
+  <line x1="180" y1="330" x2="570" y2="330" stroke="#E9EEF2" stroke-width="2"/>
+  <line x1="180" y1="371" x2="570" y2="371" stroke="#E9EEF2" stroke-width="2"/>
+
+  <!-- gutter: code + value -->
+  <g text-anchor="end">
+    <text x="110" y="136" font-size="15" fill="#C8D2DA">MWL</text>
+    <text x="110" y="335" font-size="15" fill="#C8D2DA">CD</text>
+    <text x="110" y="376" font-size="15" fill="#C8D2DA">LAT</text>
+    <g font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#E9EEF2">
+      <text x="168" y="136">+2.09</text>
+      <text x="168" y="335">0.00</text>
+      <text x="168" y="376">-0.43</text>
+    </g>
+  </g>
+
+  <!-- measurement from chart datum -->
+  <line x1="280" y1="106" x2="280" y2="320" stroke="#5888A8" stroke-width="2"/>
+  <polygon points="280,96 274,107 286,107" fill="#5888A8"/>
+  <polygon points="280,330 274,319 286,319" fill="#5888A8"/>
+  <text x="292" y="214" font-size="14" fill="#C8D2DA">what the CHS tide tables publish</text>
+
+  <!-- the extra 0.43 m the LAT-referenced engine adds -->
+  <line x1="280" y1="338" x2="280" y2="363" stroke="#C86A5A" stroke-width="2"/>
+  <polygon points="280,330 274,341 286,341" fill="#C86A5A"/>
+  <polygon points="280,371 274,360 286,360" fill="#C86A5A"/>
+  <text x="292" y="355" font-size="13" fill="#E9EEF2">+0.43 m added to every prediction</text>
+
+  <!-- right-hand annotations -->
+  <text x="582" y="136" font-size="14" fill="#C8D2DA">mean water level</text>
+  <text x="582" y="326" font-size="14" fill="#E9EEF2">CHS chart datum</text>
+  <text x="582" y="344" font-size="13" fill="#5888A8">zero of the tide tables</text>
+  <text x="582" y="367" font-size="14" fill="#E9EEF2">lowest astronomical tide</text>
+  <text x="582" y="385" font-size="13" fill="#88B868">zero of the harmonic record</text>
+</svg>

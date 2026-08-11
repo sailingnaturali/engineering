@@ -20,6 +20,8 @@ date: 2026-07-16
 > offset is published in the CHS station `/metadata` API.
 > [Jump to the fix](#the-fix).
 
+![Worst-case height error against the official CHS tide tables, per station, before and after normalizing both sides to LAT. Sidney BC falls from 0.35 to 0.48 m down to 8 cm or less, Point Atkinson from 0.13 m to 5 cm, Halifax from 0.38 m to 13 cm.](/assets/img/harmonic-tide-predictions-higher-than-tide-tables-chart-datum-vs-lat-chs-datum-offset-signalk-tides-neaps/datum-normalized-error.svg)
+
 Tide height numbers are meaningless without a stated vertical datum. Every
 "3.2 m at 14:40" is really "3.2 m *above some agreed zero*", and there are
 half a dozen zeros in circulation: mean sea level (MSL), mean lower low water
@@ -106,6 +108,8 @@ which labels Canadian stations `"LAT"` (lowest astronomical tide). CHS tide
 tables are referenced to **CHS chart datum**. And the common assumption that
 Canadian chart datum ≈ LAT turns out to be false at station level: CHS chart
 datum sits **above** LAT by a per-station amount — 0.43 m at Sidney.
+
+![Vertical datum ladder at Sidney BC: CHS chart datum, the zero of the tide tables, sits 0.43 m above lowest astronomical tide, the zero of the harmonic record, so the same water surface is reported 0.43 m higher by the harmonic engine.](/assets/img/harmonic-tide-predictions-higher-than-tide-tables-chart-datum-vs-lat-chs-datum-offset-signalk-tides-neaps/sidney-datum-ladder.svg)
 
 You don't have to take that on faith; CHS publishes every station's vertical
 ladder in the IWLS `/metadata` endpoint:
