@@ -61,6 +61,8 @@ Every CHS station has an internal handle — an opaque id like `63aef18…` — 
 
 That is the field to not ship.
 
+![A station-corrections registry record ships four independently obtainable facts — name, context, position and provider — and deliberately carries no provider-minted station id, because the CHS id has no source other than the licensed IWLS API and is resolved at runtime instead.](/assets/img/canadian-chs-tide-current-station-data-licensing-no-provider-id-runtime-name-correlation-feist-cch/registry-record-fields.svg)
+
 ## What we tried (and why it crossed the line)
 
 The honest version of this section is that our own earlier releases did the wrong thing, and we caught it.
@@ -96,23 +98,7 @@ The fix isn't to cite a case. It's to change the method so the provider's handle
 
 Here's the part worth internalizing before the code. On the US side, "add offline tide/current prediction" is essentially **one API call** against a public-domain endpoint — fetch, bundle, done. On the Canadian side the same feature takes a **chain of pieces**, each of which exists specifically to keep the licensed handle out of anything you publish:
 
-```text
-US path (NOAA, public domain):
-    NOAA endpoint ──▶ bundle it ──▶ ship.   (one call, redistributable)
-
-Canada path (CHS, licensed) — three stages, each one licence-clean:
-
-  ┌─ chs-constituents ─────────────┐   ┌─ station-corrections ─────────┐   ┌─ currents-mcp / consumers ────┐
-  │ Fits harmonic constituents     │   │ The licence-clean IDENTITY    │   │ Correlate a registry record   │
-  │ live from CHS predictions.     │   │ layer: hand-written name,     │   │ to live CHS/plugin data BY     │
-  │ Fetches the CHS station id at  │──▶│ context, position, provider.  │──▶│ NAME. Serve slack windows,     │
-  │ RUNTIME, under the operator's  │   │ NO provider id. Join key =    │   │ transit times, currents.       │
-  │ own IWLS licence. Ships no     │   │ station name / stable slug.   │   │ Never sees the CHS handle.     │
-  │ CHS-derived data, ever.        │   │ (a published npm package)     │   │                                │
-  └────────────────────────────────┘   └───────────────────────────────┘   └────────────────────────────────┘
-       the licensed handle lives              nothing here is a copy              joins on a fact anyone
-       here, at runtime, on your box          of CHS's file                      may publish (the name)
-```
+![Offline tide and current data is one public-domain call on the NOAA side, while the licensed Canadian CHS side takes three stages: chs-constituents resolves the CHS station id at runtime under the operator's own IWLS licence, the published station-corrections registry carries no provider id at all, and consumers correlate to live data by station name.](/assets/img/canadian-chs-tide-current-station-data-licensing-no-provider-id-runtime-name-correlation-feist-cch/us-vs-canada-pipeline.svg)
 
 The registry in the middle is the linchpin: it's the only stage that gets *published*, so it's the stage that must carry zero of CHS's file. The two ends touch CHS's licensed API — but only at runtime, on the operator's own machine, under the operator's own licence. A builder's real takeaway is that the Canadian version needs the whole chain; there's no single package that is both useful and shippable, because "useful" means resolving the licensed handle and "shippable" means not carrying it.
 
