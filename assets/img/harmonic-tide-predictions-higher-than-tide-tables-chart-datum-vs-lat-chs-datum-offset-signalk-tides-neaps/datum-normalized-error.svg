@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360"
+     viewBox="0 0 880 360" role="img"
+     font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+     aria-label="Worst-case height error against the official CHS tide tables, per station, before and after normalizing both sides to LAT. Sidney BC falls from 0.35 to 0.48 m down to 8 cm or less, Point Atkinson from 0.13 m to 5 cm, Halifax from 0.38 m to 13 cm.">
+  <rect width="880" height="360" rx="10" fill="#0E1B25"/>
+
+  <text x="40" y="38" font-size="18" fill="#E9EEF2">Height error against the official CHS tide tables</text>
+  <text x="40" y="60" font-size="14" fill="#7F97A8">worst case per station, before and after normalizing both sides to LAT</text>
+
+  <!-- Sidney BC -->
+  <text x="40" y="96" font-size="15" fill="#E9EEF2">Sidney BC</text>
+  <rect x="40" y="104" width="518" height="18" rx="2" fill="#7F97A8"/>
+  <text x="568" y="117" font-size="14" fill="#C8D2DA">0.35–0.48 m before</text>
+  <rect x="40" y="128" width="86" height="18" rx="2" fill="#88B868"/>
+  <text x="136" y="141" font-size="14" fill="#C8D2DA">≤ 0.08 m after normalizing both sides to LAT</text>
+  <line x1="504" y1="100" x2="504" y2="126" stroke="#E9EEF2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="514" y="98" font-size="13" fill="#C8D2DA">chart datum sits 0.43 m above LAT here</text>
+
+  <!-- Point Atkinson BC -->
+  <text x="40" y="172" font-size="15" fill="#E9EEF2">Point Atkinson BC</text>
+  <rect x="40" y="180" width="140" height="18" rx="2" fill="#7F97A8"/>
+  <text x="190" y="193" font-size="14" fill="#C8D2DA">0.03–0.13 m before</text>
+  <rect x="40" y="204" width="54" height="18" rx="2" fill="#88B868"/>
+  <text x="104" y="217" font-size="14" fill="#C8D2DA">≤ 0.05 m after</text>
+
+  <!-- Halifax NS -->
+  <text x="40" y="248" font-size="15" fill="#E9EEF2">Halifax NS</text>
+  <rect x="40" y="256" width="410" height="18" rx="2" fill="#7F97A8"/>
+  <text x="460" y="269" font-size="14" fill="#C8D2DA">0.30–0.38 m before</text>
+  <rect x="40" y="280" width="140" height="18" rx="2" fill="#88B868"/>
+  <text x="190" y="293" font-size="14" fill="#C8D2DA">0.10–0.13 m after</text>
+
+  <!-- axis -->
+  <line x1="40" y1="312" x2="580" y2="312" stroke="#24384A" stroke-width="1.5"/>
+  <g stroke="#24384A" stroke-width="1.5">
+    <line x1="40" y1="312" x2="40" y2="318"/>
+    <line x1="148" y1="312" x2="148" y2="318"/>
+    <line x1="256" y1="312" x2="256" y2="318"/>
+    <line x1="364" y1="312" x2="364" y2="318"/>
+    <line x1="472" y1="312" x2="472" y2="318"/>
+    <line x1="580" y1="312" x2="580" y2="318"/>
+  </g>
+  <g font-size="13" fill="#7F97A8" text-anchor="middle">
+    <text x="40" y="334">0</text>
+    <text x="148" y="334">0.1</text>
+    <text x="256" y="334">0.2</text>
+    <text x="364" y="334">0.3</text>
+    <text x="472" y="334">0.4</text>
+    <text x="580" y="334">0.5</text>
+  </g>
+  <text x="606" y="334" font-size="13" fill="#7F97A8">metres</text>
+</svg>
