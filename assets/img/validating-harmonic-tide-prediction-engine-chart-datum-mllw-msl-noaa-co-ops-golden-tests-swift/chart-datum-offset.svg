@@ -8,35 +8,40 @@
     <text x="32" y="66" font-size="13" fill="#7F97A8">The constituents are referenced to mean sea level; the printed table is referenced to chart datum.</text>
 
     <!-- the offset callout, left -->
-    <text x="32" y="200" font-size="15" font-weight="600" fill="#E9EEF2">offset</text>
-    <text x="32" y="222" font-size="14" fill="#C8D2DA">MSL − MLLW</text>
-    <text x="32" y="242" font-size="13" fill="#7F97A8">published per station</text>
-    <text x="32" y="260" font-size="13" fill="#7F97A8">e.g. 1.387 m</text>
+    <text x="32" y="182" font-size="15" font-weight="600" fill="#E9EEF2">offset</text>
+    <text x="32" y="204" font-size="14" fill="#C8D2DA">MSL &#8722; MLLW</text>
+    <text x="32" y="224" font-size="13" fill="#7F97A8">published per station</text>
+    <text x="32" y="242" font-size="13" fill="#7F97A8">e.g. 1.387 m</text>
 
-    <!-- double-headed offset arrow -->
-    <line x1="170" y1="168" x2="170" y2="272" stroke="#5888A8" stroke-width="1.5"/>
+    <!-- double-headed offset arrow: MSL (168) down to MLLW (244) -->
+    <line x1="170" y1="168" x2="170" y2="244" stroke="#5888A8" stroke-width="1.5"/>
     <path d="M170,163 l-5,10 h10 z" fill="#5888A8"/>
-    <path d="M170,277 l-5,-10 h10 z" fill="#5888A8"/>
+    <path d="M170,249 l-5,-10 h10 z" fill="#5888A8"/>
     <line x1="162" y1="168" x2="178" y2="168" stroke="#5888A8" stroke-width="1.5"/>
-    <line x1="162" y1="272" x2="178" y2="272" stroke="#5888A8" stroke-width="1.5"/>
+    <line x1="162" y1="244" x2="178" y2="244" stroke="#5888A8" stroke-width="1.5"/>
 
     <!-- datum lines -->
     <line x1="190" y1="168" x2="628" y2="168" stroke="#5888A8" stroke-width="1.5" stroke-dasharray="6 5"/>
-    <line x1="190" y1="272" x2="628" y2="272" stroke="#88B868" stroke-width="2"/>
+    <line x1="190" y1="244" x2="628" y2="244" stroke="#88B868" stroke-width="2"/>
 
-    <!-- the harmonic curve, oscillating about MSL -->
-    <path d="M200,168 C237.8,106.8 267.2,106.8 305,168 C342.8,229.2 372.2,229.2 410,168 C447.8,106.8 477.2,106.8 515,168 C552.8,229.2 582.2,229.2 620,168"
+    <!-- Mixed semidiurnal day, drawn to scale at 55 px per metre:
+         higher high +0.91 m, lower low -1.53 m, lower high +0.60 m, higher low -0.89 m.
+         The lower low crosses below MLLW; the higher low does not. -->
+    <path d="M200,217 C252.5,217 252.5,118 305,118 C357.5,118 357.5,252 410,252 C462.5,252 462.5,135 515,135 C567.5,135 567.5,217 620,217"
           fill="none" stroke="#C8D2DA" stroke-width="2.5"/>
     <text x="200" y="100" font-size="14" fill="#C8D2DA">harmonic sum from the constituents</text>
 
     <!-- datum line labels -->
-    <text x="636" y="164" font-size="14" fill="#C8D2DA">MSL — mean sea level</text>
+    <text x="636" y="164" font-size="14" fill="#C8D2DA">MSL &#8212; mean sea level</text>
     <text x="636" y="182" font-size="13" fill="#7F97A8">the harmonic zero</text>
-    <text x="636" y="268" font-size="14" fill="#C8D2DA">MLLW — chart datum</text>
-    <text x="636" y="286" font-size="13" fill="#7F97A8">tables and charts print this</text>
+    <text x="636" y="240" font-size="14" fill="#C8D2DA">MLLW &#8212; chart datum</text>
+    <text x="636" y="258" font-size="13" fill="#7F97A8">tables and charts print this</text>
+
+    <!-- why one low crosses and the other doesn't -->
+    <text x="190" y="292" font-size="13" fill="#7F97A8">The lower low falls below MLLW; the higher low does not &#8212; chart datum is a mean, not a floor.</text>
 
     <!-- failure marker -->
     <path d="M32,321 l12,12 M44,321 l-12,12" stroke="#C86A5A" stroke-width="2.5" stroke-linecap="round"/>
-    <text x="56" y="333" font-size="14" fill="#C86A5A">Skip the offset and every prediction reads high by exactly this gap — a correct engine against the wrong zero.</text>
+    <text x="56" y="333" font-size="14" fill="#C86A5A">Skip the offset and every prediction reads high by exactly this gap &#8212; a correct engine against the wrong zero.</text>
   </g>
 </svg>
