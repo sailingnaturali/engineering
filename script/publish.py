@@ -2,19 +2,22 @@
 """publish.py — publish a staged post PR: rebase, bump, check, push, merge.
 
 Each unpublished post is staged as an open PR whose branch adds exactly one
-`_posts/` file (merge = publish). Those branches sit open for weeks while main
-moves, so publishing by hand means remembering to rebase, re-date, and re-check
-the build. This script is that checklist:
+`_posts/` file, plus that post's figures under `assets/img/<slug>/` (merge =
+publish). Those branches sit open for weeks while main moves, so publishing by
+hand means remembering to rebase, re-date, and re-check the build. This script
+is that checklist:
 
   1. find the `post/*` branch whose added post matches <slug>
-  2. verify the branch adds exactly one `_posts/*.md` (staleness guard — any
-     other diff vs main aborts, so a rotted branch can't drag old edits in)
-  3. rebuild the branch from origin/main + that one file
+  2. verify the branch adds exactly one `_posts/*.md` plus that post's figures
+     (staleness guard — any other diff vs main aborts, so a rotted branch can't
+     drag old edits in)
+  3. rebuild the branch from origin/main + the post and its figures
   4. bump the date to today (script/bump.py) — or --date YYYY-MM-DD
   5. run script/lint-liquid.py and `bundle exec jekyll build`
   6. commit and push (--force-with-lease)
-  7. merge the PR via `gh pr merge --squash` (skipped with --no-merge or when
-     gh isn't available — it prints the manual step instead)
+  7. merge the PR via `gh pr merge --rebase` (skipped with --no-merge or when
+     gh isn't available — it prints the manual step instead). Rebase, not
+     squash: the repo has squash and merge-commits both disabled.
 
 Merging deploys the site (pages.yml) and syndicates to dev.to (crosspost.yml).
 Afterwards: move the post to Published in the planning repo's
@@ -92,16 +95,22 @@ def main() -> None:
 
     git(repo, "fetch", "origin", "main")
     branch, post_file = find_post_branch(repo, args.slug)
-    extra = [f for f in git(repo, "diff", "--name-only",
-                            f"origin/main...origin/{branch}").stdout.split()
-             if f != post_file]
+    # A post branch carries the post plus that post's figures. The figure folder is
+    # keyed on the *date-less* slug, so the date bump below never orphans it.
+    fig_dir = f"assets/img/{Path(post_file).stem.split('-', 3)[3]}/"
+    changed = git(repo, "diff", "--name-only",
+                  f"origin/main...origin/{branch}").stdout.split()
+    figures = [f for f in changed if f.startswith(fig_dir)]
+    extra = [f for f in changed if f != post_file and f not in figures]
     if extra:
-        fail(f"{branch} touches more than its post (stale branch?): {extra}\n"
-             "rebase or clean it up first — one post file per branch.")
+        fail(f"{branch} touches more than its post and figures (stale branch?): {extra}\n"
+             f"rebase or clean it up first — one post file plus {fig_dir}* per branch.")
 
     print(f"branch: {branch}\npost:   {post_file}\ndate:   {date}")
+    if figures:
+        print("figures: " + ", ".join(figures))
     git(repo, "checkout", "-B", branch, "origin/main")
-    git(repo, "checkout", f"origin/{branch}", "--", post_file)
+    git(repo, "checkout", f"origin/{branch}", "--", post_file, *figures)
 
     script_dir = Path(__file__).resolve().parent
     slug_for_bump = Path(post_file).stem

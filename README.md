@@ -99,7 +99,10 @@ failure `#C86A5A`. **System fonts only** — an SVG loaded through `<img>` can't
 reach the page's webfonts — nothing below 13px, no `<script>`, no
 `<foreignObject>`, no remote references, and never encode meaning in colour
 alone. Alt text is an SEO surface: a full sentence naming the finding, mirrored
-into the SVG's `aria-label`.
+into the SVG's `aria-label`, and containing **no `]`** (the dev.to absolutizer
+matches `\[[^\]]*\]\(`, so a bracket stops the rewrite and syndicates a relative
+path). The figure ground is deliberately darker than the page ground (`#18222D`)
+— a figure reads as a card, like a code block, not a seamless illustration.
 
 `script/lint-liquid.py` fails on a figure path with no file behind it (Jekyll
 builds a missing image silently, and merge = publish).
