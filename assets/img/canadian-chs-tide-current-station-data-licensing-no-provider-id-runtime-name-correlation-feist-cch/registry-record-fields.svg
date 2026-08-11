@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420"
+     viewBox="0 0 880 420" role="img"
+     font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+     aria-label="A station-corrections registry record ships four independently obtainable facts — name, context, position and provider — and deliberately carries no provider-minted station id, because the CHS id has no source other than the licensed IWLS API and is resolved at runtime instead.">
+  <rect width="880" height="420" rx="10" fill="#0E1B25"/>
+
+  <text x="28" y="38" font-size="19" fill="#E9EEF2">One registry record: four facts that ship, one handle that never does</text>
+
+  <!-- shipped group -->
+  <text x="28" y="68" font-size="14" fill="#88B868">SHIPS — obtained independently; anyone is free to publish these</text>
+  <rect x="28" y="80" width="824" height="196" rx="8" fill="#11212D" stroke="#24384A"/>
+  <line x1="44" y1="129" x2="836" y2="129" stroke="#24384A"/>
+  <line x1="44" y1="178" x2="836" y2="178" stroke="#24384A"/>
+  <line x1="44" y1="227" x2="836" y2="227" stroke="#24384A"/>
+
+  <g font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14.5">
+    <text x="48" y="110" fill="#E9EEF2">name</text>
+    <text x="48" y="159" fill="#E9EEF2">context</text>
+    <text x="48" y="208" fill="#E9EEF2">position</text>
+    <text x="48" y="257" fill="#E9EEF2">provider</text>
+    <text x="210" y="110" fill="#C8D2DA">Dodd Narrows</text>
+    <text x="210" y="159" fill="#C8D2DA">Nanaimo</text>
+    <text x="210" y="208" fill="#C8D2DA">49.1344, -123.8171</text>
+    <text x="210" y="257" fill="#C8D2DA">chs</text>
+  </g>
+  <g font-size="13.5" fill="#7F97A8">
+    <text x="470" y="110">hand-written label, re-cased from a survey label</text>
+    <text x="470" y="159">written here — the nearest place</text>
+    <text x="470" y="208">own fitting pipeline, audited against a chart</text>
+    <text x="470" y="257">which hydrographic authority — a fact</text>
+  </g>
+
+  <!-- absent field -->
+  <g stroke="#C86A5A" stroke-width="2.5" stroke-linecap="round">
+    <line x1="30" y1="297" x2="42" y2="309"/>
+    <line x1="42" y1="297" x2="30" y2="309"/>
+  </g>
+  <text x="54" y="308" font-size="14" fill="#C86A5A">NEVER SHIPS — the one field with no independent origin</text>
+  <rect x="28" y="320" width="824" height="68" rx="8" fill="#11212D"
+        stroke="#C86A5A" stroke-dasharray="6 5"/>
+  <g font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14.5">
+    <text x="48" y="359" fill="#E9EEF2">providerId</text>
+    <text x="210" y="359" fill="#7F97A8">63aef1866a2b9417c035030f</text>
+  </g>
+  <line x1="206" y1="354" x2="423" y2="354" stroke="#C86A5A" stroke-width="1.5"/>
+  <g font-size="13.5" fill="#C8D2DA">
+    <text x="470" y="340">no independent origin — the only source is</text>
+    <text x="470" y="358">CHS's licensed IWLS API. Resolved at runtime,</text>
+    <text x="470" y="376">on the operator's box, and never written to disk.</text>
+  </g>
+
+  <text x="28" y="410" font-size="13.5" fill="#7F97A8">The public join key is the station name (and its stable slug) — a fact anyone is free to publish.</text>
+</svg>
