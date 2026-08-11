@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440"
+     viewBox="0 0 880 440" role="img"
+     aria-label="The validation harness runs two independent comparisons: golden vectors against the Neaps tide predictor agree to 1e-6, proving the port is faithful, while the same engine with a per-station MSL to MLLW datum offset applied matches NOAA CO-OPS predictions to 7.9 minutes and 3.5 cm.">
+  <rect width="880" height="440" rx="10" fill="#0E1B25"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5888A8"/>
+    </marker>
+    <marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C86A5A"/>
+    </marker>
+  </defs>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+    <text x="32" y="42" font-size="19" font-weight="600" fill="#E9EEF2">Two independent checks: one proves the port, one proves reality</text>
+    <text x="32" y="66" font-size="13" fill="#7F97A8">The same engine, compared against its own algorithm and against the tide authority's published predictions.</text>
+
+    <!-- col 1: inputs -->
+    <rect x="24" y="180" width="192" height="110" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="40" y="208" font-size="15" font-weight="600" fill="#E9EEF2">Published constants</text>
+    <text x="40" y="232" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">@neaps/tide-database</text>
+    <text x="40" y="254" font-size="13" fill="#7F97A8">~3400 stations, NOAA</text>
+    <text x="40" y="272" font-size="13" fill="#7F97A8">public domain, offline</text>
+
+    <!-- col 2: engine under test -->
+    <rect x="244" y="120" width="204" height="190" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="260" y="150" font-size="15" font-weight="600" fill="#E9EEF2">Engine under test</text>
+    <text x="260" y="172" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">slackwater-engine</text>
+    <text x="260" y="190" font-size="13" fill="#7F97A8">Swift, offline</text>
+    <text x="266" y="216" font-size="13" fill="#C8D2DA">1 astronomy</text>
+    <text x="266" y="236" font-size="13" fill="#C8D2DA">2 node corrections f/u</text>
+    <text x="266" y="256" font-size="13" fill="#C8D2DA">3 constituents V₀</text>
+    <text x="266" y="276" font-size="13" fill="#C8D2DA">4 height series</text>
+    <text x="266" y="296" font-size="13" fill="#C8D2DA">5 extremes</text>
+    <text x="244" y="330" font-size="13" fill="#7F97A8">layers pinned separately</text>
+
+    <!-- col 3: datum conversion, only on the NOAA path -->
+    <rect x="476" y="254" width="152" height="80" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="492" y="282" font-size="15" font-weight="600" fill="#E9EEF2">Datum offset</text>
+    <text x="492" y="304" font-size="13" fill="#C8D2DA">MSL → MLLW</text>
+    <text x="492" y="322" font-size="13" fill="#7F97A8">per station</text>
+    <text x="476" y="240" font-size="13" fill="#7F97A8">applied before comparing</text>
+
+    <!-- col 4 top: the oracle axis -->
+    <rect x="656" y="96" width="200" height="124" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="672" y="124" font-size="15" font-weight="600" fill="#E9EEF2">Golden vectors</text>
+    <text x="672" y="146" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">@neaps/tide-predictor</text>
+    <text x="672" y="164" font-size="13" fill="#7F97A8">same algorithm</text>
+    <text x="672" y="192" font-size="15" font-weight="600" fill="#88B868">agrees to 1e-6</text>
+    <text x="672" y="210" font-size="13" fill="#7F97A8">the port is faithful</text>
+
+    <!-- col 4 bottom: the reality axis -->
+    <rect x="656" y="232" width="200" height="124" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="672" y="260" font-size="15" font-weight="600" fill="#E9EEF2">Head-to-head</text>
+    <text x="672" y="282" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">NOAA CO-OPS API</text>
+    <text x="672" y="300" font-size="13" fill="#7F97A8">different algorithm</text>
+    <text x="672" y="328" font-size="15" font-weight="600" fill="#88B868">7.9 min / 3.5 cm</text>
+    <text x="672" y="346" font-size="13" fill="#7F97A8">matches the authority</text>
+
+    <!-- edges -->
+    <line x1="216" y1="235" x2="240" y2="235" stroke="#5888A8" stroke-width="1.5" marker-end="url(#a)"/>
+    <line x1="448" y1="158" x2="652" y2="158" stroke="#5888A8" stroke-width="1.5" marker-end="url(#a)"/>
+    <text x="470" y="148" font-size="13" fill="#7F97A8">raw layer outputs</text>
+    <line x1="448" y1="294" x2="472" y2="294" stroke="#5888A8" stroke-width="1.5" marker-end="url(#a)"/>
+    <line x1="628" y1="294" x2="652" y2="294" stroke="#5888A8" stroke-width="1.5" marker-end="url(#a)"/>
+
+    <!-- the bypass that breaks it -->
+    <path d="M420,310 V396 H700 V360" fill="none" stroke="#C86A5A" stroke-width="1.5"
+          stroke-dasharray="6 5" marker-end="url(#f)"/>
+    <circle cx="540" cy="396" r="11" fill="#0E1B25"/>
+    <path d="M534,390 l12,12 M546,390 l-12,12" stroke="#C86A5A" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="360" y="422" font-size="13" fill="#C86A5A">bypass: compare before the offset and every height is off by the whole datum gap</text>
+  </g>
+</svg>

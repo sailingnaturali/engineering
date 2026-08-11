@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360"
+     viewBox="0 0 880 360" role="img"
+     aria-label="A raw harmonic sum is referenced to mean sea level while printed tide tables use chart datum MLLW, so every unadjusted prediction reads high by exactly the published per-station MSL to MLLW offset.">
+  <rect width="880" height="360" rx="10" fill="#0E1B25"/>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+    <text x="32" y="42" font-size="19" font-weight="600" fill="#E9EEF2">One tide curve, two zeros: why a raw harmonic sum reads high</text>
+    <text x="32" y="66" font-size="13" fill="#7F97A8">The constituents are referenced to mean sea level; the printed table is referenced to chart datum.</text>
+
+    <!-- the offset callout, left -->
+    <text x="32" y="200" font-size="15" font-weight="600" fill="#E9EEF2">offset</text>
+    <text x="32" y="222" font-size="14" fill="#C8D2DA">MSL − MLLW</text>
+    <text x="32" y="242" font-size="13" fill="#7F97A8">published per station</text>
+    <text x="32" y="260" font-size="13" fill="#7F97A8">e.g. 1.387 m</text>
+
+    <!-- double-headed offset arrow -->
+    <line x1="170" y1="168" x2="170" y2="272" stroke="#5888A8" stroke-width="1.5"/>
+    <path d="M170,163 l-5,10 h10 z" fill="#5888A8"/>
+    <path d="M170,277 l-5,-10 h10 z" fill="#5888A8"/>
+    <line x1="162" y1="168" x2="178" y2="168" stroke="#5888A8" stroke-width="1.5"/>
+    <line x1="162" y1="272" x2="178" y2="272" stroke="#5888A8" stroke-width="1.5"/>
+
+    <!-- datum lines -->
+    <line x1="190" y1="168" x2="628" y2="168" stroke="#5888A8" stroke-width="1.5" stroke-dasharray="6 5"/>
+    <line x1="190" y1="272" x2="628" y2="272" stroke="#88B868" stroke-width="2"/>
+
+    <!-- the harmonic curve, oscillating about MSL -->
+    <path d="M200,168 C237.8,106.8 267.2,106.8 305,168 C342.8,229.2 372.2,229.2 410,168 C447.8,106.8 477.2,106.8 515,168 C552.8,229.2 582.2,229.2 620,168"
+          fill="none" stroke="#C8D2DA" stroke-width="2.5"/>
+    <text x="200" y="100" font-size="14" fill="#C8D2DA">harmonic sum from the constituents</text>
+
+    <!-- datum line labels -->
+    <text x="636" y="164" font-size="14" fill="#C8D2DA">MSL — mean sea level</text>
+    <text x="636" y="182" font-size="13" fill="#7F97A8">the harmonic zero</text>
+    <text x="636" y="268" font-size="14" fill="#C8D2DA">MLLW — chart datum</text>
+    <text x="636" y="286" font-size="13" fill="#7F97A8">tables and charts print this</text>
+
+    <!-- failure marker -->
+    <path d="M32,321 l12,12 M44,321 l-12,12" stroke="#C86A5A" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="56" y="333" font-size="14" fill="#C86A5A">Skip the offset and every prediction reads high by exactly this gap — a correct engine against the wrong zero.</text>
+  </g>
+</svg>
