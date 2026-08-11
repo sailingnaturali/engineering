@@ -9,7 +9,7 @@ tags:
   - marine
   - open-source
   - javascript
-date: 2026-07-16
+date: 2026-08-11
 ---
 
 > **TL;DR** — Porting numeric code by hand and eyeballing the output is how you
