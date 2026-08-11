@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="388" viewBox="0 0 880 388"
+     role="img"
+     aria-label="The same bearer token takes two paths through a SignalK server: data paths clear the readwrite gate and return 200, while /skServer and plugin routes hit the admin middleware, which raises the 401 before the plugin's own handler ever runs.">
+  <rect width="880" height="388" rx="10" fill="#0E1B25"/>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#7F97A8"/>
+    </marker>
+    <marker id="arrowfail" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#C86A5A"/>
+    </marker>
+  </defs>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+    <text x="24" y="30" font-size="18" font-weight="600" fill="#E9EEF2">Where the 401 is raised</text>
+
+    <!-- edges -->
+    <g fill="none" stroke="#7F97A8" stroke-width="2">
+      <path d="M164 182 H190" marker-end="url(#arrow)"/>
+      <path d="M368 182 H384 V84 H394" marker-end="url(#arrow)"/>
+      <path d="M368 182 H384 V280 H394" marker-end="url(#arrow)"/>
+      <path d="M664 84 H690" marker-end="url(#arrow)"/>
+    </g>
+    <path d="M664 280 H690" fill="none" stroke="#C86A5A" stroke-width="2" marker-end="url(#arrowfail)"/>
+
+    <!-- client -->
+    <rect x="20" y="146" width="144" height="72" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="92" y="177" font-size="15" fill="#E9EEF2" text-anchor="middle">Headless client</text>
+    <text x="92" y="199" font-size="13" fill="#C8D2DA" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">Bearer token</text>
+
+    <!-- server dispatch -->
+    <rect x="196" y="146" width="172" height="72" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="282" y="177" font-size="15" fill="#E9EEF2" text-anchor="middle">SignalK server</text>
+    <text x="282" y="199" font-size="13" fill="#7F97A8" text-anchor="middle">routes by path prefix</text>
+
+    <!-- data path branch -->
+    <rect x="400" y="40" width="264" height="88" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="532" y="70" font-size="13" fill="#C8D2DA" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">/signalk/v1 · /v2 api</text>
+    <text x="532" y="92" font-size="13" fill="#E9EEF2" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">writeAuthenticationMiddleware</text>
+    <text x="532" y="114" font-size="13" fill="#7F97A8" text-anchor="middle">requires readwrite</text>
+
+    <rect x="696" y="56" width="168" height="56" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="780" y="82" font-size="17" fill="#88B868" text-anchor="middle">200 OK</text>
+    <text x="780" y="101" font-size="13" fill="#7F97A8" text-anchor="middle">write accepted</text>
+
+    <!-- admin branch -->
+    <rect x="400" y="236" width="264" height="88" rx="8" fill="#11212D" stroke="#C86A5A"/>
+    <text x="532" y="266" font-size="13" fill="#C8D2DA" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">/skServer/* · /plugins/&lt;id&gt;/*</text>
+    <text x="532" y="288" font-size="13" fill="#E9EEF2" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">adminAuthenticationMiddleware</text>
+    <text x="532" y="310" font-size="13" fill="#C86A5A" text-anchor="middle">requires admin · readwrite rejected</text>
+
+    <rect x="696" y="252" width="168" height="56" rx="8" fill="#11212D" stroke="#C86A5A"/>
+    <text x="780" y="278" font-size="17" fill="#C86A5A" text-anchor="middle">401</text>
+    <text x="780" y="297" font-size="13" fill="#7F97A8" text-anchor="middle">Permission Denied</text>
+
+    <text x="400" y="348" font-size="13" fill="#C86A5A">✕ rejected at the gate — the plugin's own route handler never runs</text>
+    <text x="24" y="374" font-size="13" fill="#7F97A8">Both requests carry the same Authorization header — the 401 body never says the token is the wrong class.</text>
+  </g>
+</svg>
