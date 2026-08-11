@@ -48,8 +48,8 @@ def violations(text: str) -> list[int]:
     return [i for i, line in enumerate(body.splitlines(), 1) if LIQUID.search(line)]
 
 
-def missing_assets(text: str, root: Path) -> list[tuple[int, str]]:
-    """Return (1-based line, path) for each /assets/… reference with no file.
+def asset_problems(text: str, root: Path) -> list[tuple[int, str]]:
+    """Return (1-based line, message) for each broken /assets/… reference.
 
     Fence-aware, like Devto::Transform.absolutize — a code block demonstrating
     an asset path (`src="/assets/entry-client-xxxx.js"`) is illustration, not a
@@ -62,10 +62,16 @@ def missing_assets(text: str, root: Path) -> list[tuple[int, str]]:
             continue
         if in_fence:
             continue
+        # A "](/assets/" the reference regex couldn't match means the alt text
+        # contains a "]", which breaks both kramdown and the dev.to absolutizer
+        # (Devto::Transform's MD_LINK is \[[^\]]*\] too) — the figure then
+        # syndicates as a relative path. Silent otherwise, so flag it here.
+        if line.count("](/assets/") > len(ASSET_REF.findall(line)):
+            out.append((i, "malformed image link — is there a ']' in the alt text?"))
         for md_path, html_path in ASSET_REF.findall(line):
             ref = md_path or html_path
             if not (root / ref.lstrip("/").split("#")[0]).exists():
-                out.append((i, ref))
+                out.append((i, f"asset not in the repo: {ref}"))
     return out
 
 
@@ -75,8 +81,8 @@ def main() -> int:
     bad = 0
     for post in sorted(posts_dir.glob("*.md")):
         text = post.read_text()
-        for line_no, ref in missing_assets(text, root):
-            print(f"{post}:{line_no}: asset not in the repo: {ref}")
+        for line_no, msg in asset_problems(text, root):
+            print(f"{post}:{line_no}: {msg}")
             bad += 1
         if post.name in ALLOW:  # ALLOW exempts Liquid only, never a broken asset
             continue
