@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="392" viewBox="0 0 880 392"
+     role="img"
+     aria-label="A SignalK device token passes the readwrite gate on data paths but returns 401 on every /skServer and plugin route, where only an admin user JWT gets through.">
+  <rect width="880" height="392" rx="10" fill="#0E1B25"/>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+    <text x="24" y="34" font-size="18" font-weight="600" fill="#E9EEF2">Which token class passes which gate</text>
+
+    <!-- column headers: route classes -->
+    <g text-anchor="middle">
+      <text x="363" y="78" font-size="13" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" fill="#C8D2DA">/signalk/v1 · /v2 api</text>
+      <text x="363" y="98" font-size="13" fill="#7F97A8">readwrite gate</text>
+
+      <text x="567" y="78" font-size="13" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" fill="#C8D2DA">/skServer/*</text>
+      <text x="567" y="98" font-size="13" fill="#7F97A8">admin gate</text>
+
+      <text x="771" y="78" font-size="13" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" fill="#C8D2DA">/plugins/&lt;id&gt;/*</text>
+      <text x="771" y="98" font-size="13" fill="#7F97A8">admin gate</text>
+    </g>
+
+    <line x1="20" y1="110" x2="860" y2="110" stroke="#24384A" stroke-width="1"/>
+
+    <!-- row 1: no token -->
+    <text x="20" y="147" font-size="15" fill="#E9EEF2">No token</text>
+    <text x="20" y="167" font-size="13" fill="#7F97A8">anonymous, allow_readonly on</text>
+
+    <rect x="266" y="120" width="194" height="66" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="363" y="149" font-size="15" fill="#88B868" text-anchor="middle">✓ read</text>
+    <text x="363" y="169" font-size="13" fill="#7F97A8" text-anchor="middle">no writes</text>
+
+    <rect x="470" y="120" width="194" height="66" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="567" y="158" font-size="15" fill="#C86A5A" text-anchor="middle">✕ 401</text>
+
+    <rect x="674" y="120" width="194" height="66" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="771" y="158" font-size="15" fill="#C86A5A" text-anchor="middle">✕ 401</text>
+
+    <!-- row 2: device token — the trap -->
+    <text x="20" y="221" font-size="15" fill="#E9EEF2">Device token</text>
+    <text x="20" y="241" font-size="13" fill="#7F97A8">access request → readwrite</text>
+
+    <rect x="266" y="194" width="194" height="66" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="363" y="232" font-size="15" fill="#88B868" text-anchor="middle">✓ read + write</text>
+
+    <rect x="470" y="194" width="194" height="66" rx="8" fill="#11212D" stroke="#C86A5A"/>
+    <text x="567" y="223" font-size="15" fill="#C86A5A" text-anchor="middle">✕ 401</text>
+    <text x="567" y="243" font-size="13" fill="#7F97A8" text-anchor="middle">valid token, wrong class</text>
+
+    <rect x="674" y="194" width="194" height="66" rx="8" fill="#11212D" stroke="#C86A5A"/>
+    <text x="771" y="223" font-size="15" fill="#C86A5A" text-anchor="middle">✕ 401</text>
+    <text x="771" y="243" font-size="13" fill="#7F97A8" text-anchor="middle">valid token, wrong class</text>
+
+    <!-- row 3: user JWT -->
+    <text x="20" y="295" font-size="15" fill="#E9EEF2">User JWT</text>
+    <text x="20" y="315" font-size="13" fill="#7F97A8">auth/login → admin user</text>
+
+    <rect x="266" y="268" width="194" height="66" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="363" y="306" font-size="15" fill="#88B868" text-anchor="middle">✓ read + write</text>
+
+    <rect x="470" y="268" width="194" height="66" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="567" y="306" font-size="15" fill="#88B868" text-anchor="middle">✓ admin</text>
+
+    <rect x="674" y="268" width="194" height="66" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="771" y="306" font-size="15" fill="#88B868" text-anchor="middle">✓ admin</text>
+
+    <!-- footnotes -->
+    <text x="20" y="358" font-size="13" fill="#7F97A8">Same Authorization header, different gate per route class — a device token is a different class, not a weaker admin.</text>
+    <text x="20" y="378" font-size="13" fill="#7F97A8">The user JWT expires per security.json's expiration field. After that it 401s everything, reads included.</text>
+  </g>
+</svg>

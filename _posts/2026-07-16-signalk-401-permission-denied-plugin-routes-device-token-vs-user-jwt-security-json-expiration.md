@@ -15,6 +15,8 @@ tags:
 
 > **TL;DR** — SignalK server has two token classes with different powers. A **device token** (Security → Access Requests) can write data — deltas, PUTs — but gets `401 Permission Denied` on every `/plugins/<id>/*` and `/skServer/*` route, because those are admin-gated and a device token is `readwrite`, not `admin`. Plugin REST APIs need a **user JWT** from `POST /signalk/v1/auth/login` — and that JWT silently expires per the `expiration` field in `security.json` (the field the admin UI calls "Remember Me timeout"; the code falls back to `1h`). [Jump to the fix](#the-fix).
 
+![A SignalK device token passes the readwrite gate on data paths but returns 401 on every /skServer and plugin route, where only an admin user JWT gets through.](/assets/img/signalk-401-permission-denied-plugin-routes-device-token-vs-user-jwt-security-json-expiration/token-class-vs-route-class.svg)
+
 Our agent writes log entries through the [signalk-logbook](https://github.com/meri-imperiumi/signalk-logbook) plugin's REST API. One day we went looking for a specific entry and found the log had a week-long hole in it. No crash, no alert, nothing in the dashboards — every *read* of the system looked perfectly healthy. The writes had been dying with a 401 the entire time, and the client's fire-and-forget POST swallowed every one.
 
 The 401 turned out to be two different auth problems stacked on top of each other, and both come from the same under-documented fact: **a SignalK server's auth surface differs per route class, and the two kinds of token it mints are not interchangeable.**
@@ -101,6 +103,8 @@ function hasAdminAccess(req: Request): boolean {
   )
 }
 ```
+
+![The same bearer token takes two paths through a SignalK server: data paths clear the readwrite gate and return 200, while /skServer and plugin routes hit the admin middleware, which raises the 401 before the plugin's own handler ever runs.](/assets/img/signalk-401-permission-denied-plugin-routes-device-token-vs-user-jwt-security-json-expiration/where-the-401-is-raised.svg)
 
 So a `readwrite` device token is simultaneously **good enough to write vessel data and permanently insufficient for any plugin's HTTP API**. Same server, same `Authorization` header, different gate per route class. (You *can* approve a device as Admin in current server versions, but the UI defaults to Read Only and the natural choice for a data-writing device is Read/Write — which is how you end up here.)
 
