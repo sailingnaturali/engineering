@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330"
+     viewBox="0 0 880 330" role="img"
+     aria-label="The same 19 CHS station handles were committed three times across three published packages, 57 copies in all, and station-corrections 2.0.0 took every one of them to zero.">
+  <rect width="880" height="330" rx="10" fill="#0E1B25"/>
+
+  <text x="32" y="40" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="18" font-weight="600" fill="#E9EEF2">CHS station handles committed to published packages</text>
+  <text x="32" y="64" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#7F97A8">Same 19 gates, three published copies — before and after station-corrections 2.0.0</text>
+
+  <!-- column headers -->
+  <text x="612" y="98" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">before</text>
+  <text x="760" y="98" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#88B868">after</text>
+
+  <!-- row 1 -->
+  <text x="300" y="126" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C8D2DA">station-corrections (npm)</text>
+  <rect x="320" y="110" width="114" height="22" rx="3" fill="#7F97A8"/>
+  <text x="612" y="126" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="600" fill="#E9EEF2">19</text>
+  <text x="760" y="126" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="600" fill="#88B868">0</text>
+
+  <!-- row 2 -->
+  <text x="300" y="166" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C8D2DA">signalk-currents (npm)</text>
+  <rect x="320" y="150" width="114" height="22" rx="3" fill="#7F97A8"/>
+  <text x="612" y="166" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="600" fill="#E9EEF2">19</text>
+  <text x="760" y="166" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="600" fill="#88B868">0</text>
+
+  <!-- row 3 -->
+  <text x="300" y="206" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C8D2DA">currents-mcp (vendored copy)</text>
+  <rect x="320" y="190" width="114" height="22" rx="3" fill="#7F97A8"/>
+  <text x="612" y="206" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="600" fill="#E9EEF2">19</text>
+  <text x="760" y="206" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="600" fill="#88B868">0</text>
+
+  <line x1="32" y1="232" x2="848" y2="232" stroke="#24384A" stroke-width="1"/>
+
+  <!-- total -->
+  <text x="300" y="266" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" font-weight="600" fill="#E9EEF2">total published copies</text>
+  <rect x="320" y="250" width="342" height="22" rx="3" fill="#5888A8"/>
+  <text x="672" y="266" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="600" fill="#E9EEF2">57</text>
+  <text x="760" y="266" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="600" fill="#88B868">0</text>
+
+  <text x="32" y="304" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">Plus one NOAA id and one NOAA depth-cell bin, dropped for a uniform rule even though NOAA data is public domain.</text>
+</svg>

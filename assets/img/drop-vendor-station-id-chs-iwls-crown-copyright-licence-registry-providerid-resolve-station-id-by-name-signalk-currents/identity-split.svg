@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380"
+     viewBox="0 0 880 380" role="img"
+     aria-label="One station now carries two identifiers: a stable committed key that every cache, URL and resource is keyed on, and an ephemeral provider handle resolved at startup and used only to make the fetch.">
+  <rect width="880" height="380" rx="10" fill="#0E1B25"/>
+  <defs>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7F97A8"/>
+    </marker>
+  </defs>
+
+  <text x="32" y="38" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="18" font-weight="600" fill="#E9EEF2">One station, two identifiers</text>
+
+  <rect x="330" y="58" width="220" height="52" rx="8" fill="#11212D" stroke="#24384A"/>
+  <text x="440" y="90" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#E9EEF2">Dodd Narrows</text>
+
+  <path d="M 380 110 L 240 148" fill="none" stroke="#7F97A8" stroke-width="2" marker-end="url(#a2)"/>
+  <path d="M 500 110 L 640 148" fill="none" stroke="#7F97A8" stroke-width="2" marker-end="url(#a2)"/>
+
+  <!-- left: stable identity -->
+  <rect x="32" y="156" width="384" height="176" rx="8" fill="#11212D" stroke="#88B868"/>
+  <text x="52" y="184" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#88B868">Stable identity — committed</text>
+  <text x="52" y="210" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#E9EEF2">chs-dodd-narrows</text>
+  <text x="52" y="238" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">• registry key, safe in a URL</text>
+  <text x="52" y="260" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">• per-day prediction cache key</text>
+  <text x="52" y="282" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">• offline harmonic bundle key</text>
+  <text x="52" y="304" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">• the id every consumer joins on</text>
+  <text x="52" y="324" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">our own fact — publishable</text>
+
+  <!-- right: ephemeral handle -->
+  <rect x="464" y="156" width="384" height="176" rx="8" fill="#11212D" stroke="#5888A8"/>
+  <text x="484" y="184" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#5888A8">Fetch handle — in memory only</text>
+  <text x="484" y="210" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#E9EEF2">liveId (24-hex, from IWLS)</text>
+  <text x="484" y="238" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">• resolved at plugin start by name</text>
+  <text x="484" y="260" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">• used for exactly one thing: the fetch</text>
+  <text x="484" y="282" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">• never written to disk, never logged</text>
+  <text x="484" y="304" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">• missing on failure, so fetch throws</text>
+  <text x="484" y="324" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">the provider's fact — not ours to ship</text>
+
+  <text x="440" y="362" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">The two are joined by normalized name — folded case, punctuation and spacing, applied on both sides.</text>
+</svg>
