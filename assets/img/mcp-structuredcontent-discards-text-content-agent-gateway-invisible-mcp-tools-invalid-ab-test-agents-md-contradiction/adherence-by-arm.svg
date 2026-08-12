@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420"
+     viewBox="0 0 880 420" role="img"
+     aria-label="Verbatim adherence to the MCP tool's rendered display string went from an unmeasurable zero, through 1 of 5 for the sentence-first payload and 3 of 5 for the plain JSON dump, to 6 of 6 once a contradicting instruction was removed from the agent's workspace file.">
+  <rect width="880" height="420" rx="10" fill="#0E1B25"/>
+
+  <text x="28" y="38" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="18" font-weight="600" fill="#E9EEF2">Did the agent quote the tool's rendered string verbatim?</text>
+  <text x="28" y="60" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">Five arms, in the order they were run. The first two produced no measurement at all.</text>
+
+  <!-- baseline -->
+  <line x1="352" y1="76" x2="352" y2="366" stroke="#24384A" stroke-width="1"/>
+
+  <!-- row 1: invalid, tools never called -->
+  <text x="28" y="102" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14.5" fill="#C8D2DA">1. Prompt rule ported to the gateway</text>
+  <text x="28" y="120" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">the seven MCP tools had never been called</text>
+  <g stroke="#C86A5A" stroke-width="2.5" stroke-linecap="round">
+    <line x1="368" y1="98" x2="382" y2="112"/>
+    <line x1="382" y1="98" x2="368" y2="112"/>
+  </g>
+  <text x="396" y="110" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14.5" fill="#C86A5A">INVALID — measured nothing</text>
+
+  <!-- row 2: invalid, byte-identical arms -->
+  <text x="28" y="162" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14.5" fill="#C8D2DA">2. content + structuredContent tuple</text>
+  <text x="28" y="180" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">gateway drops the text half — both arms identical</text>
+  <g stroke="#C86A5A" stroke-width="2.5" stroke-linecap="round">
+    <line x1="368" y1="158" x2="382" y2="172"/>
+    <line x1="382" y1="158" x2="368" y2="172"/>
+  </g>
+  <text x="396" y="170" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14.5" fill="#C86A5A">INVALID — measured nothing</text>
+
+  <!-- row 3: 1/5 -->
+  <text x="28" y="222" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14.5" fill="#C8D2DA">3. Sentence first, numbers after</text>
+  <text x="28" y="240" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">one text block — the first real measurement</text>
+  <rect x="352" y="218" width="88" height="26" rx="3" fill="#7F97A8"/>
+  <text x="452" y="236" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="600" fill="#E9EEF2">1 of 5</text>
+
+  <!-- row 4: 3/5 -->
+  <text x="28" y="282" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14.5" fill="#C8D2DA">4. Plain JSON dump (the control)</text>
+  <text x="28" y="300" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">display buried mid-object, below the raw SI</text>
+  <rect x="352" y="278" width="264" height="26" rx="3" fill="#5888A8"/>
+  <text x="628" y="296" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="600" fill="#E9EEF2">3 of 5</text>
+
+  <!-- row 5: 6/6 -->
+  <text x="28" y="342" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14.5" fill="#C8D2DA">5. Contradicting instruction removed</text>
+  <text x="28" y="360" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">no change to the tool layer at all</text>
+  <rect x="352" y="338" width="440" height="26" rx="3" fill="#88B868"/>
+  <text x="804" y="356" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="600" fill="#E9EEF2">6 of 6</text>
+
+  <text x="28" y="398" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">Arms 3 and 4: five trials each, one model. Arm 5: three trials, two tools. Small n — the finding is the sign, not the size.</text>
+</svg>

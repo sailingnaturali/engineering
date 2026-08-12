@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330"
+     viewBox="0 0 880 330" role="img"
+     aria-label="The MCP tool returned a rendered sentence as a text content block alongside structuredContent, but the gateway forwarded only the structuredContent, so the model received the same JSON as the arm the pilot was supposed to beat.">
+  <rect width="880" height="330" rx="10" fill="#0E1B25"/>
+
+  <text x="28" y="34" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="18" font-weight="600" fill="#E9EEF2">What the tool returned vs. what the model was handed</text>
+
+  <!-- left panel -->
+  <rect x="28" y="56" width="382" height="234" rx="6" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="46" y="82" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" font-weight="600" fill="#88B868">RETURNED BY THE MCP TOOL</text>
+  <g font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#C8D2DA">
+    <text x="46" y="110">content: [</text>
+    <text x="46" y="130">  { "type": "text",</text>
+    <text x="46" y="150">    "text": "3.7 metres under the keel" }</text>
+    <text x="46" y="170">]</text>
+    <text x="46" y="198">structuredContent: {</text>
+    <text x="46" y="218">  "below_keel_m": 3.7,</text>
+    <text x="46" y="238">  "display": "3.7 metres under the keel"</text>
+    <text x="46" y="258">}</text>
+  </g>
+  <text x="46" y="280" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">the sentence is the answer, numbers alongside</text>
+
+  <!-- arrow -->
+  <path d="M 416 173 L 462 173" stroke="#7F97A8" stroke-width="2" fill="none" marker-end="url(#b)"/>
+
+  <!-- right panel -->
+  <rect x="470" y="56" width="382" height="234" rx="6" fill="#11212D" stroke="#C86A5A" stroke-width="1.5"/>
+  <text x="488" y="82" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" font-weight="600" fill="#C86A5A">HANDED TO THE MODEL</text>
+  <g font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#C8D2DA">
+    <text x="488" y="110">structuredContent:</text>
+    <text x="488" y="130">{</text>
+    <text x="488" y="150">  "below_keel_m": 3.7,</text>
+    <text x="488" y="170">  "display": "3.7 metres under the keel"</text>
+    <text x="488" y="190">}</text>
+  </g>
+  <g stroke="#C86A5A" stroke-width="2.5" stroke-linecap="round">
+    <line x1="488" y1="214" x2="500" y2="226"/>
+    <line x1="500" y1="214" x2="488" y2="226"/>
+  </g>
+  <text x="512" y="225" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13.5" fill="#C86A5A">the text content block is gone</text>
+  <text x="488" y="256" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C8D2DA">display is back where it started &#8212; buried in</text>
+  <text x="488" y="272" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C8D2DA">a JSON object, below the raw number</text>
+
+  <text x="28" y="316" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">Both arms of the A/B arrived at the model as the same JSON object. The experiment ran five trials per arm and measured nothing.</text>
+
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7F97A8"/>
+    </marker>
+  </defs>
+</svg>
