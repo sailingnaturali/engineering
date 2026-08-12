@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330" role="img"
+     aria-label="Six consecutive daily agent runs: the run that failed outright was noticed the same morning, while the four runs after the OAuth token was added all exited 0 and wrote their artifact with the email and calendar connectors missing, and went unnoticed for four days.">
+  <rect width="880" height="330" rx="10" fill="#0E1B25"/>
+
+  <text x="24" y="36" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="19" font-weight="600" fill="#E9EEF2">The loud failure cost one run. The quiet one cost four.</text>
+
+  <!-- column headers -->
+  <text x="228" y="72" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#7F97A8">Jul 27</text>
+  <text x="344" y="72" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#7F97A8">Jul 28</text>
+  <text x="460" y="72" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#7F97A8">Jul 29</text>
+  <text x="576" y="72" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#7F97A8">Jul 30</text>
+  <text x="692" y="72" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#7F97A8">Jul 31</text>
+  <text x="808" y="72" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#7F97A8">Aug 1</text>
+
+  <!-- row 1: exit status -->
+  <text x="24" y="112" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">run exit status</text>
+  <rect x="180" y="86" width="96" height="46" rx="6" fill="#11212D" stroke="#88B868" stroke-width="2"/>
+  <text x="228" y="115" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#88B868">exit 0</text>
+  <rect x="296" y="86" width="96" height="46" rx="6" fill="#11212D" stroke="#C86A5A" stroke-width="2"/>
+  <text x="344" y="115" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#C86A5A">exit 1</text>
+  <rect x="412" y="86" width="96" height="46" rx="6" fill="#11212D" stroke="#88B868" stroke-width="2"/>
+  <text x="460" y="115" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#88B868">exit 0</text>
+  <rect x="528" y="86" width="96" height="46" rx="6" fill="#11212D" stroke="#88B868" stroke-width="2"/>
+  <text x="576" y="115" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#88B868">exit 0</text>
+  <rect x="644" y="86" width="96" height="46" rx="6" fill="#11212D" stroke="#88B868" stroke-width="2"/>
+  <text x="692" y="115" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#88B868">exit 0</text>
+  <rect x="760" y="86" width="96" height="46" rx="6" fill="#11212D" stroke="#88B868" stroke-width="2"/>
+  <text x="808" y="115" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#88B868">exit 0</text>
+
+  <!-- row 2: connectors -->
+  <text x="24" y="170" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">email + calendar</text>
+  <text x="24" y="188" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">actually swept</text>
+  <rect x="180" y="152" width="96" height="46" rx="6" fill="#11212D" stroke="#88B868" stroke-width="2"/>
+  <text x="228" y="181" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#88B868">yes</text>
+  <rect x="296" y="152" width="96" height="46" rx="6" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="344" y="181" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#7F97A8">no run</text>
+  <rect x="412" y="152" width="96" height="46" rx="6" fill="#11212D" stroke="#C86A5A" stroke-width="2"/>
+  <text x="460" y="181" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C86A5A">no &#10006;</text>
+  <rect x="528" y="152" width="96" height="46" rx="6" fill="#11212D" stroke="#C86A5A" stroke-width="2"/>
+  <text x="576" y="181" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C86A5A">no &#10006;</text>
+  <rect x="644" y="152" width="96" height="46" rx="6" fill="#11212D" stroke="#C86A5A" stroke-width="2"/>
+  <text x="692" y="181" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C86A5A">no &#10006;</text>
+  <rect x="760" y="152" width="96" height="46" rx="6" fill="#11212D" stroke="#C86A5A" stroke-width="2"/>
+  <text x="808" y="181" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C86A5A">no &#10006;</text>
+
+  <!-- event markers -->
+  <line x1="344" y1="212" x2="344" y2="236" stroke="#E9EEF2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="352" y="232" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#E9EEF2">login session expired; OAuth token added the same day</text>
+
+  <!-- bracket over the blind runs -->
+  <path d="M 412 258 L 412 268 L 856 268 L 856 258" fill="none" stroke="#C86A5A" stroke-width="2"/>
+  <text x="634" y="292" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#C86A5A">four runs reported success, blind to email and calendar</text>
+  <text x="634" y="314" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">noticed by a human on day four, not by any check</text>
+</svg>
