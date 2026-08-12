@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="530"
+     viewBox="0 0 880 530" role="img"
+     aria-label="Three separate breaks between an MCP tool and the model: the gateway tool policy filtered the MCP tools out entirely, the gateway result formatter dropped the tool's text content in favour of structuredContent, and the workspace instructions file told the model to convert SI units, contradicting the persona rule that said to quote the rendered string.">
+  <rect width="880" height="530" rx="10" fill="#0E1B25"/>
+
+  <text x="28" y="34" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="18" font-weight="600" fill="#E9EEF2">Three breaks between the tool and the model</text>
+
+  <text x="40" y="62" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">HOW THE TOOL'S ANSWER GETS THERE</text>
+  <text x="500" y="62" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">HOW THE INSTRUCTIONS GET THERE</text>
+
+  <!-- ============ LEFT COLUMN ============ -->
+  <rect x="40" y="76" width="340" height="58" rx="6" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="58" y="100" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14.5" fill="#E9EEF2">MCP tool result</text>
+  <text x="58" y="120" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="13" fill="#C8D2DA">display + the raw SI fields</text>
+
+  <path d="M 210 134 L 210 158" stroke="#7F97A8" stroke-width="2" fill="none" marker-end="url(#a)"/>
+
+  <rect x="40" y="162" width="340" height="76" rx="6" fill="#11212D" stroke="#C86A5A" stroke-width="1.5"/>
+  <g stroke="#C86A5A" stroke-width="2.5" stroke-linecap="round">
+    <line x1="58" y1="182" x2="70" y2="194"/>
+    <line x1="70" y1="182" x2="58" y2="194"/>
+  </g>
+  <text x="82" y="193" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14.5" font-weight="600" fill="#C86A5A">BREAK 1 — gateway tool policy</text>
+  <text x="58" y="214" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C8D2DA">MCP tools missing from the allow-list:</text>
+  <text x="58" y="230" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C8D2DA">server healthy, tools invisible, model curls</text>
+
+  <path d="M 210 238 L 210 262" stroke="#7F97A8" stroke-width="2" fill="none" marker-end="url(#a)"/>
+
+  <rect x="40" y="266" width="340" height="76" rx="6" fill="#11212D" stroke="#C86A5A" stroke-width="1.5"/>
+  <g stroke="#C86A5A" stroke-width="2.5" stroke-linecap="round">
+    <line x1="58" y1="286" x2="70" y2="298"/>
+    <line x1="70" y1="286" x2="58" y2="298"/>
+  </g>
+  <text x="82" y="297" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14.5" font-weight="600" fill="#C86A5A">BREAK 2 — result formatter</text>
+  <text x="58" y="318" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C8D2DA">structuredContent present: the tool's text</text>
+  <text x="58" y="334" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C8D2DA">content blocks are dropped before the model</text>
+
+  <!-- ============ RIGHT COLUMN ============ -->
+  <rect x="500" y="76" width="340" height="58" rx="6" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="518" y="100" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14.5" fill="#E9EEF2">Persona file</text>
+  <text x="518" y="120" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C8D2DA">&#8220;quote the display string verbatim&#8221;</text>
+
+  <path d="M 670 134 L 670 158" stroke="#7F97A8" stroke-width="2" fill="none" marker-end="url(#a)"/>
+
+  <rect x="500" y="162" width="340" height="76" rx="6" fill="#11212D" stroke="#C86A5A" stroke-width="1.5"/>
+  <g stroke="#C86A5A" stroke-width="2.5" stroke-linecap="round">
+    <line x1="518" y1="182" x2="530" y2="194"/>
+    <line x1="530" y1="182" x2="518" y2="194"/>
+  </g>
+  <text x="542" y="193" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14.5" font-weight="600" fill="#C86A5A">BREAK 3 — workspace file</text>
+  <text x="518" y="214" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C8D2DA">&#8220;Units are SI &#8230; convert for the user&#8221; &#8212; an</text>
+  <text x="518" y="230" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C8D2DA">order to re-render, written before the tools</text>
+
+  <!-- elbows into the model -->
+  <path d="M 210 342 L 210 366 L 360 366 L 360 390" stroke="#7F97A8" stroke-width="2" fill="none" marker-end="url(#a)"/>
+  <path d="M 670 238 L 670 366 L 520 366 L 520 390" stroke="#7F97A8" stroke-width="2" fill="none" marker-end="url(#a)"/>
+
+  <rect x="290" y="394" width="300" height="58" rx="6" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="440" y="418" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="600" fill="#E9EEF2">The model</text>
+  <text x="440" y="438" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C8D2DA">raw SI, plus an order to convert it</text>
+
+  <path d="M 440 452 L 440 474" stroke="#7F97A8" stroke-width="2" fill="none" marker-end="url(#a)"/>
+
+  <rect x="180" y="478" width="520" height="38" rx="6" fill="#11212D" stroke="#C86A5A" stroke-width="1.5"/>
+  <text x="440" y="503" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="13.5" fill="#C86A5A">reply: &#8220;65% SOC, 12.39 V, -2.95 A&#8221; &#8212; no display string</text>
+
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7F97A8"/>
+    </marker>
+  </defs>
+</svg>
