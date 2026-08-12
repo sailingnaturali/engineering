@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" role="img"
+     aria-label="With a /login keychain session Claude Code fetches the claude.ai account session and the Gmail, Google Calendar and Google Drive connectors appear in the tool list; with CLAUDE_CODE_OAUTH_TOKEN set the account session is never fetched and those three connectors never appear at all, while model requests succeed in both lanes.">
+  <defs>
+    <marker id="arrowGood" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7F97A8"/>
+    </marker>
+    <marker id="arrowBad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C86A5A"/>
+    </marker>
+  </defs>
+  <rect width="880" height="440" rx="10" fill="#0E1B25"/>
+
+  <text x="24" y="36" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="19" font-weight="600" fill="#E9EEF2">Where the claude.ai connectors drop off</text>
+  <text x="24" y="58" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#7F97A8">Same headless run, same prompt, same locally-configured MCP servers. Only the active auth method differs.</text>
+
+  <!-- ============ Lane A ============ -->
+  <text x="24" y="92" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="600" fill="#88B868">A — active auth: claude.ai subscription login (/login)</text>
+
+  <rect x="24" y="104" width="178" height="80" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="113" y="136" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#C8D2DA">claude -p</text>
+  <text x="113" y="157" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#7F97A8">scheduled run,</text>
+  <text x="113" y="174" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#7F97A8">no terminal</text>
+
+  <line x1="206" y1="144" x2="238" y2="144" stroke="#7F97A8" stroke-width="2" marker-end="url(#arrowGood)"/>
+
+  <rect x="242" y="104" width="178" height="80" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="331" y="130" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">keychain OAuth</text>
+  <text x="331" y="148" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">session</text>
+  <text x="331" y="170" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">precedence rank 7</text>
+
+  <line x1="424" y1="144" x2="456" y2="144" stroke="#7F97A8" stroke-width="2" marker-end="url(#arrowGood)"/>
+
+  <rect x="460" y="104" width="178" height="80" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="549" y="139" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">claude.ai account</text>
+  <text x="549" y="157" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">session fetched</text>
+
+  <line x1="642" y1="144" x2="674" y2="144" stroke="#7F97A8" stroke-width="2" marker-end="url(#arrowGood)"/>
+
+  <rect x="678" y="104" width="178" height="80" rx="8" fill="#11212D" stroke="#88B868" stroke-width="2"/>
+  <text x="767" y="130" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">Gmail, Calendar,</text>
+  <text x="767" y="148" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">Drive connectors</text>
+  <text x="767" y="170" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#88B868">PRESENT</text>
+
+  <text x="242" y="206" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">model requests: fine</text>
+
+  <line x1="24" y1="230" x2="856" y2="230" stroke="#24384A" stroke-width="1"/>
+
+  <!-- ============ Lane B ============ -->
+  <text x="24" y="264" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="600" fill="#C86A5A">B — active auth: CLAUDE_CODE_OAUTH_TOKEN from claude setup-token</text>
+
+  <rect x="24" y="276" width="178" height="80" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="113" y="308" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#C8D2DA">claude -p</text>
+  <text x="113" y="329" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#7F97A8">same run, same</text>
+  <text x="113" y="346" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#7F97A8">prompt</text>
+
+  <line x1="206" y1="316" x2="238" y2="316" stroke="#7F97A8" stroke-width="2" marker-end="url(#arrowGood)"/>
+
+  <rect x="242" y="276" width="178" height="80" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="331" y="300" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#C8D2DA">CLAUDE_CODE_</text>
+  <text x="331" y="318" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#C8D2DA">OAUTH_TOKEN</text>
+  <text x="331" y="340" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">rank 5 — outranks /login</text>
+
+  <line x1="424" y1="316" x2="456" y2="316" stroke="#C86A5A" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowBad)"/>
+  <text x="440" y="292" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#C86A5A">&#10006;</text>
+
+  <rect x="460" y="276" width="178" height="80" rx="8" fill="#11212D" stroke="#C86A5A" stroke-width="2"/>
+  <text x="549" y="303" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">no claude.ai</text>
+  <text x="549" y="321" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">account session</text>
+  <text x="549" y="343" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C86A5A">token: model requests only</text>
+
+  <line x1="642" y1="316" x2="674" y2="316" stroke="#C86A5A" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowBad)"/>
+
+  <rect x="678" y="276" width="178" height="80" rx="8" fill="#11212D" stroke="#C86A5A" stroke-width="2"/>
+  <text x="767" y="303" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">Gmail, Calendar,</text>
+  <text x="767" y="321" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">Drive connectors</text>
+  <text x="767" y="343" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#C86A5A">NEVER APPEAR</text>
+
+  <text x="242" y="378" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">model requests: fine — the run succeeds, exit 0</text>
+
+  <text x="24" y="414" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">No error, no warning, no missing-tool notice: in lane B the three servers are simply not in the list the model is given.</text>
+  <text x="24" y="432" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">Locally-configured MCP servers (added with claude mcp add) are unaffected in both lanes.</text>
+</svg>
