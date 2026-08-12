@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480"
+     viewBox="0 0 880 480" role="img"
+     aria-label="MapLibre draws the icon contour where the encoded field reads 0.75, so an edge encoded at alpha 128 puts the drawn contour 4 texture pixels inside the true edge and the glyph's peak alpha of 176 never crosses the threshold.">
+  <rect width="880" height="480" rx="10" fill="#0E1B25"/>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+    <text x="40" y="38" font-size="18" fill="#E9EEF2" font-weight="600">MapLibre draws the contour where your field reads 0.75</text>
+    <text x="40" y="60" font-size="14" fill="#7F97A8">maplibre-gl 5.24.0, symbol_sdf.fragment.glsl — inner_edge = (256.0 − 64.0) / 256.0</text>
+
+    <!-- dead zone: everything below the shader threshold -->
+    <rect x="100" y="165" width="710" height="195" fill="#11212D"/>
+
+    <!-- axes -->
+    <line x1="100" y1="360" x2="810" y2="360" stroke="#7F97A8" stroke-width="1.5"/>
+    <line x1="100" y1="100" x2="100" y2="360" stroke="#7F97A8" stroke-width="1.5"/>
+
+    <!-- y ticks -->
+    <g font-size="13" fill="#7F97A8" text-anchor="end">
+      <text x="92" y="104">255</text>
+      <text x="92" y="169">191</text>
+      <text x="92" y="234">128</text>
+      <text x="92" y="364">0</text>
+    </g>
+    <text x="46" y="88" font-size="13" fill="#C8D2DA">encoded alpha</text>
+
+    <!-- shader threshold -->
+    <line x1="100" y1="165" x2="810" y2="165" stroke="#E9EEF2" stroke-width="2" stroke-dasharray="7 5"/>
+    <text x="805" y="158" font-size="13" fill="#E9EEF2" text-anchor="end">shader threshold — inner_edge = 0.75</text>
+
+    <!-- true edge -->
+    <line x1="404" y1="100" x2="404" y2="368" stroke="#7F97A8" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+    <!-- broken ramp -->
+    <polyline points="100,132.5 810,360" fill="none" stroke="#C86A5A" stroke-width="3"/>
+    <!-- correct ramp -->
+    <polyline points="100,100 303,100 709,360 810,360" fill="none" stroke="#88B868" stroke-width="3"/>
+
+    <!-- crossing markers -->
+    <circle cx="201" cy="165" r="5.5" fill="#C86A5A"/>
+    <circle cx="404" cy="165" r="5.5" fill="#88B868"/>
+    <circle cx="249" cy="180" r="4.5" fill="#C86A5A" stroke="#0E1B25" stroke-width="1.5"/>
+
+    <text x="196" y="186" font-size="13" fill="#C86A5A" text-anchor="end">broken: crosses at d = −4 px</text>
+    <line x1="245" y1="200" x2="250" y2="186" stroke="#7F97A8" stroke-width="1.2"/>
+    <text x="240" y="208" font-size="13" fill="#C8D2DA" text-anchor="end">glyph's peak alpha is only 176</text>
+    <text x="414" y="158" font-size="13" fill="#88B868">crosses at d = 0</text>
+    <text x="115" y="300" font-size="15" fill="#7F97A8">below the threshold, nothing is drawn</text>
+
+    <!-- legend -->
+    <line x1="520" y1="108" x2="552" y2="108" stroke="#88B868" stroke-width="3"/>
+    <text x="560" y="112" font-size="14" fill="#88B868">correct: 255 × (0.75 − d / 8)</text>
+    <line x1="520" y1="132" x2="552" y2="132" stroke="#C86A5A" stroke-width="3"/>
+    <text x="560" y="136" font-size="14" fill="#C86A5A">broken: 255 × (0.5 − d / 16)</text>
+
+    <!-- x ticks -->
+    <g font-size="13" fill="#7F97A8" text-anchor="middle">
+      <text x="100" y="384">−6</text>
+      <text x="201" y="384">−4</text>
+      <text x="303" y="384">−2</text>
+      <text x="506" y="384">+2</text>
+      <text x="607" y="384">+4</text>
+      <text x="709" y="384">+6</text>
+      <text x="810" y="384">+8</text>
+    </g>
+    <text x="404" y="384" font-size="13" fill="#E9EEF2" text-anchor="middle" font-weight="600">d = 0</text>
+    <text x="455" y="410" font-size="14" fill="#C8D2DA" text-anchor="middle">signed distance from the shape edge, in texture pixels — negative is inside</text>
+
+    <text x="40" y="448" font-size="14" fill="#C8D2DA">Any linear encoding 255 × (A − d / R) draws the contour at d = R × (A − 0.75).</text>
+    <text x="40" y="468" font-size="14" fill="#C8D2DA">A must be 0.75 or the shape erodes; R only sets the ramp rate.</text>
+  </g>
+</svg>

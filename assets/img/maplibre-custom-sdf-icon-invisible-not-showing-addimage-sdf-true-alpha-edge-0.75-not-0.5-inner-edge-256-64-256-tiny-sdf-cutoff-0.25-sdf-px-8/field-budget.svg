@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360"
+     viewBox="0 0 880 360" role="img"
+     aria-label="The signed distance field budgets 2 texture pixels inside the shape and 6 outside, so the shape edge lands 6 eighths of the way up the range, which is why the MapLibre fill threshold is 0.75 and why the maximum icon halo width is 6 pixels.">
+  <rect width="880" height="360" rx="10" fill="#0E1B25"/>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+    <text x="40" y="38" font-size="18" fill="#E9EEF2" font-weight="600">Why 0.75 and not 0.5: the field is deliberately asymmetric</text>
+    <text x="40" y="60" font-size="14" fill="#7F97A8">radius (SDF_PX) = 8 px, cutoff = 0.25 — 2 px of room inside, 6 px outside</text>
+
+    <!-- the band -->
+    <rect x="120" y="110" width="68"  height="52" fill="#88B868"/>
+    <rect x="188" y="110" width="136" height="52" fill="#58A058"/>
+    <rect x="324" y="110" width="408" height="52" fill="#5888A8"/>
+    <rect x="732" y="110" width="68"  height="52" fill="#11212D" stroke="#24384A"/>
+
+    <!-- alpha labels inside band -->
+    <g font-size="13" fill="#0E1B25" text-anchor="middle" font-weight="600">
+      <text x="154" y="141">255</text>
+      <text x="256" y="141">255 → 191</text>
+      <text x="528" y="141">191 → 0</text>
+    </g>
+    <text x="766" y="141" font-size="13" fill="#7F97A8" text-anchor="middle" font-weight="600">0</text>
+
+    <!-- boundary ticks -->
+    <g stroke="#7F97A8" stroke-width="1.5" stroke-dasharray="4 4">
+      <line x1="188" y1="100" x2="188" y2="215"/>
+      <line x1="732" y1="100" x2="732" y2="215"/>
+    </g>
+    <line x1="324" y1="92" x2="324" y2="270" stroke="#E9EEF2" stroke-width="2"/>
+
+    <g font-size="13" fill="#C8D2DA" text-anchor="middle">
+      <text x="188" y="234">d = −2 px</text>
+      <text x="732" y="234">d = +6 px</text>
+    </g>
+    <text x="324" y="86" font-size="14" fill="#E9EEF2" text-anchor="middle" font-weight="600">d = 0 — the shape edge, alpha 191 = 0.75</text>
+
+    <g font-size="13" fill="#7F97A8" text-anchor="middle">
+      <text x="188" y="250">field saturates</text>
+      <text x="732" y="250">field runs out</text>
+    </g>
+
+    <!-- halo brackets -->
+    <path d="M324 272 L324 282 L426 282 L426 272" fill="none" stroke="#88B868" stroke-width="2"/>
+    <text x="434" y="287" font-size="13" fill="#88B868">icon-halo-width: 1.5 lives here</text>
+
+    <path d="M324 302 L324 314 L732 314 L732 302" fill="none" stroke="#5888A8" stroke-width="2"/>
+    <text x="528" y="334" font-size="13" fill="#5888A8" text-anchor="middle">the 6 px of outside room is the maximum halo width the shader can express</text>
+
+    <text x="40" y="192" font-size="13" fill="#C8D2DA">inside</text>
+    <text x="800" y="192" font-size="13" fill="#C8D2DA" text-anchor="end">outside</text>
+  </g>
+</svg>

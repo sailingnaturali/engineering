@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360"
+     viewBox="0 0 880 360" role="img"
+     aria-label="A cross-section of the 6.16 pixel wide glyph stroke showing that the correct encoding draws the whole stroke while the broken encoding insets 4 pixels from each side, and the two insets cross so no pixels remain.">
+  <rect width="880" height="360" rx="10" fill="#0E1B25"/>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+    <text x="40" y="38" font-size="18" fill="#E9EEF2" font-weight="600">A 4 px erosion applied to a 6.16 px stroke leaves nothing</text>
+    <text x="40" y="60" font-size="14" fill="#7F97A8">cross-section through the pin glyph's stroke, at the 2x field resolution</text>
+
+    <!-- width dimension -->
+    <line x1="296" y1="84" x2="624" y2="84" stroke="#7F97A8" stroke-width="1.5"/>
+    <line x1="296" y1="79" x2="296" y2="89" stroke="#7F97A8" stroke-width="1.5"/>
+    <line x1="624" y1="79" x2="624" y2="89" stroke="#7F97A8" stroke-width="1.5"/>
+    <text x="460" y="76" font-size="13" fill="#C8D2DA" text-anchor="middle">6.16 px</text>
+
+    <!-- row 1: the stroke itself -->
+    <rect x="296" y="92" width="328" height="40" fill="#5888A8"/>
+    <g text-anchor="end">
+      <text x="278" y="110" font-size="14" fill="#C8D2DA">the stroke</text>
+      <text x="278" y="128" font-size="13" fill="#7F97A8">0.14 × 44 px</text>
+    </g>
+
+    <!-- row 2: correct -->
+    <rect x="296" y="164" width="328" height="40" fill="#88B868"/>
+    <g text-anchor="end">
+      <text x="278" y="182" font-size="14" fill="#88B868">correct encoding</text>
+      <text x="278" y="200" font-size="13" fill="#7F97A8">draws d = 0</text>
+    </g>
+    <text x="460" y="224" font-size="13" fill="#88B868" text-anchor="middle">the whole stroke is drawn</text>
+
+    <!-- row 3: broken -->
+    <rect x="296" y="244" width="328" height="58" fill="none" stroke="#7F97A8" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <g text-anchor="end">
+      <text x="278" y="266" font-size="14" fill="#C86A5A">broken encoding</text>
+      <text x="278" y="284" font-size="13" fill="#7F97A8">draws d = −4 px</text>
+    </g>
+
+    <!-- inset from the left edge, overshooting the centre -->
+    <text x="302" y="262" font-size="13" fill="#C86A5A">4 px inset</text>
+    <line x1="296" y1="272" x2="500" y2="272" stroke="#C86A5A" stroke-width="2.5"/>
+    <polygon points="509,272 499,267 499,277" fill="#C86A5A"/>
+
+    <!-- inset from the right edge, overshooting the centre -->
+    <text x="618" y="280" font-size="13" fill="#C86A5A" text-anchor="end">4 px inset</text>
+    <line x1="624" y1="288" x2="421" y2="288" stroke="#C86A5A" stroke-width="2.5"/>
+    <polygon points="411,288 421,283 421,293" fill="#C86A5A"/>
+
+    <circle cx="460" cy="280" r="15" fill="#0E1B25"/>
+    <g stroke="#C86A5A" stroke-width="3" stroke-linecap="round">
+      <line x1="452" y1="272" x2="468" y2="288"/>
+      <line x1="468" y1="272" x2="452" y2="288"/>
+    </g>
+
+    <text x="460" y="336" font-size="14" fill="#C86A5A" text-anchor="middle">the two insets cross — 0 of 1936 pixels reach the shader threshold</text>
+  </g>
+</svg>
