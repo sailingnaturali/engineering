@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440"
+     viewBox="0 0 880 440" role="img"
+     aria-label="A ranged request can never populate a CacheFirst route because the origin answers 206 and cacheableResponse only stores 200, so the cache stays empty forever; one non-ranged warm fetch stores the full 200 that RangeRequestsPlugin then slices into 206 partials.">
+  <defs>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7F97A8"/>
+    </marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C86A5A"/>
+    </marker>
+  </defs>
+  <rect width="880" height="440" rx="10" fill="#0E1B25"/>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+    <text x="32" y="34" font-size="19" fill="#E9EEF2">Why the runtime cache stays empty without a warm fetch</text>
+
+    <!-- Lane A -->
+    <text x="34" y="70" font-size="15" fill="#C86A5A">A ranged request can never fill a CacheFirst route</text>
+
+    <rect x="34" y="82" width="172" height="78" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="48" y="106" font-size="14" fill="#E9EEF2">1. pmtiles read</text>
+    <text x="48" y="126" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">Range:</text>
+    <text x="48" y="145" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">bytes=0-16383</text>
+    <line x1="206" y1="121" x2="244" y2="121" stroke="#7F97A8" stroke-width="2" marker-end="url(#g)"/>
+
+    <rect x="248" y="82" width="172" height="78" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="262" y="106" font-size="14" fill="#E9EEF2">2. CacheFirst</text>
+    <text x="262" y="126" font-size="13" fill="#C8D2DA">cache miss</text>
+    <text x="262" y="145" font-size="13" fill="#C8D2DA">goes to network</text>
+    <line x1="420" y1="121" x2="458" y2="121" stroke="#7F97A8" stroke-width="2" marker-end="url(#g)"/>
+
+    <rect x="462" y="82" width="172" height="78" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="476" y="106" font-size="14" fill="#E9EEF2">3. Origin replies</text>
+    <text x="476" y="126" font-size="13" fill="#C86A5A">206 Partial</text>
+    <text x="476" y="145" font-size="13" fill="#C86A5A">Content</text>
+    <line x1="634" y1="121" x2="672" y2="121" stroke="#C86A5A" stroke-width="2" marker-end="url(#r)"/>
+
+    <rect x="676" y="82" width="172" height="78" rx="8" fill="#11212D" stroke="#C86A5A"/>
+    <text x="690" y="106" font-size="14" fill="#C86A5A">&#10007; Not stored</text>
+    <text x="690" y="126" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">cacheableResponse</text>
+    <text x="690" y="145" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">statuses: [200]</text>
+
+    <path d="M762,160 L762,192 L334,192 L334,164" fill="none" stroke="#C86A5A" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#r)"/>
+    <text x="548" y="212" font-size="13" fill="#C86A5A" text-anchor="middle">the cache is still empty, so the next ranged read misses again — forever</text>
+
+    <!-- Lane B -->
+    <text x="34" y="250" font-size="15" fill="#88B868">One non-ranged warm fetch fills it, then Workbox slices</text>
+
+    <rect x="34" y="262" width="172" height="78" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="48" y="286" font-size="14" fill="#E9EEF2">1. Warm fetch</text>
+    <text x="48" y="306" font-size="13" fill="#C8D2DA">plain fetch,</text>
+    <text x="48" y="325" font-size="13" fill="#C8D2DA">no Range header</text>
+    <line x1="206" y1="301" x2="244" y2="301" stroke="#7F97A8" stroke-width="2" marker-end="url(#g)"/>
+
+    <rect x="248" y="262" width="172" height="78" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="262" y="286" font-size="14" fill="#E9EEF2">2. CacheFirst</text>
+    <text x="262" y="306" font-size="13" fill="#C8D2DA">cache miss</text>
+    <text x="262" y="325" font-size="13" fill="#C8D2DA">goes to network</text>
+    <line x1="420" y1="301" x2="458" y2="301" stroke="#7F97A8" stroke-width="2" marker-end="url(#g)"/>
+
+    <rect x="462" y="262" width="172" height="78" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="476" y="286" font-size="14" fill="#E9EEF2">3. Origin replies</text>
+    <text x="476" y="306" font-size="13" fill="#88B868">200 OK</text>
+    <text x="476" y="325" font-size="13" fill="#C8D2DA">full 4.78 MB body</text>
+    <line x1="634" y1="301" x2="672" y2="301" stroke="#7F97A8" stroke-width="2" marker-end="url(#g)"/>
+
+    <rect x="676" y="262" width="172" height="78" rx="8" fill="#11212D" stroke="#88B868"/>
+    <text x="690" y="286" font-size="14" fill="#88B868">4. Stored</text>
+    <text x="690" y="306" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">cache:</text>
+    <text x="690" y="325" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">land-pmtiles</text>
+
+    <line x1="762" y1="340" x2="762" y2="362" stroke="#7F97A8" stroke-width="2" marker-end="url(#g)"/>
+
+    <rect x="34" y="366" width="814" height="46" rx="8" fill="#11212D" stroke="#88B868"/>
+    <text x="441" y="394" font-size="13" fill="#C8D2DA" text-anchor="middle">Every later ranged read: RangeRequestsPlugin slices the cached 200 into the 206 Partial Content pmtiles asked for</text>
+  </g>
+</svg>
