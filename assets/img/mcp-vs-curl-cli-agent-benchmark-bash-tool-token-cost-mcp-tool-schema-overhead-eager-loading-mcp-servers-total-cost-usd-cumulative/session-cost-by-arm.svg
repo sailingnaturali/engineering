@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" role="img" aria-label="Billed input for one 12-ask conversation: the MCP arm costs 109,779 tokens and $0.1273, cheaper than curl-cold at 158,021 tokens, the sk CLI at 166,424 and curl-warm at 178,577.">
+  <rect width="880" height="380" rx="10" fill="#0E1B25"/>
+  <text x="32" y="42" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="19" font-weight="600" fill="#E9EEF2">One 12-ask conversation, four ways to reach the same boat</text>
+  <text x="32" y="66" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#7F97A8">Billed input tokens per session (bar) and session cost. Claude Sonnet 4.6, 12 asks, run 3 of 3.</text>
+  <text x="32" y="124" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" font-weight="600" fill="#E9EEF2">mcp</text>
+  <text x="32" y="142" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">7 shaped tools</text>
+  <rect x="230" y="104" width="246" height="34" rx="4" fill="#88B868"/>
+  <text x="488" y="127" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#C8D2DA">109,779 tok &#183; $0.1273</text>
+  <text x="32" y="184" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" font-weight="600" fill="#E9EEF2">curl-cold</text>
+  <text x="32" y="202" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">Bash + a URL</text>
+  <rect x="230" y="164" width="354" height="34" rx="4" fill="#7F97A8"/>
+  <text x="596" y="187" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#C8D2DA">158,021 tok &#183; $0.1913</text>
+  <text x="32" y="244" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" font-weight="600" fill="#E9EEF2">cli</text>
+  <text x="32" y="262" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">Bash + the sk command</text>
+  <rect x="230" y="224" width="373" height="34" rx="4" fill="#5888A8"/>
+  <text x="615" y="247" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#C8D2DA">166,424 tok &#183; $0.1378</text>
+  <text x="32" y="304" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" font-weight="600" fill="#E9EEF2">curl-warm</text>
+  <text x="32" y="322" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">Bash + a path cheatsheet</text>
+  <rect x="230" y="284" width="400" height="34" rx="4" fill="#7F97A8"/>
+  <text x="642" y="307" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#C8D2DA">178,577 tok &#183; $0.1895</text>
+  <line x1="230" y1="94" x2="230" y2="328" stroke="#24384A" stroke-width="1"/>
+  <text x="32" y="360" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">Correctness was identical: 12 of 12 on every arm, 144 of 144 across three runs.</text>
+</svg>

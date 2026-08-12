@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" role="img" aria-label="Cumulative billed input diverges over a 12-ask conversation because every raw curl payload stays in the transcript, ending about 48,000 tokens above the MCP arm.">
+  <rect width="880" height="420" rx="10" fill="#0E1B25"/>
+  <text x="32" y="42" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="19" font-weight="600" fill="#E9EEF2">Raw JSON is a transcript tax, and it compounds</text>
+  <text x="32" y="66" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#7F97A8">Cumulative billed input across one warm 12-ask session.</text>
+  <text x="80" y="341" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#7F97A8">0k</text>
+  <text x="80" y="271" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#7F97A8">50k</text>
+  <text x="80" y="201" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#7F97A8">100k</text>
+  <text x="80" y="131" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#7F97A8">150k</text>
+  <line x1="92" y1="336" x2="664" y2="336" stroke="#24384A" stroke-width="1"/>
+  <polyline points="92.0,324.0 143.3,310.8 194.5,295.2 245.8,276.8 297.1,265.8 348.4,243.0 399.6,219.2 450.9,194.6 502.2,168.9 553.5,142.2 604.7,114.5 656.0,86.0" fill="none" stroke="#E9EEF2" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="656.0" cy="86.0" r="4" fill="#E9EEF2"/>
+  <line x1="662" y1="86" x2="668" y2="83" stroke="#E9EEF2" stroke-width="1"/>
+  <text x="674" y="88" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#E9EEF2">curl-warm 178,577</text>
+  <polyline points="92.0,324.8 143.3,312.8 194.5,300.0 245.8,278.6 297.1,270.5 348.4,245.7 399.6,228.2 450.9,200.3 502.2,180.6 553.5,160.2 604.7,127.3 656.0,103.0" fill="none" stroke="#5888A8" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="656.0" cy="103.0" r="4" fill="#5888A8"/>
+  <line x1="662" y1="103" x2="668" y2="103" stroke="#5888A8" stroke-width="1"/>
+  <text x="674" y="108" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#5888A8">cli 166,424</text>
+  <polyline points="92.0,325.1 143.3,312.9 194.5,298.7 245.8,281.7 297.1,271.9 348.4,251.8 399.6,241.0 450.9,219.0 502.2,194.9 553.5,169.9 604.7,143.8 656.0,114.8" fill="none" stroke="#7F97A8" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="656.0" cy="114.8" r="4" fill="#7F97A8"/>
+  <line x1="662" y1="115" x2="668" y2="123" stroke="#7F97A8" stroke-width="1"/>
+  <text x="674" y="128" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#7F97A8">curl-cold 158,021</text>
+  <polyline points="92.0,333.7 143.3,328.4 194.5,322.5 245.8,311.0 297.1,305.8 348.4,289.0 399.6,276.8 450.9,256.8 502.2,242.1 553.5,226.6 604.7,201.5 656.0,182.3" fill="none" stroke="#88B868" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="656.0" cy="182.3" r="4" fill="#88B868"/>
+  <line x1="662" y1="182" x2="668" y2="182" stroke="#88B868" stroke-width="1"/>
+  <text x="674" y="187" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#88B868">mcp 109,779</text>
+  <text x="92" y="358" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">ask 1</text>
+  <text x="246" y="358" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">ask 4</text>
+  <text x="451" y="358" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">ask 8</text>
+  <text x="656" y="358" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">ask 12</text>
+  <text x="32" y="400" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">A tool schema is written once and read from cache; every curl payload lands in the transcript and is re-read on every later turn.</text>
+</svg>

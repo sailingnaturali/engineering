@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" role="img" aria-label="Fixed prompt overhead: all seven signalk MCP schemas cost 1,160 tokens while merely enabling the Bash tool costs 3,860, and a production agent with 11 eagerly loaded MCP servers carries about 19,800 tokens on every turn.">
+  <rect width="880" height="400" rx="10" fill="#0E1B25"/>
+  <text x="32" y="42" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="19" font-weight="600" fill="#E9EEF2">Fixed prompt tokens, paid on every turn</text>
+  <text x="32" y="66" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#7F97A8">Measured with an ask that calls no tool, so the whole figure is standing overhead.</text>
+  <text x="32" y="126" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">all 7 signalk MCP schemas</text>
+  <rect x="340" y="109" width="22" height="26" rx="4" fill="#88B868"/>
+  <text x="374" y="128" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" font-weight="600" fill="#E9EEF2">1,160</text>
+  <text x="32" y="176" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">Bash tool, no guidance</text>
+  <rect x="340" y="159" width="74" height="26" rx="4" fill="#5888A8"/>
+  <text x="426" y="178" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" font-weight="600" fill="#E9EEF2">3,860</text>
+  <text x="32" y="226" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">Bash + sk cheatsheet</text>
+  <rect x="340" y="209" width="76" height="26" rx="4" fill="#5888A8"/>
+  <text x="428" y="228" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" font-weight="600" fill="#E9EEF2">3,943</text>
+  <text x="32" y="276" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">Bash + paths + unit table</text>
+  <rect x="340" y="259" width="81" height="26" rx="4" fill="#5888A8"/>
+  <text x="433" y="278" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" font-weight="600" fill="#E9EEF2">4,198</text>
+  <text x="32" y="326" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">production agent, 11 MCP servers</text>
+  <rect x="340" y="309" width="380" height="26" rx="4" fill="#C86A5A"/>
+  <text x="732" y="328" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" font-weight="600" fill="#E9EEF2">~19,800</text>
+  <line x1="340" y1="98" x2="340" y2="340" stroke="#24384A" stroke-width="1"/>
+  <text x="32" y="356" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">Enabling one Bash tool costs about 2,700 tokens more than all seven MCP schemas combined.</text>
+  <text x="32" y="378" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C86A5A">The fleet, not the protocol, is the bill: 17x the single-server figure, before anyone asks a question.</text>
+</svg>
