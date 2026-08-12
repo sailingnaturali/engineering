@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440"
+     viewBox="0 0 880 440" role="img"
+     aria-label="The router subscribes to the SignalK notifications tree and splits it three ways: every forwardable row to MQTT, alarm and emergency straight to the Telegram Bot API with no model in the path, and alert and warn to an agent gateway whose model turn is the extra hop that can break."
+     font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <rect width="880" height="440" rx="10" fill="#0E1B25"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7F97A8"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="36" font-size="18" fill="#E9EEF2" font-weight="600">One subscription, three outputs, two push lanes</text>
+
+  <!-- source -->
+  <rect x="16" y="182" width="150" height="76" rx="8" fill="#11212D" stroke="#24384A"/>
+  <text x="32" y="212" font-size="14" fill="#C8D2DA">SignalK</text>
+  <text x="32" y="232" font-size="14" fill="#C8D2DA">notifications tree</text>
+
+  <line x1="166" y1="220" x2="204" y2="220" stroke="#7F97A8" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- router -->
+  <rect x="206" y="166" width="196" height="108" rx="8" fill="#11212D" stroke="#24384A"/>
+  <text x="222" y="194" font-size="15" fill="#E9EEF2" font-weight="600">notification router</text>
+  <text x="222" y="216" font-size="13" fill="#7F97A8">in-process plugin</text>
+  <text x="222" y="238" font-size="13" fill="#7F97A8">subscribe · edge-trigger</text>
+  <text x="222" y="258" font-size="13" fill="#88B868">classify(state, method)</text>
+
+  <!-- to mqtt -->
+  <path d="M 402 200 L 436 200 L 436 100 L 468 100" fill="none" stroke="#7F97A8" stroke-width="2" marker-end="url(#a)"/>
+  <text x="446" y="90" font-size="13" fill="#7F97A8">every forwardable row</text>
+  <rect x="470" y="72" width="220" height="62" rx="8" fill="#11212D" stroke="#24384A"/>
+  <text x="486" y="98" font-size="15" fill="#C8D2DA">MQTT broker</text>
+  <text x="486" y="120" font-size="13" fill="#7F97A8">dashboard, voice agent</text>
+
+  <!-- hard lane -->
+  <path d="M 402 220 L 468 220" fill="none" stroke="#88B868" stroke-width="2" marker-end="url(#a)"/>
+  <text x="408" y="210" font-size="13" fill="#88B868">alarm | emergency + sound</text>
+  <rect x="470" y="188" width="220" height="62" rx="8" fill="#11212D" stroke="#88B868"/>
+  <text x="486" y="214" font-size="15" fill="#C8D2DA">Telegram Bot API</text>
+  <text x="486" y="236" font-size="13" fill="#88B868">no gateway, no model</text>
+  <line x1="690" y1="220" x2="726" y2="220" stroke="#88B868" stroke-width="2" marker-end="url(#a)"/>
+  <text x="732" y="215" font-size="14" fill="#88B868">phone</text>
+  <text x="732" y="236" font-size="13" fill="#7F97A8">~1 s</text>
+
+  <!-- soft lane -->
+  <path d="M 402 240 L 436 240 L 436 344 L 468 344" fill="none" stroke="#7F97A8" stroke-width="2" marker-end="url(#a)"/>
+  <text x="446" y="332" font-size="13" fill="#7F97A8">alert | warn + sound</text>
+  <rect x="470" y="316" width="150" height="62" rx="8" fill="#11212D" stroke="#24384A"/>
+  <text x="484" y="342" font-size="15" fill="#C8D2DA">agent gateway</text>
+  <text x="484" y="363" font-size="13" fill="#7F97A8">hook endpoint</text>
+  <line x1="620" y1="347" x2="654" y2="347" stroke="#7F97A8" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="656" y="316" width="150" height="62" rx="8" fill="#11212D" stroke="#24384A"/>
+  <text x="670" y="342" font-size="15" fill="#C8D2DA">model API</text>
+  <text x="670" y="363" font-size="13" fill="#7F97A8">one agent turn</text>
+
+  <!-- failure marks on the soft chain -->
+  <text x="628" y="308" font-size="17" fill="#C86A5A" font-weight="600">✕</text>
+  <text x="806" y="308" font-size="17" fill="#C86A5A" font-weight="600">✕</text>
+  <text x="470" y="404" font-size="13" fill="#C86A5A">Two extra hops that can break — and every one of them breaks the soft lane only.</text>
+
+  <text x="16" y="404" font-size="13" fill="#7F97A8">A hard alarm takes both lanes:</text>
+  <text x="16" y="424" font-size="13" fill="#7F97A8">siren now, context when it is ready.</text>
+</svg>
