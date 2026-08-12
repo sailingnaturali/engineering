@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430"
+     viewBox="0 0 880 430" role="img"
+     aria-label="One missing environment variable fails on two channels: the typed secret reference throws a loud SecretRefUnavailableError on stderr, while the string-only field prints a Config warnings box to stdout that lands inside the parsed data rows, so an awk filter returns nothing and a healthy alarm lane reads as down.">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7F97A8"/>
+    </marker>
+  </defs>
+  <rect width="880" height="430" rx="10" fill="#0E1B25"/>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+    <text x="24" y="36" font-size="18" fill="#E9EEF2" font-weight="600">One missing env var, two failure channels</text>
+    <text x="24" y="58" font-size="14" fill="#7F97A8">a bare CLI invocation — the launcher script sourced the env file, your shell did not</text>
+
+    <text x="24" y="88" font-size="13" fill="#7F97A8" letter-spacing="0.6">CONFIG FIELD</text>
+    <text x="274" y="88" font-size="13" fill="#7F97A8" letter-spacing="0.6">CHANNEL</text>
+    <text x="564" y="88" font-size="13" fill="#7F97A8" letter-spacing="0.6">WHAT IT COSTS YOU</text>
+
+    <!-- lane 1: stderr -->
+    <rect x="24" y="100" width="210" height="90" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="38" y="128" font-size="14" fill="#E9EEF2" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">gateway.auth.token</text>
+    <text x="38" y="152" font-size="13" fill="#C8D2DA">typed secret reference</text>
+    <text x="38" y="172" font-size="13" fill="#7F97A8">schema accepts an object</text>
+
+    <line x1="234" y1="145" x2="268" y2="145" stroke="#7F97A8" stroke-width="2" marker-end="url(#ah)"/>
+
+    <rect x="274" y="100" width="250" height="90" rx="8" fill="#11212D" stroke="#C86A5A" stroke-width="2"/>
+    <text x="288" y="126" font-size="14" fill="#C86A5A" font-weight="600">stderr — loud</text>
+    <text x="288" y="150" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">SecretRefUnavailableError:</text>
+    <text x="288" y="170" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">unavailable in this path</text>
+
+    <line x1="524" y1="145" x2="560" y2="145" stroke="#7F97A8" stroke-width="2" marker-end="url(#ah)"/>
+    <text x="534" y="152" font-size="22" fill="#C86A5A" font-weight="700">✕</text>
+    <text x="416" y="212" font-size="13" fill="#C86A5A">redirecting stderr to /dev/null cuts the lane you needed</text>
+
+    <rect x="564" y="100" width="292" height="90" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="578" y="128" font-size="14" fill="#E9EEF2">You see it — unless you wrote</text>
+    <text x="578" y="152" font-size="14" fill="#E9EEF2" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">2&gt;/dev/null</text>
+    <text x="578" y="174" font-size="13" fill="#7F97A8">a normal scripting reflex</text>
+
+    <!-- lane 2: stdout -->
+    <rect x="24" y="240" width="210" height="100" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="38" y="268" font-size="14" fill="#E9EEF2" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">hooks.token</text>
+    <text x="38" y="292" font-size="13" fill="#C8D2DA">plain string only</text>
+    <text x="38" y="312" font-size="13" fill="#7F97A8">schema forbids the object</text>
+    <text x="38" y="330" font-size="13" fill="#7F97A8">form — so it warns instead</text>
+
+    <line x1="234" y1="290" x2="268" y2="290" stroke="#7F97A8" stroke-width="2" marker-end="url(#ah)"/>
+
+    <rect x="274" y="240" width="250" height="100" rx="8" fill="#11212D" stroke="#C86A5A" stroke-width="2"/>
+    <text x="288" y="266" font-size="14" fill="#C86A5A" font-weight="600">stdout — silent</text>
+    <text x="288" y="290" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">┌ Config warnings ──┐</text>
+    <text x="288" y="309" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">│ ! hooks.token:    │</text>
+    <text x="288" y="328" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">│   Missing env var │</text>
+
+    <line x1="524" y1="290" x2="560" y2="290" stroke="#7F97A8" stroke-width="2" marker-end="url(#ah)"/>
+
+    <rect x="564" y="240" width="292" height="100" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="578" y="266" font-size="14" fill="#E9EEF2">Box-drawing characters land</text>
+    <text x="578" y="284" font-size="14" fill="#E9EEF2">where the data rows should be</text>
+    <text x="578" y="308" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">| awk '$2=="agent_run"'</text>
+    <text x="578" y="330" font-size="13" fill="#C86A5A">returns nothing</text>
+
+    <!-- outcome -->
+    <rect x="24" y="360" width="832" height="52" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="38" y="384" font-size="14" fill="#E9EEF2">Together: a clean-looking pipeline, wrong data, no visible error anywhere.</text>
+    <text x="38" y="404" font-size="14" fill="#C86A5A">Read as “no agent runs, the alarm lane is DOWN” instead of “your shell is missing an env var”.</text>
+  </g>
+</svg>
