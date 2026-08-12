@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420"
+     viewBox="0 0 880 420" role="img"
+     aria-label="Under a restrictive allowlist, naming a chat channel in config auto-activates its plugin, but naming an MCP server does not auto-activate the MCP bridge plugin, so every MCP tool disappears.">
+  <rect width="880" height="420" rx="10" fill="#0E1B25"/>
+
+  <text x="28" y="36" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="18" font-weight="600" fill="#E9EEF2">The asymmetry: which config keys rescue their own plugin</text>
+  <text x="28" y="58" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#7F97A8">Both plugins are bundled. Both are missing from the allowlist. Only one survives.</text>
+
+  <!-- Column headers -->
+  <text x="28" y="92" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">WHAT CONFIG NAMES</text>
+  <text x="330" y="92" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">THE PLUGIN THAT OWNS IT</text>
+  <text x="638" y="92" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">WHAT THE AGENT CAN DO</text>
+
+  <!-- ===== Lane A: works ===== -->
+  <rect x="28" y="108" width="240" height="78" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="44" y="136" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="14" fill="#C8D2DA">channels.telegram</text>
+  <text x="44" y="160" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">a channel config &#8212; a surface</text>
+  <text x="44" y="177" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">the plugin manifest owns</text>
+
+  <line x1="268" y1="147" x2="322" y2="147" stroke="#88B868" stroke-width="2" marker-end="url(#arrowGood)"/>
+  <text x="252" y="207" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#88B868">auto-activates</text>
+
+  <rect x="330" y="108" width="238" height="78" rx="8" fill="#11212D" stroke="#88B868" stroke-width="2"/>
+  <text x="346" y="136" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="14" fill="#C8D2DA">telegram</text>
+  <text x="346" y="160" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#88B868">LOADS &#8212; not in the allowlist,</text>
+  <text x="346" y="177" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#88B868">activated anyway</text>
+
+  <line x1="568" y1="147" x2="630" y2="147" stroke="#88B868" stroke-width="2" marker-end="url(#arrowGood)"/>
+
+  <rect x="638" y="108" width="214" height="78" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="654" y="140" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C8D2DA">Still answers your</text>
+  <text x="654" y="160" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C8D2DA">messages &#8212; so nothing</text>
+  <text x="654" y="180" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C8D2DA">looks broken</text>
+
+  <line x1="28" y1="232" x2="852" y2="232" stroke="#24384A" stroke-width="1"/>
+
+  <!-- ===== Lane B: breaks ===== -->
+  <rect x="28" y="258" width="240" height="78" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="44" y="286" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="14" fill="#C8D2DA">mcp.servers.signalk</text>
+  <text x="44" y="310" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">a server entry &#8212; NOT a</text>
+  <text x="44" y="327" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">surface any manifest owns</text>
+
+  <line x1="268" y1="297" x2="322" y2="297" stroke="#C86A5A" stroke-width="2" marker-end="url(#arrowBad)"/>
+  <text x="286" y="284" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="16" fill="#C86A5A">&#10007;</text>
+  <text x="238" y="357" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C86A5A">no auto-activation</text>
+
+  <rect x="330" y="258" width="238" height="78" rx="8" fill="#11212D" stroke="#C86A5A" stroke-width="2"/>
+  <text x="346" y="286" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="14" fill="#C8D2DA">bundle-mcp</text>
+  <text x="346" y="310" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C86A5A">BLOCKED &#8212; not in the</text>
+  <text x="346" y="327" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C86A5A">allowlist, nothing rescues it</text>
+
+  <line x1="568" y1="297" x2="630" y2="297" stroke="#C86A5A" stroke-width="2" marker-end="url(#arrowBad)"/>
+
+  <rect x="638" y="258" width="214" height="78" rx="8" fill="#11212D" stroke="#C86A5A" stroke-width="2"/>
+  <text x="654" y="290" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C86A5A">Every MCP tool is gone.</text>
+  <text x="654" y="310" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C8D2DA">The servers still connect.</text>
+  <text x="654" y="330" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C8D2DA">No error is raised.</text>
+
+  <text x="28" y="392" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#7F97A8">The lane that keeps working is the one you would notice. The lane that breaks is the one you have to go looking for.</text>
+
+  <defs>
+    <marker id="arrowGood" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#88B868"/>
+    </marker>
+    <marker id="arrowBad" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C86A5A"/>
+    </marker>
+  </defs>
+</svg>

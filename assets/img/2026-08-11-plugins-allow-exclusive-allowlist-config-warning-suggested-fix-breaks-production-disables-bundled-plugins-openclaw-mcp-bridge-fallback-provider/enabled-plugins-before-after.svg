@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="384"
+     viewBox="0 0 880 384" role="img"
+     aria-label="Taking the warning's suggested one-entry plugins.allow list collapsed enabled plugins from 47 to 3, and the two casualties that mattered were the fallback model provider and the MCP bridge.">
+  <rect width="880" height="384" rx="10" fill="#0E1B25"/>
+
+  <text x="28" y="38" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="18" font-weight="600" fill="#E9EEF2">Enabled plugins, before and after taking the warning's advice</text>
+  <text x="28" y="60" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#7F97A8">68 plugins discovered on the gateway (46 of them bundled)</text>
+
+  <!-- Bar 1: before -->
+  <text x="28" y="103" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" fill="#C8D2DA">No allowlist</text>
+  <text x="28" y="122" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="13" fill="#7F97A8">plugins.allow absent</text>
+  <rect x="230" y="88" width="520" height="30" rx="4" fill="#88B868"/>
+  <text x="762" y="109" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="19" font-weight="600" fill="#E9EEF2">47</text>
+
+  <!-- Bar 2: after -->
+  <text x="28" y="168" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" fill="#C8D2DA">Suggested allowlist</text>
+  <text x="28" y="187" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="13" fill="#7F97A8">allow: [ deepseek ]</text>
+  <rect x="230" y="153" width="33" height="30" rx="4" fill="#C86A5A"/>
+  <text x="275" y="174" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="19" font-weight="600" fill="#E9EEF2">3</text>
+  <text x="308" y="174" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" fill="#C86A5A">44 plugins turned off, silently</text>
+
+  <line x1="230" y1="200" x2="850" y2="200" stroke="#24384A" stroke-width="1"/>
+
+  <!-- Survivors panel -->
+  <rect x="28" y="220" width="400" height="140" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="46" y="246" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="600" fill="#88B868">The 3 survivors</text>
+  <text x="46" y="272" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="13" fill="#C8D2DA">deepseek</text>
+  <text x="170" y="272" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">primary provider &#8212; explicitly allowed</text>
+  <text x="46" y="298" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="13" fill="#C8D2DA">telegram</text>
+  <text x="170" y="298" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">chat channel &#8212; auto-activated</text>
+  <text x="46" y="324" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="13" fill="#C8D2DA">memory-core</text>
+  <text x="170" y="324" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">memory &#8212; auto-activated</text>
+  <text x="46" y="348" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">Config named a surface each of these owns.</text>
+
+  <!-- Casualties panel -->
+  <rect x="452" y="220" width="400" height="140" rx="8" fill="#11212D" stroke="#C86A5A" stroke-width="1"/>
+  <text x="470" y="246" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="600" fill="#C86A5A">The 2 casualties that mattered</text>
+  <text x="470" y="273" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" fill="#C86A5A">&#10007;</text>
+  <text x="490" y="273" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="13" fill="#C8D2DA">anthropic-provider</text>
+  <text x="490" y="292" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">the fallback model &#8212; a primary outage</text>
+  <text x="490" y="309" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">now leaves no agent at all</text>
+  <text x="470" y="334" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" fill="#C86A5A">&#10007;</text>
+  <text x="490" y="334" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="13" fill="#C8D2DA">bundle-mcp</text>
+  <text x="490" y="353" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">every MCP tool &#8212; the agent goes blind</text>
+</svg>
