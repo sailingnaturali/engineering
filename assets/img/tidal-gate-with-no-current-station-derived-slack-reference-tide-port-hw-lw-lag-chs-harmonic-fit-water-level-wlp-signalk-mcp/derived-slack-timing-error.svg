@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" role="img"
+     aria-label="Out-of-sample high-water and low-water timing error for the derived-slack fit at Point Atkinson, with a median of 5.5 minutes across nineteen extremes and the long tail concentrated on the flat low waters.">
+  <rect width="880" height="500" rx="10" fill="#0E1B25"/>
+  <text x="32" y="38" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="19" font-weight="600" fill="#E9EEF2">Derived-slack fit: out-of-sample HW/LW timing error, minutes</text>
+  <text x="32" y="62" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#7F97A8">Point Atkinson, 19 extremes over the 5 days before a 210-day training window. Water-level fit RMS 0.075 m.</text>
+  <line x1="205.0" y1="86" x2="205.0" y2="476" stroke="#24384A" stroke-width="1"/>
+  <text x="205.0" y="496" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="middle">0</text>
+  <line x1="322.0" y1="86" x2="322.0" y2="476" stroke="#24384A" stroke-width="1"/>
+  <text x="322.0" y="496" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="middle">5</text>
+  <line x1="439.0" y1="86" x2="439.0" y2="476" stroke="#24384A" stroke-width="1"/>
+  <text x="439.0" y="496" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="middle">10</text>
+  <line x1="556.0" y1="86" x2="556.0" y2="476" stroke="#24384A" stroke-width="1"/>
+  <text x="556.0" y="496" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="middle">15</text>
+  <line x1="673.0" y1="86" x2="673.0" y2="476" stroke="#24384A" stroke-width="1"/>
+  <text x="673.0" y="496" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="middle">20</text>
+  <line x1="790.0" y1="86" x2="790.0" y2="476" stroke="#24384A" stroke-width="1"/>
+  <text x="790.0" y="496" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="middle">25</text>
+  <text x="790" y="496" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">minutes</text>
+  <line x1="333.7" y1="86" x2="333.7" y2="476" stroke="#E9EEF2" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="341.7" y="80" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#E9EEF2">median 5.5 min</text>
+  <text x="32" y="108" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#C8D2DA">HIGH WATER + 25 min lag &#183; 10 extremes &#183; median 6.0</text>
+  <text x="196" y="128" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">HW 1</text>
+  <rect x="205" y="119" width="198.9" height="11" rx="2" fill="#5888A8"/>
+  <text x="411.9" y="128" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">8.5</text>
+  <text x="196" y="145" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">HW 2</text>
+  <rect x="205" y="136" width="243.4" height="11" rx="2" fill="#5888A8"/>
+  <text x="456.4" y="145" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">10.4</text>
+  <text x="196" y="162" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">HW 3</text>
+  <rect x="205" y="153" width="128.7" height="11" rx="2" fill="#5888A8"/>
+  <text x="341.7" y="162" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">5.5</text>
+  <text x="196" y="179" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">HW 4</text>
+  <rect x="205" y="170" width="238.7" height="11" rx="2" fill="#5888A8"/>
+  <text x="451.7" y="179" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">10.2</text>
+  <text x="196" y="196" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">HW 5</text>
+  <rect x="205" y="187" width="51.5" height="11" rx="2" fill="#5888A8"/>
+  <text x="264.5" y="196" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">2.2</text>
+  <text x="196" y="213" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">HW 6</text>
+  <rect x="205" y="204" width="152.1" height="11" rx="2" fill="#5888A8"/>
+  <text x="365.1" y="213" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">6.5</text>
+  <text x="196" y="230" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">HW 7</text>
+  <rect x="205" y="221" width="11.7" height="11" rx="2" fill="#5888A8"/>
+  <text x="224.7" y="230" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">0.5</text>
+  <text x="196" y="247" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">HW 8</text>
+  <rect x="205" y="238" width="7.0" height="11" rx="2" fill="#5888A8"/>
+  <text x="220.0" y="247" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">0.3</text>
+  <text x="196" y="264" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">HW 9</text>
+  <rect x="205" y="255" width="49.1" height="11" rx="2" fill="#5888A8"/>
+  <text x="262.1" y="264" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">2.1</text>
+  <text x="196" y="281" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">HW 10</text>
+  <rect x="205" y="272" width="149.8" height="11" rx="2" fill="#5888A8"/>
+  <text x="362.8" y="281" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">6.4</text>
+  <text x="32" y="300" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#C8D2DA">LOW WATER + 35 min lag &#183; 9 extremes &#183; median 5.3, four above 13 min</text>
+  <text x="196" y="320" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">LW 1</text>
+  <rect x="205" y="311" width="493.7" height="11" rx="2" fill="#88B868"/>
+  <text x="706.7" y="320" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">21.1</text>
+  <text x="196" y="337" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">LW 2</text>
+  <rect x="205" y="328" width="100.6" height="11" rx="2" fill="#88B868"/>
+  <text x="313.6" y="337" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">4.3</text>
+  <text x="196" y="354" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">LW 3</text>
+  <rect x="205" y="345" width="556.9" height="11" rx="2" fill="#88B868"/>
+  <text x="769.9" y="354" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">23.8</text>
+  <text x="196" y="371" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">LW 4</text>
+  <rect x="205" y="362" width="119.3" height="11" rx="2" fill="#88B868"/>
+  <text x="332.3" y="371" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">5.1</text>
+  <text x="196" y="388" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">LW 5</text>
+  <rect x="205" y="379" width="489.1" height="11" rx="2" fill="#88B868"/>
+  <text x="702.1" y="388" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">20.9</text>
+  <text x="196" y="405" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">LW 6</text>
+  <rect x="205" y="396" width="124.0" height="11" rx="2" fill="#88B868"/>
+  <text x="337.0" y="405" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">5.3</text>
+  <text x="196" y="422" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">LW 7</text>
+  <rect x="205" y="413" width="325.3" height="11" rx="2" fill="#88B868"/>
+  <text x="538.3" y="422" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">13.9</text>
+  <text x="196" y="439" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">LW 8</text>
+  <rect x="205" y="430" width="86.6" height="11" rx="2" fill="#88B868"/>
+  <text x="299.6" y="439" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">3.7</text>
+  <text x="196" y="456" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8" text-anchor="end">LW 9</text>
+  <rect x="205" y="447" width="112.3" height="11" rx="2" fill="#88B868"/>
+  <text x="325.3" y="456" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">4.8</text>
+  <line x1="205" y1="86" x2="205" y2="476" stroke="#7F97A8" stroke-width="1.5"/>
+</svg>

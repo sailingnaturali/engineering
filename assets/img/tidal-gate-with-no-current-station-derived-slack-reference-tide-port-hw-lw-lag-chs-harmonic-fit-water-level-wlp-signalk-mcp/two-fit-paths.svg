@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="612" viewBox="0 0 880 612" role="img"
+     aria-label="Two fit paths side by side: a fitted gate goes from a CHS current station through a velocity series to a harmonic record with a flood and ebb axis, while a derived gate goes from a reference tide port through a water-level series to a tide-harmonic record with no axis, then to a derived-slack record holding only a reference and two lag values.">
+  <rect width="880" height="612" rx="10" fill="#0E1B25"/>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#7F97A8"/>
+    </marker>
+  </defs>
+
+  <text x="32" y="36" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="19" font-weight="600" fill="#E9EEF2">Two fit paths: a gate with a current station, and a gate without one</text>
+
+  <!-- column headers -->
+  <text x="32" y="72" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#5888A8">FITTED GATE &#8212; e.g. Dodd Narrows</text>
+  <text x="456" y="72" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#88B868">DERIVED GATE &#8212; Malibu Rapids</text>
+  <line x1="440" y1="60" x2="440" y2="592" stroke="#24384A" stroke-width="1"/>
+
+  <!-- LEFT COLUMN -->
+  <rect x="32" y="88" width="392" height="52" rx="7" fill="#11212D" stroke="#24384A"/>
+  <text x="48" y="110" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#E9EEF2">1. CHS current station exists</text>
+  <text x="48" y="130" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">the pass has a published prediction station</text>
+  <line x1="228" y1="140" x2="228" y2="166" stroke="#7F97A8" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="32" y="172" width="392" height="52" rx="7" fill="#11212D" stroke="#24384A"/>
+  <text x="48" y="194" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#E9EEF2">2. Velocity series, projected on the major axis</text>
+  <text x="48" y="214" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">15-minute sampling, knots, signed</text>
+  <line x1="228" y1="224" x2="228" y2="250" stroke="#7F97A8" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="32" y="256" width="392" height="44" rx="7" fill="#11212D" stroke="#24384A"/>
+  <text x="48" y="284" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#E9EEF2">3. fit() &#8212; the shared 23-constituent basis</text>
+  <line x1="228" y1="300" x2="228" y2="326" stroke="#7F97A8" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="32" y="332" width="392" height="98" rx="7" fill="#11212D" stroke="#5888A8" stroke-width="1.5"/>
+  <text x="48" y="356" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#E9EEF2">4. record &#8212; type: "harmonic"</text>
+  <text x="48" y="378" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#C8D2DA">floodDirection, ebbDirection</text>
+  <text x="48" y="398" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#C8D2DA">constituents[ ], offset (Z0 mean flow)</text>
+  <text x="48" y="418" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">everything needed for a velocity vector</text>
+  <line x1="228" y1="430" x2="228" y2="500" stroke="#7F97A8" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="32" y="506" width="392" height="80" rx="7" fill="#11212D" stroke="#88B868" stroke-width="1.5"/>
+  <text x="48" y="530" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#88B868">Serves: slack, flood, ebb, speed, set</text>
+  <text x="48" y="552" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">published to environment.current AND /currents</text>
+  <text x="48" y="572" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">a signed velocity at any instant</text>
+
+  <!-- RIGHT COLUMN -->
+  <rect x="456" y="88" width="392" height="52" rx="7" fill="#11212D" stroke="#C86A5A" stroke-width="1.5"/>
+  <text x="472" y="110" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#C86A5A">&#10005; 1. No current station at all</text>
+  <text x="472" y="130" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">nothing to fetch, nothing to fit, no speed exists</text>
+  <line x1="652" y1="140" x2="652" y2="166" stroke="#7F97A8" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="456" y="172" width="392" height="52" rx="7" fill="#11212D" stroke="#24384A"/>
+  <text x="472" y="194" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#E9EEF2">2. Reference tide port instead</text>
+  <text x="472" y="214" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">named by the registry: Point Atkinson</text>
+  <line x1="652" y1="224" x2="652" y2="250" stroke="#7F97A8" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="456" y="256" width="392" height="44" rx="7" fill="#11212D" stroke="#24384A"/>
+  <text x="472" y="278" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#E9EEF2">3. wlp water level, 1 min</text>
+  <text x="472" y="294" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">decimate to 15 min, then the same fit() basis</text>
+  <line x1="652" y1="300" x2="652" y2="326" stroke="#7F97A8" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="456" y="332" width="392" height="98" rx="7" fill="#11212D" stroke="#5888A8" stroke-width="1.5"/>
+  <text x="472" y="356" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#E9EEF2">4. record &#8212; type: "tide-harmonic"</text>
+  <text x="472" y="378" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#C86A5A">no floodDirection / ebbDirection</text>
+  <text x="472" y="398" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#C8D2DA">constituents[ ] in metres, offset (datum)</text>
+  <text x="472" y="418" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">19 constituents, RMS 0.075 m over 210 days</text>
+  <line x1="652" y1="430" x2="652" y2="500" stroke="#7F97A8" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="664" y="452" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#E9EEF2">predict HW / LW, then shift:</text>
+  <text x="664" y="472" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#E9EEF2">HW + 25 min &#183; LW + 35 min</text>
+
+  <rect x="456" y="506" width="392" height="80" rx="7" fill="#11212D" stroke="#88B868" stroke-width="1.5"/>
+  <text x="472" y="530" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#88B868">5. record &#8212; type: "derived-slack"</text>
+  <text x="472" y="552" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#C8D2DA">reference, hwLagMinutes, lwLagMinutes</text>
+  <text x="472" y="572" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C86A5A">no constituents &#183; /currents only, never environment.current</text>
+</svg>
