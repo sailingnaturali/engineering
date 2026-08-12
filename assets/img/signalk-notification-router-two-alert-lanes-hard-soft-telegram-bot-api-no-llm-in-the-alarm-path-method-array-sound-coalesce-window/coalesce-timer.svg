@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="348"
+     viewBox="0 0 880 348" role="img"
+     aria-label="A timeline comparison: re-arming the coalesce window on every arriving notification means a steady trickle resets it forever and the batch never flushes, while arming the timer once from the oldest pending row flushes on schedule at ten seconds as one agent turn."
+     font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <rect width="880" height="348" rx="10" fill="#0E1B25"/>
+
+  <text x="24" y="36" font-size="18" fill="#E9EEF2" font-weight="600">Where the coalesce window starts decides whether it ever ends</text>
+
+  <!-- top: sliding window -->
+  <text x="24" y="70" font-size="15" fill="#C86A5A">Re-armed on every arriving row — sliding window</text>
+
+  <rect x="90" y="80" width="280" height="8" rx="4" fill="#7F97A8" opacity="0.35"/>
+  <rect x="202" y="94" width="280" height="8" rx="4" fill="#7F97A8" opacity="0.35"/>
+  <rect x="314" y="108" width="280" height="8" rx="4" fill="#7F97A8" opacity="0.35"/>
+  <rect x="426" y="122" width="280" height="8" rx="4" fill="#7F97A8" opacity="0.35"/>
+  <text x="716" y="130" font-size="14" fill="#C86A5A">✕ never flushes</text>
+
+  <line x1="90" y1="150" x2="800" y2="150" stroke="#7F97A8" stroke-width="1"/>
+  <circle cx="90" cy="150" r="5" fill="#C8D2DA"/>
+  <circle cx="202" cy="150" r="5" fill="#C8D2DA"/>
+  <circle cx="314" cy="150" r="5" fill="#C8D2DA"/>
+  <circle cx="426" cy="150" r="5" fill="#C8D2DA"/>
+  <circle cx="538" cy="150" r="5" fill="#C8D2DA"/>
+  <circle cx="650" cy="150" r="5" fill="#C8D2DA"/>
+  <text x="90" y="172" font-size="13" fill="#7F97A8">0 s</text>
+  <text x="360" y="172" font-size="13" fill="#7F97A8">a row every 4 s, window is 10 s</text>
+
+  <!-- bottom: armed from oldest -->
+  <text x="24" y="216" font-size="15" fill="#88B868">Armed once, from the oldest pending row — armFlush()</text>
+
+  <rect x="90" y="228" width="280" height="8" rx="4" fill="#88B868"/>
+  <text x="384" y="237" font-size="14" fill="#88B868">flush: one agent turn, 3 rows</text>
+
+  <line x1="90" y1="258" x2="800" y2="258" stroke="#7F97A8" stroke-width="1"/>
+  <circle cx="90" cy="258" r="5" fill="#C8D2DA"/>
+  <circle cx="202" cy="258" r="5" fill="#C8D2DA"/>
+  <circle cx="314" cy="258" r="5" fill="#C8D2DA"/>
+  <line x1="370" y1="240" x2="370" y2="272" stroke="#E9EEF2" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="90" y="280" font-size="13" fill="#7F97A8">0 s</text>
+  <text x="352" y="298" font-size="13" fill="#E9EEF2">t + 10 s</text>
+
+  <line x1="24" y1="316" x2="856" y2="316" stroke="#24384A" stroke-width="1"/>
+  <text x="24" y="338" font-size="13" fill="#7F97A8">The hard lane never batches at all — deduplication is a comfort feature, a missed alarm is not.</text>
+</svg>
