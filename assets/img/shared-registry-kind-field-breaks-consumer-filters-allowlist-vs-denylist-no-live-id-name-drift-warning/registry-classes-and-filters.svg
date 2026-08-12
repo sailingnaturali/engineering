@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440"
+     viewBox="0 0 880 440" role="img"
+     aria-label="The shared registry holds four row classes; each consumer hand-rolled a filter that excluded one new class and let the other leak in, so signalk-currents swept in ten tide ports and chs-constituents swept in the derived gate.">
+  <rect width="880" height="440" rx="10" fill="#0E1B25"/>
+  <defs>
+    <marker id="ar-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7F97A8"/>
+    </marker>
+    <marker id="ar-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C86A5A"/>
+    </marker>
+  </defs>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+    <text x="30" y="36" font-size="18" fill="#E9EEF2">One registry, four row classes — and where each consumer’s filter leaks</text>
+
+    <!-- registry panel -->
+    <rect x="30" y="54" width="820" height="126" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+    <text x="46" y="78" font-size="15" fill="#E9EEF2">station-corrections registry — 31 rows, two curated classes</text>
+
+    <rect x="46" y="90" width="185" height="74" rx="6" fill="#0E1B25" stroke="#24384A"/>
+    <text x="60" y="114" font-size="14" fill="#C8D2DA">10 tide ports</text>
+    <text x="60" y="134" font-size="13" fill="#7F97A8">kind: tide</text>
+    <text x="60" y="152" font-size="13" fill="#7F97A8">added 2026-07-22</text>
+
+    <rect x="245" y="90" width="185" height="74" rx="6" fill="#0E1B25" stroke="#24384A"/>
+    <text x="259" y="114" font-size="14" fill="#C8D2DA">19 current gates</text>
+    <text x="259" y="134" font-size="13" fill="#7F97A8">kind absent</text>
+    <text x="259" y="152" font-size="13" fill="#7F97A8">the original rows</text>
+
+    <rect x="444" y="90" width="185" height="74" rx="6" fill="#0E1B25" stroke="#24384A"/>
+    <text x="458" y="114" font-size="14" fill="#C8D2DA">1 derived gate</text>
+    <text x="458" y="134" font-size="13" fill="#7F97A8">kind: current + derived</text>
+    <text x="458" y="152" font-size="13" fill="#7F97A8">added 2026-07-23</text>
+
+    <rect x="643" y="90" width="191" height="74" rx="6" fill="#0E1B25" stroke="#24384A"/>
+    <text x="657" y="114" font-size="14" fill="#C8D2DA">1 NOAA gate</text>
+    <text x="657" y="134" font-size="13" fill="#7F97A8">kind absent</text>
+    <text x="657" y="152" font-size="13" fill="#7F97A8">separate provider path</text>
+
+    <!-- edges -->
+    <line x1="138" y1="182" x2="205" y2="286" stroke="#C86A5A" stroke-width="2" marker-end="url(#ar-r)"/>
+    <text x="60" y="238" font-size="13" fill="#C86A5A">all 10 leak in</text>
+
+    <line x1="320" y1="182" x2="250" y2="286" stroke="#7F97A8" stroke-width="2" marker-end="url(#ar-g)"/>
+    <line x1="355" y1="182" x2="625" y2="286" stroke="#7F97A8" stroke-width="2" marker-end="url(#ar-g)"/>
+    <text x="392" y="238" font-size="13" fill="#7F97A8">wanted by both</text>
+
+    <line x1="536" y1="182" x2="660" y2="286" stroke="#C86A5A" stroke-width="2" marker-end="url(#ar-r)"/>
+    <text x="672" y="238" font-size="13" fill="#C86A5A">leaks in</text>
+
+    <!-- consumer panels -->
+    <rect x="60" y="290" width="360" height="100" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+    <text x="76" y="316" font-size="15" fill="#E9EEF2">signalk-currents</text>
+    <text x="76" y="340" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">provider === 'chs' &amp;&amp; !derived</text>
+    <text x="76" y="366" font-size="13" fill="#C86A5A">✕ fetches 10 ports that publish no current series</text>
+    <text x="76" y="382" font-size="13" fill="#7F97A8">one throw per port, per poll cycle</text>
+
+    <rect x="460" y="290" width="360" height="100" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+    <text x="476" y="316" font-size="15" fill="#E9EEF2">chs-constituents</text>
+    <text x="476" y="340" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">provider === 'chs' &amp;&amp; kind is current</text>
+    <text x="476" y="366" font-size="13" fill="#C86A5A">✕ warns that a gate with no live station drifted</text>
+    <text x="476" y="382" font-size="13" fill="#7F97A8">one warning per build, forever</text>
+
+    <text x="30" y="420" font-size="14" fill="#7F97A8">Each filter was written when every row was a current gate. Neither is wrong about the rows it knew.</text>
+  </g>
+</svg>
