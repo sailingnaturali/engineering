@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="548" viewBox="0 0 880 548" role="img"
+     aria-label="Diagram of a delivery-health path — lane outcome, failure counter, raised guard, notifications tree, MQTT publish, dashboard and voice — with four marked points where the alarm silently stops: the callback that never fires, the loop guard placed before the publish, the restart that clears the in-memory set but not the tree, and a visual-only alarm that cannot page.">
+  <rect width="880" height="548" rx="10" fill="#0E1B25"/>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+    <text x="36" y="40" font-size="19" font-weight="600" fill="#E9EEF2">The delivery-health path, and four places it silently stops</text>
+    <text x="36" y="62" font-size="13" fill="#7F97A8">Every hop is a seam between two components that were tested separately.</text>
+
+    <!-- chain arrow spine -->
+    <g stroke="#7F97A8" stroke-width="2" fill="none">
+      <path d="M186 148 L186 172" marker-end="url(#ah)"/>
+      <path d="M186 236 L186 260" marker-end="url(#ah)"/>
+      <path d="M186 324 L186 348" marker-end="url(#ah)"/>
+      <path d="M186 412 L186 436" marker-end="url(#ah)"/>
+      <path d="M186 500 L186 518" marker-end="url(#ah)"/>
+    </g>
+    <defs>
+      <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+        <path d="M0 0 L9 4.5 L0 9 z" fill="#7F97A8"/>
+      </marker>
+    </defs>
+
+    <!-- step boxes -->
+    <g>
+      <rect x="36" y="92" width="300" height="56" rx="7" fill="#11212D" stroke="#24384A"/>
+      <text x="52" y="118" font-size="15" font-weight="600" fill="#E9EEF2">1. A lane send completes</text>
+      <text x="52" y="137" font-size="13" fill="#C8D2DA">MQTT publish, Telegram POST, webhook POST</text>
+
+      <rect x="36" y="180" width="300" height="56" rx="7" fill="#11212D" stroke="#24384A"/>
+      <text x="52" y="206" font-size="15" font-weight="600" fill="#E9EEF2">2. recordResult(lane, ok)</text>
+      <text x="52" y="225" font-size="13" fill="#C8D2DA">counts consecutive failures per lane</text>
+
+      <rect x="36" y="268" width="300" height="56" rx="7" fill="#11212D" stroke="#24384A"/>
+      <text x="52" y="294" font-size="15" font-weight="600" fill="#E9EEF2">3. threshold reached: raised + set alarm</text>
+      <text x="52" y="313" font-size="13" fill="#C8D2DA">writes deliveryFailed.lane into the tree</text>
+
+      <rect x="36" y="356" width="300" height="56" rx="7" fill="#11212D" stroke="#24384A"/>
+      <text x="52" y="382" font-size="15" font-weight="600" fill="#E9EEF2">4. the tree row is published to MQTT</text>
+      <text x="52" y="401" font-size="13" fill="#C8D2DA">the only exit from the notifications tree</text>
+
+      <rect x="36" y="444" width="300" height="56" rx="7" fill="#11212D" stroke="#24384A"/>
+      <text x="52" y="470" font-size="15" font-weight="600" fill="#E9EEF2">5. dashboard and voice agent</text>
+      <text x="52" y="489" font-size="13" fill="#C8D2DA">the channels independent of the failing lane</text>
+
+      <text x="52" y="536" font-size="15" font-weight="600" fill="#88B868">a human notices</text>
+    </g>
+
+    <!-- failure markers on the spine -->
+    <g font-size="16" font-weight="700" fill="#C86A5A" text-anchor="middle">
+      <text x="206" y="167">&#10005;</text>
+      <text x="206" y="299">&#10005;</text>
+      <text x="206" y="399">&#10005;</text>
+      <text x="206" y="519">&#10005;</text>
+    </g>
+
+    <!-- connectors to the cards -->
+    <g stroke="#C86A5A" stroke-width="1.5" stroke-dasharray="4 4" fill="none">
+      <path d="M218 161 L392 161"/>
+      <path d="M218 293 L392 293"/>
+      <path d="M218 393 L392 393"/>
+      <path d="M218 513 L392 513"/>
+    </g>
+
+    <!-- blind-spot cards -->
+    <g>
+      <rect x="396" y="106" width="448" height="94" rx="7" fill="#11212D" stroke="#C86A5A"/>
+      <text x="414" y="130" font-size="15" font-weight="600" fill="#C86A5A">The callback that never fires</text>
+      <text x="414" y="152" font-size="13.5" fill="#C8D2DA">mqtt.js calls back on PUBACK. While the broker is</text>
+      <text x="414" y="170" font-size="13.5" fill="#C8D2DA">unreachable it reports neither success nor failure, so the</text>
+      <text x="414" y="188" font-size="13.5" fill="#C8D2DA">counter never moves and the alarm can never raise.</text>
+
+      <rect x="396" y="240" width="448" height="94" rx="7" fill="#11212D" stroke="#C86A5A"/>
+      <text x="414" y="264" font-size="15" font-weight="600" fill="#C86A5A">The restart latch</text>
+      <text x="414" y="286" font-size="13.5" fill="#C8D2DA">plugin.start cleared the in-memory raised set but not the</text>
+      <text x="414" y="304" font-size="13.5" fill="#C8D2DA">tree. Saving config in the admin UI is a stop plus start,</text>
+      <text x="414" y="322" font-size="13.5" fill="#C8D2DA">so a recovered lane can never clear its own alarm.</text>
+
+      <rect x="396" y="346" width="448" height="94" rx="7" fill="#11212D" stroke="#C86A5A"/>
+      <text x="414" y="370" font-size="15" font-weight="600" fill="#C86A5A">The loop guard, one line too early</text>
+      <text x="414" y="392" font-size="13.5" fill="#C8D2DA">The skip that stops the alarm looping through the failing</text>
+      <text x="414" y="410" font-size="13.5" fill="#C8D2DA">lane sat before the MQTT publish, not just before push</text>
+      <text x="414" y="428" font-size="13.5" fill="#C8D2DA">routing. The alarm reached nobody outside the admin UI.</text>
+
+      <rect x="396" y="452" width="448" height="76" rx="7" fill="#11212D" stroke="#7F97A8"/>
+      <text x="414" y="476" font-size="15" font-weight="600" fill="#7F97A8">Visual-only, by design</text>
+      <text x="414" y="498" font-size="13.5" fill="#C8D2DA">method: ['visual'] is what keeps the alarm out of the</text>
+      <text x="414" y="516" font-size="13.5" fill="#C8D2DA">failing lane, and means it can never page. Not a bug.</text>
+    </g>
+
+  </g>
+</svg>

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="392" viewBox="0 0 880 392" role="img"
+     aria-label="Two timelines of an mqtt.js QoS-1 publish. With the broker up, publish is followed by PUBACK and the callback fires, so the health counter records a result. With the broker down the packet is queued in the outgoing store, no PUBACK arrives, the callback never fires, and the failure counter stays frozen at zero so deliveryFailed can never raise.">
+  <rect width="880" height="392" rx="10" fill="#0E1B25"/>
+  <defs>
+    <marker id="a2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9 z" fill="#7F97A8"/>
+    </marker>
+  </defs>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="36" y="40" font-size="19" font-weight="600" fill="#E9EEF2">mqtt.js publish at QoS 1: the callback waits for the broker</text>
+
+    <!-- Track A -->
+    <text x="36" y="80" font-size="14" font-weight="600" fill="#88B868">Broker up &#8212; the health counter learns something</text>
+    <g stroke="#7F97A8" stroke-width="2" fill="none">
+      <path d="M182 128 L200 128" marker-end="url(#a2)"/>
+      <path d="M346 128 L364 128" marker-end="url(#a2)"/>
+      <path d="M510 128 L528 128" marker-end="url(#a2)"/>
+      <path d="M674 128 L692 128" marker-end="url(#a2)"/>
+    </g>
+    <g>
+      <rect x="36" y="96" width="146" height="64" rx="7" fill="#11212D" stroke="#24384A"/>
+      <text x="50" y="122" font-size="13.5" fill="#C8D2DA">publishMqtt()</text>
+      <text x="50" y="142" font-size="13.5" fill="#C8D2DA">qos 1, retain</text>
+
+      <rect x="200" y="96" width="146" height="64" rx="7" fill="#11212D" stroke="#24384A"/>
+      <text x="214" y="122" font-size="13.5" fill="#C8D2DA">PUBLISH packet</text>
+      <text x="214" y="142" font-size="13.5" fill="#C8D2DA">on the wire</text>
+
+      <rect x="364" y="96" width="146" height="64" rx="7" fill="#11212D" stroke="#88B868"/>
+      <text x="378" y="122" font-size="13.5" fill="#C8D2DA">PUBACK back</text>
+      <text x="378" y="142" font-size="13.5" fill="#C8D2DA">from the broker</text>
+
+      <rect x="528" y="96" width="146" height="64" rx="7" fill="#11212D" stroke="#24384A"/>
+      <text x="542" y="122" font-size="13.5" fill="#C8D2DA">callback fires</text>
+      <text x="542" y="142" font-size="13.5" fill="#C8D2DA">err = null</text>
+
+      <rect x="692" y="96" width="152" height="64" rx="7" fill="#11212D" stroke="#88B868"/>
+      <text x="706" y="122" font-size="13.5" fill="#88B868">recordResult</text>
+      <text x="706" y="142" font-size="13.5" fill="#88B868">('mqtt', true)</text>
+    </g>
+
+    <!-- Track B -->
+    <text x="36" y="222" font-size="14" font-weight="600" fill="#C86A5A">Broker down &#8212; the health counter learns nothing</text>
+    <g stroke="#7F97A8" stroke-width="2" fill="none">
+      <path d="M182 270 L200 270" marker-end="url(#a2)"/>
+      <path d="M346 270 L364 270" marker-end="url(#a2)"/>
+      <path d="M510 270 L528 270" marker-end="url(#a2)"/>
+      <path d="M674 270 L692 270" marker-end="url(#a2)"/>
+    </g>
+    <g>
+      <rect x="36" y="238" width="146" height="64" rx="7" fill="#11212D" stroke="#24384A"/>
+      <text x="50" y="264" font-size="13.5" fill="#C8D2DA">publishMqtt()</text>
+      <text x="50" y="284" font-size="13.5" fill="#C8D2DA">qos 1, retain</text>
+
+      <rect x="200" y="238" width="146" height="64" rx="7" fill="#11212D" stroke="#24384A"/>
+      <text x="214" y="264" font-size="13.5" fill="#C8D2DA">queued in the</text>
+      <text x="214" y="284" font-size="13.5" fill="#C8D2DA">outgoing store</text>
+
+      <rect x="364" y="238" width="146" height="64" rx="7" fill="#11212D" stroke="#C86A5A"/>
+      <text x="378" y="264" font-size="13.5" fill="#C86A5A">no PUBACK</text>
+      <text x="378" y="284" font-size="13.5" fill="#C86A5A">&#10005; never arrives</text>
+
+      <rect x="528" y="238" width="146" height="64" rx="7" fill="#11212D" stroke="#C86A5A"/>
+      <text x="542" y="264" font-size="13.5" fill="#C86A5A">callback never</text>
+      <text x="542" y="284" font-size="13.5" fill="#C86A5A">fires &#8212; deferred</text>
+
+      <rect x="692" y="238" width="152" height="64" rx="7" fill="#11212D" stroke="#C86A5A"/>
+      <text x="706" y="264" font-size="13.5" fill="#C86A5A">counter frozen</text>
+      <text x="706" y="284" font-size="13.5" fill="#C86A5A">at 0</text>
+    </g>
+
+    <rect x="36" y="326" width="808" height="42" rx="7" fill="#11212D" stroke="#24384A"/>
+    <text x="52" y="352" font-size="14" fill="#C8D2DA">Neither success nor failure is recorded, so deliveryFailed.mqtt can never raise &#8212; during exactly the outage it reports.</text>
+  </g>
+</svg>
