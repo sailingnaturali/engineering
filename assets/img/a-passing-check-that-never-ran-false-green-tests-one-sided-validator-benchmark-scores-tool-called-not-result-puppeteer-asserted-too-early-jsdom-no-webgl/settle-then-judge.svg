@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="300" viewBox="0 0 880 300" role="img"
+     aria-label="Timeline of the offline map smoke test: the canvas element appears about two seconds before the map finishes failing its external tile fetches, so the old assertion fired into an empty error list and passed, while the fixed version settles every pending console handle first and then judges.">
+  <rect width="880" height="300" rx="10" fill="#0E1B25"/>
+
+  <text x="24" y="34" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="18" font-weight="600" fill="#E9EEF2">The canvas exists long before the map has finished failing</text>
+
+  <!-- page-activity band -->
+  <text x="24" y="82" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">what the page is doing</text>
+  <rect x="200" y="92" width="180" height="34" rx="5" fill="#11212D" stroke="#24384A"/>
+  <text x="290" y="114" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C8D2DA" text-anchor="middle">map boots</text>
+  <rect x="384" y="92" width="392" height="34" rx="5" fill="#11212D" stroke="#C86A5A"/>
+  <text x="580" y="114" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C8D2DA" text-anchor="middle">tile fetches fail one by one &#8212; four console.error lines</text>
+
+  <!-- timeline axis -->
+  <line x1="200" y1="160" x2="820" y2="160" stroke="#7F97A8" stroke-width="2"/>
+  <polygon points="820,160 810,155 810,165" fill="#7F97A8"/>
+  <text x="838" y="164" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">time</text>
+  <line x1="200" y1="154" x2="200" y2="166" stroke="#7F97A8" stroke-width="2"/>
+  <text x="200" y="184" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8" text-anchor="middle">page.goto</text>
+  <line x1="384" y1="154" x2="384" y2="166" stroke="#7F97A8" stroke-width="2"/>
+  <text x="384" y="184" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C8D2DA" text-anchor="middle">canvas element exists</text>
+  <line x1="776" y1="154" x2="776" y2="166" stroke="#7F97A8" stroke-width="2"/>
+  <text x="776" y="184" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C8D2DA" text-anchor="middle">last failure lands</text>
+
+  <!-- the 2 s gap -->
+  <line x1="384" y1="204" x2="776" y2="204" stroke="#E9EEF2" stroke-width="1" stroke-dasharray="5 4"/>
+  <line x1="384" y1="198" x2="384" y2="210" stroke="#E9EEF2" stroke-width="1"/>
+  <line x1="776" y1="198" x2="776" y2="210" stroke="#E9EEF2" stroke-width="1"/>
+  <text x="580" y="198" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#E9EEF2" text-anchor="middle">&#8776; 2 s</text>
+
+  <!-- old assertion -->
+  <line x1="384" y1="252" x2="384" y2="216" stroke="#C86A5A" stroke-width="2"/>
+  <polygon points="384,214 379,224 389,224" fill="#C86A5A"/>
+  <text x="376" y="270" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C86A5A" text-anchor="end">&#10005; before: assert here &#8212; error list empty, so green</text>
+
+  <!-- fixed assertion -->
+  <line x1="776" y1="252" x2="776" y2="216" stroke="#88B868" stroke-width="2"/>
+  <polygon points="776,214 771,224 781,224" fill="#88B868"/>
+  <text x="856" y="270" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#88B868" text-anchor="end">after: settle(), then judge</text>
+</svg>

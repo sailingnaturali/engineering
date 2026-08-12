@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="516" viewBox="0 0 880 516" role="img"
+     aria-label="Six checks from one month, each green, each with a region of its subject it never examined: isOnLand skipped everything outside the coastline clip, check-slugs skipped stations absent from the lock, the tool benchmark skipped what the tool returned, the CLI selftest skipped the plain-list warning format, the browser smoke test skipped the two seconds after the canvas appeared, and the unit suite skipped anything needing WebGL.">
+  <rect width="880" height="516" rx="10" fill="#0E1B25"/>
+
+  <text x="24" y="34" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="18" font-weight="600" fill="#E9EEF2">Six green checks, and the part of the subject each one never examined</text>
+
+  <!-- legend -->
+  <rect x="250" y="52" width="18" height="14" rx="3" fill="#88B868"/>
+  <text x="274" y="64" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C8D2DA">examined — the check really looked here</text>
+  <rect x="556" y="52" width="18" height="14" rx="3" fill="#C86A5A"/>
+  <text x="580" y="64" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#C8D2DA">never examined — still reported green</text>
+
+  <line x1="24" y1="78" x2="856" y2="78" stroke="#24384A" stroke-width="1"/>
+
+  <!-- lane 1 -->
+  <text x="24" y="106" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#E9EEF2">isOnLand()</text>
+  <text x="24" y="124" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">station positions vs. coastline</text>
+  <rect x="250" y="92" width="238" height="26" rx="4" fill="#88B868"/>
+  <rect x="488" y="92" width="102" height="26" rx="4" fill="#C86A5A"/>
+  <text x="533" y="111" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0E1B25" text-anchor="middle">&#10005;</text>
+  <text x="608" y="104" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">North of the clip there are no land</text>
+  <text x="608" y="121" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">polygons, so &#8220;false&#8221; meant &#8220;no data&#8221;</text>
+
+  <!-- lane 2 -->
+  <text x="24" y="176" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#E9EEF2">check-slugs</text>
+  <text x="24" y="194" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">public URL slugs vs. the lock file</text>
+  <rect x="250" y="162" width="221" height="26" rx="4" fill="#88B868"/>
+  <rect x="471" y="162" width="119" height="26" rx="4" fill="#C86A5A"/>
+  <text x="530" y="181" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0E1B25" text-anchor="middle">&#10005;</text>
+  <text x="608" y="174" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">The loop iterated the lock, so a</text>
+  <text x="608" y="191" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">station absent from it was skipped</text>
+
+  <!-- lane 3 -->
+  <text x="24" y="246" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#E9EEF2">score_ask()</text>
+  <text x="24" y="264" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">agent tool-routing benchmark</text>
+  <rect x="250" y="232" width="136" height="26" rx="4" fill="#88B868"/>
+  <rect x="386" y="232" width="204" height="26" rx="4" fill="#C86A5A"/>
+  <text x="488" y="251" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0E1B25" text-anchor="middle">&#10005;</text>
+  <text x="608" y="244" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">Scored which tool was called, never</text>
+  <text x="608" y="261" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">the all-null payload it returned</text>
+
+  <!-- lane 4 -->
+  <text x="24" y="316" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#E9EEF2">--selftest</text>
+  <text x="24" y="334" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">did this CLI resolve its secrets?</text>
+  <rect x="250" y="302" width="187" height="26" rx="4" fill="#88B868"/>
+  <rect x="437" y="302" width="153" height="26" rx="4" fill="#C86A5A"/>
+  <text x="513" y="321" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0E1B25" text-anchor="middle">&#10005;</text>
+  <text x="608" y="314" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">Grepped for a warning-box title this</text>
+  <text x="608" y="331" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">subcommand never prints</text>
+
+  <!-- lane 5 -->
+  <text x="24" y="386" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#E9EEF2">smoke.mjs</text>
+  <text x="24" y="404" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">offline map console errors</text>
+  <rect x="250" y="372" width="85" height="26" rx="4" fill="#88B868"/>
+  <rect x="335" y="372" width="255" height="26" rx="4" fill="#C86A5A"/>
+  <text x="462" y="391" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0E1B25" text-anchor="middle">&#10005;</text>
+  <text x="608" y="384" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">Asserted the instant the canvas</text>
+  <text x="608" y="401" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">appeared &#8212; 2 s early</text>
+
+  <!-- lane 6 -->
+  <text x="24" y="456" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#E9EEF2">tsc + vitest + build</text>
+  <text x="24" y="474" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">cache-only map data reads</text>
+  <rect x="250" y="442" width="153" height="26" rx="4" fill="#88B868"/>
+  <rect x="403" y="442" width="187" height="26" rx="4" fill="#C86A5A"/>
+  <text x="496" y="461" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0E1B25" text-anchor="middle">&#10005;</text>
+  <text x="608" y="454" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">Delete the fix and all three stay</text>
+  <text x="608" y="471" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">green &#8212; jsdom has no WebGL</text>
+
+  <line x1="24" y1="490" x2="856" y2="490" stroke="#24384A" stroke-width="1"/>
+  <text x="24" y="507" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">Every one of these reported success. None of them reported a wrong answer &#8212; they reported no answer, as a pass.</text>
+</svg>
