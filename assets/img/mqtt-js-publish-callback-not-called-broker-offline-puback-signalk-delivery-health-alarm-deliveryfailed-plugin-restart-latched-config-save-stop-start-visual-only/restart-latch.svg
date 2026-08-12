@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="364" viewBox="0 0 880 364" role="img"
+     aria-label="Timeline of the latched alarm, showing the notifications tree stuck at alert while the in-memory raised set is emptied by a config save, so the lane's recovery never clears the tree.">
+  <rect width="880" height="364" rx="10" fill="#0E1B25"/>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="36" y="38" font-size="19" font-weight="600" fill="#E9EEF2">Half a reset is a latch</text>
+
+    <!-- column headers -->
+    <g font-size="13.5" fill="#C8D2DA">
+      <text x="36" y="68">1. the mqtt lane</text>
+      <text x="36" y="86">fails 3 times</text>
+      <text x="244" y="68">2. operator saves config</text>
+      <text x="244" y="86">&#8212; SignalK: stop, start</text>
+      <text x="452" y="68">3. broker returns, a</text>
+      <text x="452" y="86">publish succeeds</text>
+      <text x="660" y="68">4. and it stays that way,</text>
+      <text x="660" y="86">until a server restart</text>
+    </g>
+
+    <!-- row A -->
+    <text x="36" y="118" font-size="13" fill="#7F97A8">notifications tree &#8212; server state, survives a plugin restart</text>
+    <g>
+      <rect x="36" y="126" width="184" height="52" rx="7" fill="#11212D" stroke="#C86A5A"/>
+      <text x="52" y="149" font-size="14" font-weight="600" fill="#C86A5A">state: alert</text>
+      <text x="52" y="168" font-size="13" fill="#C8D2DA">deliveryFailed.mqtt</text>
+
+      <rect x="244" y="126" width="184" height="52" rx="7" fill="#11212D" stroke="#C86A5A"/>
+      <text x="260" y="149" font-size="14" font-weight="600" fill="#C86A5A">state: alert</text>
+      <text x="260" y="168" font-size="13" fill="#C8D2DA">untouched by stop/start</text>
+
+      <rect x="452" y="126" width="184" height="52" rx="7" fill="#11212D" stroke="#C86A5A"/>
+      <text x="468" y="149" font-size="14" font-weight="600" fill="#C86A5A">state: alert</text>
+      <text x="468" y="168" font-size="13" fill="#C8D2DA">nothing clears it</text>
+
+      <rect x="660" y="126" width="184" height="52" rx="7" fill="#11212D" stroke="#C86A5A"/>
+      <text x="676" y="149" font-size="14" font-weight="600" fill="#C86A5A">&#10005; state: alert</text>
+      <text x="676" y="168" font-size="13" fill="#C8D2DA">on a healthy lane</text>
+    </g>
+
+    <!-- row B -->
+    <text x="36" y="206" font-size="13" fill="#7F97A8">raised &#8212; the in-memory mirror, cleared by plugin.start</text>
+    <g>
+      <rect x="36" y="214" width="184" height="52" rx="7" fill="#11212D" stroke="#5888A8"/>
+      <text x="52" y="237" font-size="14" font-weight="600" fill="#5888A8">{ 'mqtt' }</text>
+      <text x="52" y="256" font-size="13" fill="#C8D2DA">mirrors the tree</text>
+
+      <rect x="244" y="214" width="184" height="52" rx="7" fill="#11212D" stroke="#5888A8"/>
+      <text x="260" y="237" font-size="14" font-weight="600" fill="#5888A8">{ }</text>
+      <text x="260" y="256" font-size="13" fill="#C8D2DA">raised.clear() on start</text>
+
+      <rect x="452" y="214" width="184" height="52" rx="7" fill="#11212D" stroke="#5888A8"/>
+      <text x="468" y="237" font-size="14" font-weight="600" fill="#5888A8">{ }</text>
+      <text x="468" y="256" font-size="13" fill="#C8D2DA">raised.has = false</text>
+
+      <rect x="660" y="214" width="184" height="52" rx="7" fill="#11212D" stroke="#5888A8"/>
+      <text x="676" y="237" font-size="14" font-weight="600" fill="#5888A8">{ }</text>
+      <text x="676" y="256" font-size="13" fill="#C8D2DA">out of sync forever</text>
+    </g>
+
+    <rect x="36" y="292" width="808" height="48" rx="7" fill="#11212D" stroke="#24384A"/>
+    <text x="52" y="313" font-size="14" fill="#C8D2DA">recordResult only clears the tree when the lane is in raised. The success at step 3 finds an empty set, so it clears</text>
+    <text x="52" y="332" font-size="14" fill="#C8D2DA">nothing &#8212; and the one indicator whose value is that it is normally quiet is now permanently loud.</text>
+  </g>
+</svg>
