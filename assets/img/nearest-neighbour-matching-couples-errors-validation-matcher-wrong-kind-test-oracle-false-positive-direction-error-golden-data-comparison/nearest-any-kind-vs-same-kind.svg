@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="410"
+     viewBox="0 0 880 410" role="img"
+     aria-label="At a weak station whose prediction runs late, the nearest computed event of any kind to a published max ebb is a slack 17 minutes away, which the old assertion reported as a wrong-kind label flip, while the nearest same-kind event is the model's own max ebb 22 minutes away and the modelled velocity at the published time is minus 0.9 knots, correctly negative for an ebb.">
+  <rect width="880" height="410" rx="10" fill="#0E1B25"/>
+
+  <text x="32" y="38" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="18" fill="#E9EEF2">One published extremum, matched two ways</text>
+
+  <!-- golden rail -->
+  <text x="32" y="98" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">Published</text>
+  <text x="32" y="114" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">(golden)</text>
+  <line x1="150" y1="120" x2="800" y2="120" stroke="#24384A" stroke-width="1"/>
+  <circle cx="410" cy="120" r="6" fill="#E9EEF2"/>
+  <text x="424" y="112" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#E9EEF2">max ebb, 14:12</text>
+
+  <!-- the golden-time reference line, drawn under everything else -->
+  <line x1="410" y1="128" x2="410" y2="272" stroke="#E9EEF2" stroke-width="1.5" stroke-dasharray="5 5"/>
+
+  <!-- the wrong match -->
+  <line x1="349" y1="160" x2="410" y2="160" stroke="#C86A5A" stroke-width="2"/>
+  <polygon points="349,160 359,155 359,165" fill="#C86A5A"/>
+  <polygon points="410,160 400,155 400,165" fill="#C86A5A"/>
+  <text x="424" y="156" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C86A5A">nearest of ANY kind — 17 min away, and it is a slack</text>
+  <text x="424" y="178" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C86A5A">✕ kind mismatch, logged as a direction error</text>
+
+  <!-- the right match -->
+  <line x1="410" y1="212" x2="489" y2="212" stroke="#88B868" stroke-width="2"/>
+  <polygon points="410,212 420,207 420,217" fill="#88B868"/>
+  <polygon points="489,212 479,207 479,217" fill="#88B868"/>
+  <text x="503" y="208" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#88B868">nearest of SAME kind — 22 min</text>
+  <text x="503" y="230" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#88B868">✓ a timing number, nothing else</text>
+
+  <!-- zero line and model curve -->
+  <line x1="150" y1="250" x2="800" y2="250" stroke="#7F97A8" stroke-width="1"/>
+  <text x="808" y="255" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">0 kn</text>
+  <text x="32" y="248" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">Model</text>
+  <text x="32" y="264" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">velocity</text>
+
+  <path d="M 150 234 C 215 222 295 230 349 250 C 400 269 452 290 489 290 C 555 290 630 275 700 262 C 750 253 780 247 800 244"
+        fill="none" stroke="#5888A8" stroke-width="2.5"/>
+
+  <!-- model events on the curve -->
+  <circle cx="349" cy="250" r="5.5" fill="#0E1B25" stroke="#C86A5A" stroke-width="2.5"/>
+  <text x="349" y="222" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C8D2DA">slack, 13:55</text>
+
+  <circle cx="489" cy="290" r="5.5" fill="#0E1B25" stroke="#88B868" stroke-width="2.5"/>
+  <text x="489" y="316" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C8D2DA">max ebb, 14:34</text>
+
+  <!-- sign readout at the golden time -->
+  <circle cx="410" cy="272" r="5" fill="#E9EEF2"/>
+  <text x="150" y="356" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" fill="#E9EEF2">Direction, asked separately:</text>
+  <text x="150" y="380" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" fill="#88B868">modelled velocity at 14:12 = −0.9 kn — negative, so ebb ✓</text>
+</svg>

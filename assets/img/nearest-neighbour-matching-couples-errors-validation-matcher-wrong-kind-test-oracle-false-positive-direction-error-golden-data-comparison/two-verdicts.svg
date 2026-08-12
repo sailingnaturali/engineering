@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="340"
+     viewBox="0 0 880 340" role="img"
+     aria-label="Two comparison idioms give two verdicts on the same golden data: nearest-event-of-any-kind plus a kind assertion quarantines Tillicum Bridge and Calamity Point as reversed-axis stations, while same-kind matching plus a sign-of-velocity direction test measures 0 wrong signs out of 19 and 0 out of 24 and ships both.">
+  <rect width="880" height="340" rx="10" fill="#0E1B25"/>
+
+  <text x="32" y="40" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="18" fill="#E9EEF2">Same stations. Same golden events. Two comparison idioms.</text>
+
+  <!-- Card A: the coupled idiom -->
+  <rect x="32" y="62" width="384" height="250" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="52" y="92" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" fill="#C86A5A">BEFORE — one nearest-neighbour match</text>
+
+  <text x="52" y="124" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="13" fill="#C8D2DA">m = nearest computed event by TIME</text>
+  <text x="52" y="146" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="13" fill="#C8D2DA">expect m.kind == golden.kind</text>
+
+  <line x1="52" y1="168" x2="396" y2="168" stroke="#24384A" stroke-width="1"/>
+
+  <text x="52" y="196" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C8D2DA">Some extrema come back the wrong kind</text>
+  <text x="52" y="222" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C8D2DA">Verdict: the flood axis is reversed</text>
+  <text x="52" y="256" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="16" fill="#C86A5A">✕ Tillicum Bridge: QUARANTINED</text>
+  <text x="52" y="282" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="16" fill="#C86A5A">✕ Calamity Point: QUARANTINED</text>
+
+  <!-- Card B: the separated tests -->
+  <rect x="464" y="62" width="384" height="250" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="484" y="92" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" fill="#88B868">AFTER — two independent tests</text>
+
+  <text x="484" y="124" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="13" fill="#C8D2DA">timing = nearest SAME-KIND event</text>
+  <text x="484" y="146" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="13" fill="#C8D2DA">direction = sign of v at golden time</text>
+
+  <line x1="484" y1="168" x2="828" y2="168" stroke="#24384A" stroke-width="1"/>
+
+  <text x="484" y="196" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C8D2DA">Wrong signs: 0 of 19, and 0 of 24</text>
+  <text x="484" y="222" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C8D2DA">Verdict: a timing error, not a flip</text>
+  <text x="484" y="256" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="16" fill="#88B868">✓ Tillicum Bridge: ships</text>
+  <text x="484" y="282" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="16" fill="#88B868">✓ Calamity Point: ships</text>
+
+  <!-- connector -->
+  <line x1="424" y1="187" x2="448" y2="187" stroke="#7F97A8" stroke-width="2"/>
+  <polygon points="456,187 446,182 446,192" fill="#7F97A8"/>
+</svg>

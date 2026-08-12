@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360"
+     viewBox="0 0 880 360" role="img"
+     aria-label="Same-kind matching still catches a genuinely reversed flood axis: a station that merely runs late puts its ebbs about 18 minutes from the published ebbs and passes the timing gate, while a reversed axis puts the nearest same-kind ebb about six hours away, half a tidal cycle, so the timing gate fails at every extremum instead of flipping a few labels.">
+  <rect width="880" height="360" rx="10" fill="#0E1B25"/>
+
+  <text x="32" y="38" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="18" fill="#E9EEF2">Same-kind matching still catches a truly reversed axis</text>
+
+  <!-- Panel 1: runs late -->
+  <rect x="32" y="60" width="816" height="120" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="52" y="86" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" fill="#C8D2DA">Station merely runs late</text>
+
+  <text x="52" y="118" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">published ebbs</text>
+  <line x1="200" y1="112" x2="700" y2="112" stroke="#24384A" stroke-width="1"/>
+  <circle cx="250" cy="112" r="5" fill="#E9EEF2"/>
+  <circle cx="450" cy="112" r="5" fill="#E9EEF2"/>
+  <circle cx="650" cy="112" r="5" fill="#E9EEF2"/>
+
+  <text x="52" y="156" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">modelled ebbs</text>
+  <line x1="200" y1="150" x2="700" y2="150" stroke="#24384A" stroke-width="1"/>
+  <circle cx="262" cy="150" r="5" fill="#88B868"/>
+  <circle cx="462" cy="150" r="5" fill="#88B868"/>
+  <circle cx="662" cy="150" r="5" fill="#88B868"/>
+
+  <line x1="250" y1="118" x2="262" y2="144" stroke="#88B868" stroke-width="2"/>
+  <line x1="450" y1="118" x2="462" y2="144" stroke="#88B868" stroke-width="2"/>
+  <line x1="650" y1="118" x2="662" y2="144" stroke="#88B868" stroke-width="2"/>
+
+  <text x="716" y="136" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#88B868">✓ ~18 min</text>
+  <text x="716" y="156" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">inside the gate</text>
+
+  <!-- Panel 2: reversed axis -->
+  <rect x="32" y="200" width="816" height="130" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="52" y="226" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" fill="#C8D2DA">Flood axis genuinely reversed</text>
+
+  <text x="52" y="258" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">published ebbs</text>
+  <line x1="200" y1="252" x2="700" y2="252" stroke="#24384A" stroke-width="1"/>
+  <circle cx="250" cy="252" r="5" fill="#E9EEF2"/>
+  <circle cx="450" cy="252" r="5" fill="#E9EEF2"/>
+  <circle cx="650" cy="252" r="5" fill="#E9EEF2"/>
+
+  <text x="52" y="300" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">modelled ebbs</text>
+  <line x1="200" y1="294" x2="700" y2="294" stroke="#24384A" stroke-width="1"/>
+  <circle cx="350" cy="294" r="5" fill="#C86A5A"/>
+  <circle cx="550" cy="294" r="5" fill="#C86A5A"/>
+
+  <line x1="250" y1="258" x2="350" y2="288" stroke="#C86A5A" stroke-width="2"/>
+  <line x1="450" y1="258" x2="550" y2="288" stroke="#C86A5A" stroke-width="2"/>
+  <line x1="650" y1="258" x2="550" y2="288" stroke="#C86A5A" stroke-width="2"/>
+
+  <text x="716" y="278" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" fill="#C86A5A">✕ ~6 h</text>
+  <text x="716" y="298" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">half a cycle, at</text>
+  <text x="716" y="316" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">every extremum</text>
+</svg>
