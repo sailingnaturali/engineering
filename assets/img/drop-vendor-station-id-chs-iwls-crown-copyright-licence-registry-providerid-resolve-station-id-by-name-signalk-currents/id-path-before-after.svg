@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440"
+     viewBox="0 0 880 440" role="img"
+     aria-label="Before, the provider-minted station id was copied into the registry and republished under MIT to every consumer; after, the registry publishes only name, position and a stable key, and each consumer resolves the live id from the provider API at runtime under its own licence.">
+  <rect width="880" height="440" rx="10" fill="#0E1B25"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7F97A8"/>
+    </marker>
+    <marker id="arrowgreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#88B868"/>
+    </marker>
+  </defs>
+
+  <text x="32" y="38" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="18" font-weight="600" fill="#E9EEF2">Where the provider's station id lives</text>
+
+  <!-- BEFORE lane -->
+  <text x="32" y="72" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" font-weight="600" fill="#C86A5A">Before — registry 1.5.0</text>
+
+  <rect x="24" y="88" width="176" height="70" rx="8" fill="#11212D" stroke="#24384A"/>
+  <text x="112" y="116" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#E9EEF2">CHS IWLS API</text>
+  <text x="112" y="136" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">licensed, per operator</text>
+
+  <rect x="240" y="88" width="176" height="70" rx="8" fill="#11212D" stroke="#24384A"/>
+  <text x="328" y="112" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#E9EEF2">registry.json</text>
+  <text x="328" y="134" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#C86A5A">providerId: 63aef186…</text>
+  <text x="328" y="151" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">committed</text>
+
+  <rect x="456" y="88" width="176" height="70" rx="8" fill="#11212D" stroke="#24384A"/>
+  <text x="544" y="116" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#E9EEF2">npm, MIT</text>
+  <text x="544" y="136" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">public download</text>
+
+  <rect x="672" y="88" width="184" height="70" rx="8" fill="#11212D" stroke="#24384A"/>
+  <text x="764" y="116" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#E9EEF2">3 consumer packages</text>
+  <text x="764" y="136" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">each ships the id again</text>
+
+  <line x1="200" y1="123" x2="234" y2="123" stroke="#7F97A8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="416" y1="123" x2="450" y2="123" stroke="#7F97A8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="632" y1="123" x2="666" y2="123" stroke="#C86A5A" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- failure mark -->
+  <text x="649" y="176" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#C86A5A">&#10007;</text>
+  <text x="856" y="182" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C86A5A">the provider's own handle, redistributed under MIT</text>
+
+  <line x1="24" y1="212" x2="856" y2="212" stroke="#24384A" stroke-width="1"/>
+
+  <!-- AFTER lane -->
+  <text x="32" y="248" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="14" font-weight="600" fill="#88B868">After — registry 2.0.0</text>
+
+  <rect x="24" y="264" width="176" height="70" rx="8" fill="#11212D" stroke="#24384A"/>
+  <text x="112" y="292" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#E9EEF2">CHS IWLS API</text>
+  <text x="112" y="312" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">licensed, per operator</text>
+
+  <rect x="240" y="264" width="176" height="70" rx="8" fill="#11212D" stroke="#24384A"/>
+  <text x="328" y="288" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#E9EEF2">registry.json</text>
+  <text x="328" y="310" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#88B868">chs-dodd-narrows</text>
+  <text x="328" y="327" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">name · position · key</text>
+
+  <rect x="456" y="264" width="176" height="70" rx="8" fill="#11212D" stroke="#24384A"/>
+  <text x="544" y="292" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#E9EEF2">npm, MIT</text>
+  <text x="544" y="312" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">no provider handle</text>
+
+  <rect x="672" y="264" width="184" height="70" rx="8" fill="#11212D" stroke="#88B868"/>
+  <text x="764" y="292" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#E9EEF2">3 consumer packages</text>
+  <text x="764" y="312" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">join by name</text>
+
+  <line x1="200" y1="299" x2="234" y2="299" stroke="#7F97A8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="416" y1="299" x2="450" y2="299" stroke="#7F97A8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="632" y1="299" x2="666" y2="299" stroke="#7F97A8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- runtime resolution loop back to the API -->
+  <path d="M 764 334 L 764 372 L 112 372 L 112 340" fill="none" stroke="#88B868" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowgreen)"/>
+  <rect x="286" y="356" width="316" height="30" rx="6" fill="#0E1B25"/>
+  <text x="444" y="376" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#88B868">at runtime: resolve the live id by normalized name</text>
+
+  <text x="32" y="414" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="13" fill="#7F97A8">The resolved id lives in process memory only — under the operator's own licence, never committed, never published.</text>
+</svg>
