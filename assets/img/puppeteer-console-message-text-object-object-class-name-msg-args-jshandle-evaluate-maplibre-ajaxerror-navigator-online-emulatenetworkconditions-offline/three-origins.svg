@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360"
+     viewBox="0 0 880 360" role="img"
+     aria-label="The map style sheet fetched from the bathymetry tile host points its glyphs field at a third-party font server, so the label layer fetches glyph PBFs from an origin that was on no allowlist, while the tile host and the tide API host were both already allowed.">
+  <rect width="880" height="360" rx="10" fill="#0E1B25"/>
+
+  <text x="30" y="34" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#E9EEF2">Three external origins, two on the allowlist</text>
+
+  <!-- left: what the run touches -->
+  <rect x="30" y="86" width="180" height="62" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="44" y="112" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E9EEF2">map screen</text>
+  <text x="44" y="134" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">loads the style</text>
+
+  <rect x="30" y="222" width="180" height="62" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="44" y="248" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E9EEF2">tide sync</text>
+  <text x="44" y="270" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">background prefetch</text>
+
+  <path d="M 214 117 L 262 117" stroke="#7F97A8" stroke-width="2" fill="none" marker-end="url(#a2)"/>
+  <path d="M 214 253 C 380 253 420 253 566 253" stroke="#7F97A8" stroke-width="2" fill="none" marker-end="url(#a2)"/>
+
+  <!-- middle: the style sheet -->
+  <rect x="266" y="70" width="260" height="122" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="282" y="96" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E9EEF2">style.json</text>
+  <text x="282" y="116" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">served by the tile host</text>
+  <text x="282" y="144" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#C8D2DA">"sources": tile host</text>
+  <text x="282" y="168" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#E9EEF2">"glyphs": a different host</text>
+  <rect x="276" y="152" width="240" height="24" rx="4" fill="none" stroke="#C86A5A" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <path d="M 530 108 C 560 108 566 100 590 100" stroke="#7F97A8" stroke-width="2" fill="none" marker-end="url(#a2)"/>
+  <path d="M 530 164 C 560 164 566 178 590 178" stroke="#C86A5A" stroke-width="2" fill="none" marker-end="url(#a2r)"/>
+  <text x="536" y="204" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C86A5A">the glyphs pointer</text>
+
+  <!-- right: the three origins -->
+  <rect x="594" y="70" width="256" height="60" rx="8" fill="#11212D" stroke="#88B868" stroke-width="2"/>
+  <text x="610" y="94" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E9EEF2">bathymetry tile host</text>
+  <text x="610" y="116" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#88B868">allowed — known noise</text>
+
+  <rect x="594" y="148" width="256" height="60" rx="8" fill="#11212D" stroke="#C86A5A" stroke-width="2"/>
+  <text x="610" y="172" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E9EEF2">glyph / font server</text>
+  <text x="610" y="194" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C86A5A">on no allowlist</text>
+  <circle cx="594" cy="148" r="13" fill="#0E1B25" stroke="#C86A5A" stroke-width="2"/>
+  <path d="M 589 143 L 599 153 M 599 143 L 589 153" stroke="#C86A5A" stroke-width="2.4" fill="none"/>
+
+  <rect x="594" y="226" width="256" height="60" rx="8" fill="#11212D" stroke="#88B868" stroke-width="2"/>
+  <text x="610" y="250" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E9EEF2">tide prediction API</text>
+  <text x="610" y="272" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#88B868">allowed — known noise</text>
+
+  <text x="30" y="330" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">Nobody wrote the third origin down because nobody had ever read the error text that named it.</text>
+
+  <defs>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7F97A8"/>
+    </marker>
+    <marker id="a2r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C86A5A"/>
+    </marker>
+  </defs>
+</svg>
