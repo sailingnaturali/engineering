@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500"
+     viewBox="0 0 880 500" role="img"
+     aria-label="The build script&#8217;s localeCompare sort feeds a gitignored currents.json, so the collation of whichever machine ran dev, build or test decides the permanent public slug with no tracked diff to review.">
+  <rect width="880" height="500" rx="10" fill="#0E1B25"/>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="40" y="40" font-size="18" font-weight="600" fill="#E9EEF2">Where the determinism leaks out — and why no diff ever showed it</text>
+  </g>
+
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#7F97A8"/>
+    </marker>
+  </defs>
+
+  <!-- chain -->
+  <g>
+    <rect x="40" y="70" width="400" height="56" rx="7" fill="#11212D" stroke="#24384A"/>
+    <text x="56" y="93" font-size="14" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">data/noaa-currents.json</text>
+    <text x="56" y="113" font-size="13" fill="#7F97A8" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">vendored NOAA extract &#8212; tracked in git</text>
+    <line x1="240" y1="126" x2="240" y2="152" stroke="#7F97A8" stroke-width="2" marker-end="url(#arw)"/>
+
+    <rect x="40" y="156" width="400" height="56" rx="7" fill="#11212D" stroke="#C86A5A" stroke-width="2"/>
+    <text x="56" y="179" font-size="14" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">scripts/build-currents.mjs</text>
+    <text x="56" y="199" font-size="13" fill="#C86A5A" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">.sort(a.name.localeCompare(b.name))</text>
+    <text x="416" y="192" font-size="19" font-weight="700" fill="#C86A5A" text-anchor="middle">&#10005;</text>
+    <line x1="240" y1="212" x2="240" y2="238" stroke="#7F97A8" stroke-width="2" marker-end="url(#arw)"/>
+
+    <rect x="40" y="242" width="400" height="56" rx="7" fill="#11212D" stroke="#24384A"/>
+    <text x="56" y="265" font-size="14" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">src/data/currents.json</text>
+    <text x="56" y="285" font-size="13" fill="#7F97A8" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">gitignored &#8212; rebuilt by dev, build and test</text>
+    <line x1="240" y1="298" x2="240" y2="324" stroke="#7F97A8" stroke-width="2" marker-end="url(#arw)"/>
+
+    <rect x="40" y="328" width="400" height="56" rx="7" fill="#11212D" stroke="#24384A"/>
+    <text x="56" y="351" font-size="14" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">assignSlug()</text>
+    <text x="56" y="371" font-size="13" fill="#7F97A8" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">first free rung wins &#8212; in array order</text>
+    <line x1="240" y1="384" x2="240" y2="410" stroke="#7F97A8" stroke-width="2" marker-end="url(#arw)"/>
+
+    <rect x="40" y="414" width="400" height="56" rx="7" fill="#11212D" stroke="#88B868" stroke-width="2"/>
+    <text x="56" y="437" font-size="14" fill="#88B868" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">/hale-passage-current</text>
+    <text x="56" y="457" font-size="13" fill="#7F97A8" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">permanent public URL, already in shared links</text>
+  </g>
+
+  <!-- annotations -->
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13.5" fill="#C8D2DA">
+    <line x1="440" y1="184" x2="486" y2="184" stroke="#C86A5A" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="496" y="176" fill="#C86A5A" font-weight="600">Collation is the runtime&#8217;s, not the repo&#8217;s.</text>
+    <text x="496" y="196">The ICU build on the machine that ran the</text>
+    <text x="496" y="214">script picks the order. Nothing pins it.</text>
+
+    <line x1="440" y1="270" x2="486" y2="270" stroke="#E9EEF2" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="496" y="262" fill="#E9EEF2" font-weight="600">No tracked diff.</text>
+    <text x="496" y="282">The file never enters git, so a reordered</text>
+    <text x="496" y="300">build is invisible in review.</text>
+
+    <line x1="440" y1="442" x2="486" y2="442" stroke="#E9EEF2" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="496" y="434" fill="#E9EEF2" font-weight="600">One-way door.</text>
+    <text x="496" y="454">Reassigning it later breaks every link</text>
+    <text x="496" y="472">already out in the world.</text>
+  </g>
+</svg>
