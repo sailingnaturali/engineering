@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330"
+     viewBox="0 0 880 330" role="img"
+     aria-label="With registerType prompt there is no clientsClaim, so serviceWorker.ready resolves on the first load while controller is still null and the warm fetch is skipped; only the next controlled load has a controller and populates the cache.">
+  <defs>
+    <marker id="t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7F97A8"/>
+    </marker>
+  </defs>
+  <rect width="880" height="330" rx="10" fill="#0E1B25"/>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+    <text x="32" y="34" font-size="19" fill="#E9EEF2">&#8220;ready&#8221; is not &#8220;controlling this page&#8221;</text>
+
+    <!-- Load 1 -->
+    <rect x="24" y="56" width="832" height="112" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="44" y="82" font-size="15" fill="#E9EEF2">Load 1 — first ever visit</text>
+    <line x1="46" y1="132" x2="596" y2="132" stroke="#7F97A8" stroke-width="2" marker-end="url(#t)"/>
+    <circle cx="90" cy="132" r="5" fill="#7F97A8"/>
+    <circle cx="220" cy="132" r="5" fill="#7F97A8"/>
+    <circle cx="350" cy="132" r="5" fill="#7F97A8"/>
+    <circle cx="480" cy="132" r="5" fill="#7F97A8"/>
+    <text x="90" y="116" font-size="13" fill="#C8D2DA" text-anchor="middle">register</text>
+    <text x="220" y="116" font-size="13" fill="#C8D2DA" text-anchor="middle">install</text>
+    <text x="350" y="116" font-size="13" fill="#C8D2DA" text-anchor="middle">activate</text>
+    <text x="480" y="116" font-size="13" fill="#C8D2DA" text-anchor="middle">ready resolves</text>
+    <text x="46" y="156" font-size="13" fill="#7F97A8">registerType: 'prompt' does not set clientsClaim, so this page is never controlled</text>
+    <rect x="620" y="90" width="220" height="60" rx="8" fill="#0E1B25" stroke="#C86A5A"/>
+    <text x="636" y="114" font-size="13" fill="#C86A5A" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">controller === null</text>
+    <text x="636" y="136" font-size="13" fill="#C8D2DA">&#10007; warm fetch skipped</text>
+
+    <!-- Load 2 -->
+    <rect x="24" y="184" width="832" height="112" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="44" y="210" font-size="15" fill="#E9EEF2">Load 2 — the reload, or any later visit</text>
+    <line x1="46" y1="260" x2="596" y2="260" stroke="#7F97A8" stroke-width="2" marker-end="url(#t)"/>
+    <circle cx="120" cy="260" r="5" fill="#7F97A8"/>
+    <circle cx="320" cy="260" r="5" fill="#7F97A8"/>
+    <circle cx="490" cy="260" r="5" fill="#7F97A8"/>
+    <text x="120" y="244" font-size="13" fill="#C8D2DA" text-anchor="middle">SW controls the page</text>
+    <text x="320" y="244" font-size="13" fill="#C8D2DA" text-anchor="middle">ready resolves</text>
+    <text x="490" y="244" font-size="13" fill="#C8D2DA" text-anchor="middle">controller is set</text>
+    <text x="46" y="284" font-size="13" fill="#7F97A8">the runtime Range route is finally in the request path</text>
+    <rect x="620" y="218" width="220" height="60" rx="8" fill="#0E1B25" stroke="#88B868"/>
+    <text x="636" y="242" font-size="13" fill="#88B868">warm fetch runs</text>
+    <text x="636" y="264" font-size="13" fill="#C8D2DA" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">land-pmtiles filled</text>
+  </g>
+</svg>
