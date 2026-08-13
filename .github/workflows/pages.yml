@@ -36,6 +36,15 @@ jobs:
         run: bundle exec jekyll build --trace
         env:
           JEKYLL_ENV: production
+      # Raw-markdown twin per page (/slug/index.md), linked from /llms.txt so
+      # AI agents read source instead of scraping HTML. cp fails the build if a
+      # post's slug ever stops matching its output dir — that's the guard.
+      - name: Emit raw-markdown twins
+        run: |
+          for f in _posts/*.md; do
+            cp "$f" "_site/$(basename "$f" .md | cut -c12-)/index.md"
+          done
+          cp about.md _site/about/index.md
       - uses: actions/upload-pages-artifact@v5
 
   deploy:

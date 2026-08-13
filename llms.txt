@@ -1,0 +1,17 @@
+---
+permalink: /llms.txt
+layout: null
+---
+# {{ site.title }}
+
+> {{ site.description | strip_newlines }}
+
+Every link below points at the raw markdown source of a post; drop the trailing `index.md` for the rendered HTML page. Full-content Atom feed: {{ "/feed.xml" | absolute_url }}
+
+## Posts
+{% for post in site.posts %}
+- [{{ post.title }}]({{ post.url | absolute_url }}index.md): {{ post.description | strip_newlines }}{% endfor %}
+
+## Pages
+
+- [About]({{ "/about/index.md" | absolute_url }}): who runs this blog and why
