@@ -2,7 +2,7 @@
 layout: post
 title: "SignalK's two token classes: why plugin routes 401 your device token"
 description: "SignalK server returns 401 Permission Denied on /plugins/* and /skServer/* routes even with a valid device access-request token — those routes require admin, and device tokens are readwrite. Plugin REST APIs (like signalk-logbook) need a user JWT from POST /signalk/v1/auth/login instead, and that JWT expires per the security.json expiration field (the 'Remember Me timeout' in the admin UI, 1h fallback), after which every request — reads included — fails with 401 bad auth token. How our agent's logbook writes went silently dark for a week, twice."
-date: 2026-07-16
+date: 2026-08-16
 tags:
   - signalk
   - authentication
