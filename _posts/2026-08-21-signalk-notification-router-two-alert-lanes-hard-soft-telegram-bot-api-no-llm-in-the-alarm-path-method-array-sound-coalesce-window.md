@@ -2,7 +2,7 @@
 layout: post
 title: "Two alert lanes: the siren shouldn't depend on an LLM"
 description: "Routing every SignalK notification through an agent gateway puts a model turn, a hook token and a billing relationship in the path of a dragging anchor. The fix is two lanes with independent failure modes: alarm/emergency go straight to the Telegram Bot API from an in-process SignalK plugin, alert/warn wake an agent turn. Routing keys on the notification's own method array (no sound, no push) instead of a path allowlist, the soft lane's coalesce timer is armed from the oldest pending row so a trickle can't reset it, and the hard lane never batches. Plus the operational sting: a correct config file is not evidence a lane is live."
-date: 2026-08-11
+date: 2026-08-21
 tags:
   - signalk
   - notifications
