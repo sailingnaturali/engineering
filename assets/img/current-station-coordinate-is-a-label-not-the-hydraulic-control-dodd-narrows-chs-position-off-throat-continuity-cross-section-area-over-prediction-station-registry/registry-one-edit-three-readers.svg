@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" role="img"
+     aria-label="One edit to the shared station registry serves three readers: the harmonic fitter and the offline app pick it up on an npm bump, while the Python MCP server vendors a copy and needs a re-vendor that its drift test enforces.">
+  <rect width="880" height="400" rx="10" fill="#0E1B25"/>
+
+  <text x="28" y="36" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#E9EEF2">One authoring edit, three pull cadences</text>
+
+  <!-- registry card -->
+  <rect x="28" y="118" width="300" height="180" rx="8" fill="#11212D" stroke="#88B868" stroke-width="1.5"/>
+  <text x="44" y="146" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#E9EEF2">station-corrections</text>
+  <text x="44" y="166" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#7F97A8">data/registry.yaml · v2.9.2</text>
+  <line x1="44" y1="178" x2="312" y2="178" stroke="#24384A" stroke-width="1"/>
+  <text x="44" y="200" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#C8D2DA">chs-dodd-narrows:</text>
+  <text x="44" y="219" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#C8D2DA">  position: [49.135466,</text>
+  <text x="44" y="238" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#C8D2DA">             -123.817351]</text>
+  <text x="44" y="262" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#88B868">  source: GSC DEM v2</text>
+  <text x="44" y="281" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" fill="#88B868">    hydraulic control section</text>
+
+  <!-- fan-out routing -->
+  <polyline points="328,208 414,208 414,108 490,108" fill="none" stroke="#7F97A8" stroke-width="2"/>
+  <polygon points="500,108 486,102 486,114" fill="#7F97A8"/>
+  <polyline points="328,208 414,208 490,208" fill="none" stroke="#7F97A8" stroke-width="2"/>
+  <polygon points="500,208 486,202 486,214" fill="#7F97A8"/>
+  <polyline points="328,208 414,208 414,308 490,308" fill="none" stroke="#7F97A8" stroke-width="2"/>
+  <polygon points="500,308 486,302 486,314" fill="#7F97A8"/>
+
+  <!-- reader 1 -->
+  <rect x="500" y="68" width="352" height="80" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="518" y="94" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#E9EEF2">chs-constituents — harmonic fitter</text>
+  <text x="518" y="116" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">npm dependency, imports data/registry.json</text>
+  <text x="518" y="136" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#88B868">picks it up on a version bump</text>
+
+  <!-- reader 2 -->
+  <rect x="500" y="168" width="352" height="80" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="518" y="194" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#E9EEF2">offline tide and current app</text>
+  <text x="518" y="216" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">npm dependency in a build-time generator</text>
+  <text x="518" y="236" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#88B868">bump, regenerate, commit the resource</text>
+
+  <!-- reader 3 -->
+  <rect x="500" y="268" width="352" height="80" rx="8" fill="#11212D" stroke="#C86A5A" stroke-width="1.5"/>
+  <text x="518" y="294" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#E9EEF2">currents-mcp — Python, no npm</text>
+  <text x="518" y="316" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">vendors its own copy of registry.json</text>
+  <text x="518" y="336" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C86A5A">✕ stale until re-vendored — a drift test says so</text>
+
+  <text x="28" y="378" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#7F97A8">What is free is the derivation and the review, not the release. Nobody re-derives the coordinate or re-argues whether it is right.</text>
+</svg>

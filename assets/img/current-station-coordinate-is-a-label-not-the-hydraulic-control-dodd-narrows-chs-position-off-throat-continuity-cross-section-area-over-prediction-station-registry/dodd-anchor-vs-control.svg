@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" role="img"
+     aria-label="Plan view of Dodd Narrows: the published CHS current-station coordinate falls on a 160 metre wide transect of area 2322 square metres, 120 metres from the 80 metre hydraulic control whose area is 1216 square metres, so continuity scales the published 9.43 knots up to 18.01 knots at the gut.">
+  <rect width="880" height="500" rx="10" fill="#0E1B25"/>
+
+  <text x="28" y="36" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#E9EEF2">The published coordinate is not on the throat</text>
+
+  <!-- water -->
+  <path d="M 60,90 L 180,95 L 300,105 L 430,140 L 500,175 L 574,190 L 650,175 L 760,130 L 820,105
+           L 820,375 L 760,350 L 650,305 L 574,290 L 500,305 L 430,340 L 300,375 L 180,385 L 60,390 Z"
+        fill="#11212D"/>
+  <polyline points="60,90 180,95 300,105 430,140 500,175 574,190 650,175 760,130 820,105"
+            fill="none" stroke="#5888A8" stroke-width="1.5"/>
+  <polyline points="60,390 180,385 300,375 430,340 500,305 574,290 650,305 760,350 820,375"
+            fill="none" stroke="#5888A8" stroke-width="1.5"/>
+
+  <!-- flood direction -->
+  <line x1="110" y1="248" x2="222" y2="248" stroke="#7F97A8" stroke-width="2.5"/>
+  <polygon points="234,248 220,242 220,254" fill="#7F97A8"/>
+  <text x="172" y="236" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">flood sets north</text>
+
+  <!-- transect at the published coordinate -->
+  <line x1="430" y1="140" x2="430" y2="340" stroke="#7F97A8" stroke-width="2.5"/>
+  <circle cx="430" cy="240" r="4.5" fill="#7F97A8"/>
+  <line x1="430" y1="74" x2="430" y2="140" stroke="#7F97A8" stroke-width="1.5"/>
+  <text x="414" y="48" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#E9EEF2">published CHS coordinate</text>
+  <text x="414" y="68" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">nearest transect 160 m wide · A = 2322 m²</text>
+
+  <!-- transect at the hydraulic control -->
+  <line x1="574" y1="190" x2="574" y2="290" stroke="#88B868" stroke-width="3.5"/>
+  <circle cx="574" cy="240" r="4.5" fill="#88B868"/>
+  <line x1="574" y1="74" x2="574" y2="190" stroke="#88B868" stroke-width="1.5"/>
+  <text x="592" y="48" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#88B868">hydraulic control (GSC DEM)</text>
+  <text x="592" y="68" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">narrowest transect 80 m wide · A = 1216 m²</text>
+
+  <!-- offset dimension -->
+  <line x1="430" y1="266" x2="574" y2="266" stroke="#E9EEF2" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="430" y1="260" x2="430" y2="272" stroke="#E9EEF2" stroke-width="1.5"/>
+  <line x1="574" y1="260" x2="574" y2="272" stroke="#E9EEF2" stroke-width="1.5"/>
+  <text x="502" y="288" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#E9EEF2">120 m</text>
+
+  <!-- arithmetic -->
+  <rect x="28" y="414" width="824" height="70" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="48" y="442" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#C8D2DA">|u|(x) = |u|_anchor · A_anchor / A(x)</text>
+  <text x="48" y="468" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#C8D2DA">9.43 kn × 2322 / 1216 = <tspan fill="#C86A5A" font-weight="600">18.01 kn</tspan> at the gut, against 9.43 kn published — a 91 % over-prediction</text>
+</svg>
