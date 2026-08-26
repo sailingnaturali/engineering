@@ -2,7 +2,7 @@
 layout: post
 title: "Drop the vendor station ID: licensing as a data-model constraint"
 description: "Why @sailingnaturali/station-corrections 2.0.0 deleted providerId and providerBin — the only fields pointing into a provider's database — and how the CHS IWLS licence agreement (clause 3, Crown copyright, no third-party redistribution) turned into a schema change across four repos. signalk-currents now resolves the live CHS station id from api-iwls.dfo-mpo.gc.ca by normalized name and never writes it to disk, chs-constituents recast the registry as a name overlay, and currents-mcp re-keyed its cache on the station label instead of the station id."
-date: 2026-08-11
+date: 2026-08-26
 tags:
   - signalk
   - marine
