@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" role="img"
+     aria-label="Moving the anchor from the published CHS coordinate to the 80 metre hydraulic control drops the anchor cross-section area swing from 19.9 and 20.5 per cent to 8.6 and 9.6 per cent on the two section-placement variants, but the chart-datum variant gets worse, 19.7 to 22.7 per cent, still over the 10 per cent bar.">
+  <rect width="880" height="430" rx="10" fill="#0E1B25"/>
+
+  <text x="28" y="36" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#E9EEF2">Anchor cross-section area swing, by sensitivity variant</text>
+  <text x="28" y="60" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#7F97A8">Lower is better. Any variant over 10 % rejects the whole patch.</text>
+
+  <!-- 10 % reference line -->
+  <line x1="512" y1="84" x2="512" y2="352" stroke="#E9EEF2" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="518" y="80" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#E9EEF2">10 % bar</text>
+
+  <!-- axis -->
+  <line x1="300" y1="88" x2="300" y2="352" stroke="#7F97A8" stroke-width="1.5"/>
+
+  <!-- group 1: sections shifted +half spacing -->
+  <text x="288" y="125" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">sections +½ spacing</text>
+  <rect x="300" y="96" width="422" height="26" fill="#7F97A8"/>
+  <text x="730" y="114" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">19.91 %</text>
+  <rect x="300" y="128" width="182" height="26" fill="#88B868"/>
+  <text x="490" y="146" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">8.60 %</text>
+
+  <!-- group 2: sections shifted -half spacing -->
+  <text x="288" y="207" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">sections −½ spacing</text>
+  <rect x="300" y="178" width="435" height="26" fill="#7F97A8"/>
+  <text x="743" y="196" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">20.52 %</text>
+  <rect x="300" y="210" width="203" height="26" fill="#88B868"/>
+  <text x="511" y="228" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">9.58 %</text>
+
+  <!-- group 3: chart datum -->
+  <text x="288" y="289" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">area at chart datum</text>
+  <rect x="300" y="260" width="417" height="26" fill="#7F97A8"/>
+  <text x="725" y="278" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">19.67 %</text>
+  <rect x="300" y="292" width="481" height="26" fill="#C86A5A"/>
+  <text x="789" y="310" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">22.67 %</text>
+  <text x="300" y="340" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C86A5A">✕ worse after the move — this axis is tide stage, not placement</text>
+
+  <!-- legend -->
+  <rect x="28" y="378" width="16" height="16" fill="#7F97A8"/>
+  <text x="52" y="391" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">anchored at the published CHS coordinate</text>
+  <rect x="380" y="378" width="16" height="16" fill="#88B868"/>
+  <text x="404" y="391" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">anchored at the 80 m hydraulic control</text>
+</svg>
