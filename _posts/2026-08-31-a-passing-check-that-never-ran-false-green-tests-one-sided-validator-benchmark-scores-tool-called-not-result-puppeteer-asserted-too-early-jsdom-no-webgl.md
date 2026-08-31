@@ -11,7 +11,7 @@ tags:
   - vitest
   - validation
   - open-source
-date: 2026-08-11
+date: 2026-08-31
 ---
 
 > **TL;DR** — A green check tells you a code path ran and produced the value it
