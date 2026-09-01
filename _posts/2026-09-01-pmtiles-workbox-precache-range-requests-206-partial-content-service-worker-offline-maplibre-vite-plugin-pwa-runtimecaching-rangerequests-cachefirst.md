@@ -10,7 +10,7 @@ tags:
   - maplibre
   - offline
   - vite
-date: 2026-08-11
+date: 2026-09-01
 ---
 
 > **TL;DR** — Workbox's precache stores and replays a full `200 OK`. `pmtiles`
