@@ -2,7 +2,7 @@
 layout: post
 title: "A config warning on stdout made a healthy alarm lane look dead"
 description: "A CLI printed a Config warnings box to stdout instead of stderr, so a shell pipeline parsing its output got box-drawing characters where data rows should be and an awk filter returned nothing — which read as 'no agent runs, the alarm lane is down' rather than 'your shell is missing an env var'. Two config credentials became secret references and failed on two different channels: SecretRefUnavailableError loud on stderr, 'Missing env var' quiet on stdout. 2>/dev/null hides the loud one and leaves the silent one. Plus a --selftest that passed while genuinely broken because it grepped for a warning-box title the other subcommand never prints, and the root-cause fix that deleted the wrapper entirely."
-date: 2026-08-11
+date: 2026-09-06
 tags:
   - cli
   - shell
