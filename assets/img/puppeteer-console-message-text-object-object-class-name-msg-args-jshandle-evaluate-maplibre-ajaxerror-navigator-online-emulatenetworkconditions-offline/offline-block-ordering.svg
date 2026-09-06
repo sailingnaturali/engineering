@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="452"
+     viewBox="0 0 880 452" role="img"
+     aria-label="The six ordered steps of an offline emulation check: load online until the service worker controls the page, cut the network over CDP, prove it is down with a real fetch because navigator.onLine still reports true, attach the console listeners only after that proof fetch, reload and wait for the canvas, then settle every pending handle before judging.">
+  <rect width="880" height="452" rx="10" fill="#0E1B25"/>
+
+  <text x="30" y="34" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#E9EEF2">The order the offline block has to run in</text>
+  <text x="30" y="56" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">Two of these six steps exist only because getting them out of order produces a green run.</text>
+
+  <line x1="48" y1="88" x2="48" y2="434" stroke="#24384A" stroke-width="2"/>
+
+  <!-- 1 -->
+  <circle cx="48" cy="100" r="13" fill="#11212D" stroke="#7F97A8" stroke-width="2"/>
+  <text x="48" y="105" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">1</text>
+  <text x="76" y="105" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">Load online, wait until the service worker controls the page</text>
+
+  <!-- 2 -->
+  <circle cx="48" cy="156" r="13" fill="#11212D" stroke="#7F97A8" stroke-width="2"/>
+  <text x="48" y="161" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">2</text>
+  <text x="76" y="161" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">Cut the network over CDP: emulateNetworkConditions offline</text>
+
+  <!-- 3 -->
+  <circle cx="48" cy="212" r="13" fill="#11212D" stroke="#88B868" stroke-width="2"/>
+  <text x="48" y="217" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">3</text>
+  <text x="76" y="217" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E9EEF2">Prove it is down: fetch a junk origin, require the rejection</text>
+  <rect x="76" y="228" width="770" height="30" rx="6" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="90" y="248" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">navigator.onLine still reports true under this emulation — it is not evidence of anything.</text>
+
+  <!-- 4 -->
+  <circle cx="48" cy="290" r="13" fill="#11212D" stroke="#88B868" stroke-width="2"/>
+  <text x="48" y="295" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">4</text>
+  <text x="76" y="295" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E9EEF2">Only now attach the console listeners</text>
+  <rect x="76" y="306" width="770" height="30" rx="6" fill="#11212D" stroke="#C86A5A" stroke-width="1.5"/>
+  <circle cx="90" cy="321" r="9" fill="#0E1B25" stroke="#C86A5A" stroke-width="2"/>
+  <path d="M 86.5 317.5 L 93.5 324.5 M 93.5 317.5 L 86.5 324.5" stroke="#C86A5A" stroke-width="2" fill="none"/>
+  <text x="108" y="326" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">Attach before step 3 and Chrome logs its own resource error for the proof fetch, no matter what the JS catch did.</text>
+
+  <!-- 5 -->
+  <circle cx="48" cy="368" r="13" fill="#11212D" stroke="#7F97A8" stroke-width="2"/>
+  <text x="48" y="373" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">5</text>
+  <text x="76" y="373" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">Reload, wait for the canvas the renderer actually draws to</text>
+  <rect x="76" y="384" width="770" height="30" rx="6" fill="#11212D" stroke="#C86A5A" stroke-width="1.5"/>
+  <circle cx="90" cy="399" r="9" fill="#0E1B25" stroke="#C86A5A" stroke-width="2"/>
+  <path d="M 86.5 395.5 L 93.5 402.5 M 93.5 395.5 L 86.5 402.5" stroke="#C86A5A" stroke-width="2" fill="none"/>
+  <text x="108" y="404" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">Judge here and you judge about two seconds before the map has finished failing its external fetches.</text>
+
+  <!-- 6 -->
+  <circle cx="48" cy="434" r="13" fill="#11212D" stroke="#88B868" stroke-width="2"/>
+  <text x="48" y="439" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C8D2DA">6</text>
+  <text x="76" y="439" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#88B868">settle(): drain every pending handle, then assert</text>
+</svg>
