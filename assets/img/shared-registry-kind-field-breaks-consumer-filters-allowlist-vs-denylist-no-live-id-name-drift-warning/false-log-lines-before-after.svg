@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="350"
+     viewBox="0 0 880 350" role="img"
+     aria-label="False log lines fall from ten per cycle to zero in both consumers, but the hand-rolled patch in chs-constituents left one false name-drift warning per build until the shared currentGates selector removed it.">
+  <rect width="880" height="350" rx="10" fill="#0E1B25"/>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+    <text x="32" y="38" font-size="18" fill="#E9EEF2">False log lines per cycle, before and after each fix</text>
+
+    <!-- Group A: signalk-currents -->
+    <text x="32" y="72" font-size="15" fill="#E9EEF2">signalk-currents — “no live id for a tide port”, per poll cycle on the boat server</text>
+
+    <text x="32" y="104" font-size="14" fill="#C8D2DA">hand-rolled filter (provider, not derived)</text>
+    <rect x="380" y="90" width="380" height="18" rx="3" fill="#C86A5A"/>
+    <text x="770" y="104" font-size="14" fill="#E9EEF2">10</text>
+
+    <text x="32" y="138" font-size="14" fill="#C8D2DA">allowlist patch, in the consumer</text>
+    <rect x="380" y="124" width="4" height="18" rx="2" fill="#88B868"/>
+    <text x="394" y="138" font-size="14" fill="#E9EEF2">0</text>
+
+    <text x="32" y="172" font-size="14" fill="#C8D2DA">currentGates(), in the owning package</text>
+    <rect x="380" y="158" width="4" height="18" rx="2" fill="#88B868"/>
+    <text x="394" y="172" font-size="14" fill="#E9EEF2">0</text>
+
+    <!-- Group B: chs-constituents -->
+    <text x="32" y="212" font-size="15" fill="#E9EEF2">chs-constituents — “found no live IWLS station (name drift?)”, per build</text>
+
+    <text x="32" y="244" font-size="14" fill="#C8D2DA">hand-rolled filter (provider only)</text>
+    <rect x="380" y="230" width="380" height="18" rx="3" fill="#C86A5A"/>
+    <text x="770" y="244" font-size="14" fill="#E9EEF2">10</text>
+
+    <text x="32" y="278" font-size="14" fill="#C8D2DA">kind allowlist patch, in the consumer</text>
+    <rect x="380" y="264" width="38" height="18" rx="3" fill="#7F97A8"/>
+    <text x="428" y="278" font-size="14" fill="#E9EEF2">1</text>
+    <text x="448" y="278" font-size="13" fill="#7F97A8">— the derived gate the filter had no opinion about</text>
+
+    <text x="32" y="312" font-size="14" fill="#C8D2DA">currentGates(), in the owning package</text>
+    <rect x="380" y="298" width="4" height="18" rx="2" fill="#88B868"/>
+    <text x="394" y="312" font-size="14" fill="#E9EEF2">0</text>
+
+    <line x1="380" y1="86" x2="380" y2="320" stroke="#24384A" stroke-width="1"/>
+  </g>
+</svg>
