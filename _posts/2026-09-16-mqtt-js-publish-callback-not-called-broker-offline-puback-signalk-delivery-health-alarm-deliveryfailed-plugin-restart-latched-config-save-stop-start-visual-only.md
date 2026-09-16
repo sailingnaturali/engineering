@@ -2,7 +2,7 @@
 layout: post
 title: "Four ways a delivery-health alarm silently doesn't work"
 description: "mqtt.js only invokes the publish callback on PUBACK, so while the broker is unreachable it fires neither success nor failure — a health counter fed on delivery outcomes goes dark during exactly the outage it exists to report. Three more from the same review: a self-notification skip placed before the MQTT publish so the alarm reached nobody, a SignalK plugin.start that cleared the in-memory raised set but not the notifications tree (an admin-UI config save calls stop then start, latching deliveryFailed at alert forever), and a method: ['visual'] health alarm that by design can never page. Real code, real fixes, in a SignalK notification router."
-date: 2026-08-11
+date: 2026-09-16
 tags:
   - signalk
   - mqtt
