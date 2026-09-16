@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="270"
+     viewBox="0 0 880 270" role="img"
+     aria-label="A new row class in a shared registry only breaks the consumers that enumerate every row; a consumer that looks a row up by key never sees the new class at all.">
+  <rect width="880" height="270" rx="10" fill="#0E1B25"/>
+  <defs>
+    <marker id="a-r2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C86A5A"/>
+    </marker>
+    <marker id="a-g2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#88B868"/>
+    </marker>
+  </defs>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+    <text x="30" y="36" font-size="18" fill="#E9EEF2">A new row class only breaks the consumers that enumerate</text>
+
+    <rect x="30" y="86" width="230" height="96" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="48" y="118" font-size="15" fill="#E9EEF2">shared registry grows</text>
+    <text x="48" y="140" font-size="15" fill="#E9EEF2">a new row class</text>
+    <text x="48" y="164" font-size="13" fill="#7F97A8">a minor version bump</text>
+
+    <line x1="262" y1="118" x2="356" y2="96" stroke="#C86A5A" stroke-width="2" marker-end="url(#a-r2)"/>
+    <line x1="262" y1="150" x2="356" y2="196" stroke="#88B868" stroke-width="2" marker-end="url(#a-g2)"/>
+
+    <rect x="360" y="60" width="490" height="76" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="378" y="86" font-size="15" fill="#E9EEF2">Enumerates the rows — signalk-currents, chs-constituents</text>
+    <text x="378" y="108" font-size="13" fill="#C8D2DA">must have an opinion about a class it has never seen</text>
+    <text x="378" y="128" font-size="13" fill="#C86A5A">✕ breaks silently, as log noise rather than a failure</text>
+
+    <rect x="360" y="160" width="490" height="76" rx="8" fill="#11212D" stroke="#24384A"/>
+    <text x="378" y="186" font-size="15" fill="#E9EEF2">Looks a row up by key — currents-mcp</text>
+    <text x="378" y="208" font-size="13" fill="#C8D2DA">each vault pass names its own station id</text>
+    <text x="378" y="228" font-size="13" fill="#88B868">✓ unaffected — the new class is invisible to it</text>
+
+    <text x="30" y="258" font-size="14" fill="#7F97A8">The fix moves the decision into currentGates(), inside the package that grows the classes.</text>
+  </g>
+</svg>
