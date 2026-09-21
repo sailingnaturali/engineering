@@ -10,7 +10,7 @@ tags:
   - maplibre
   - pwa
   - offline
-date: 2026-08-11
+date: 2026-09-21
 ---
 
 > **TL;DR** — Puppeteer's `msg.text()` is a *rendering* of a console argument,
