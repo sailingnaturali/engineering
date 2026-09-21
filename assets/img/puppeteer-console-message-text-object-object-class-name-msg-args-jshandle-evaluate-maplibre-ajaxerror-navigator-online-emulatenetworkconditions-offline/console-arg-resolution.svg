@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460"
+     viewBox="0 0 880 460" role="img"
+     aria-label="Puppeteer's ConsoleMessage.text() renders the object maplibre logged as its minified class name, hiding the tile host so the noise filter cannot classify it and CI fails; resolving each msg.args() JSHandle with arg.evaluate() yields the real error text including the host, which the filter classifies as expected offline noise and the check passes.">
+  <rect width="880" height="460" rx="10" fill="#0E1B25"/>
+
+  <text x="30" y="34" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#E9EEF2">The same console.error, read two ways</text>
+
+  <!-- ================= LANE A: before ================= -->
+  <text x="30" y="70" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#C86A5A">Before — trusting msg.text()</text>
+
+  <rect x="30" y="82" width="190" height="104" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="44" y="106" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E9EEF2">1. maplibre logs</text>
+  <text x="44" y="126" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">an AJAXError</text>
+  <text x="44" y="146" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">object. It carries</text>
+  <text x="44" y="166" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">the tile host URL.</text>
+
+  <path d="M 224 134 L 252 134" stroke="#7F97A8" stroke-width="2" fill="none" marker-end="url(#ah)"/>
+
+  <rect x="256" y="82" width="190" height="104" rx="8" fill="#11212D" stroke="#C86A5A" stroke-width="2"/>
+  <text x="270" y="106" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E9EEF2">2. msg.text()</text>
+  <text x="270" y="126" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">renders the object</text>
+  <text x="270" y="146" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">as its class name:</text>
+  <text x="270" y="168" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#C86A5A">[object Ae]</text>
+  <circle cx="446" cy="82" r="13" fill="#0E1B25" stroke="#C86A5A" stroke-width="2"/>
+  <path d="M 441 77 L 451 87 M 451 77 L 441 87" stroke="#C86A5A" stroke-width="2.4" fill="none"/>
+  <text x="466" y="70" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#C86A5A">the URL is lost here</text>
+
+  <path d="M 450 134 L 478 134" stroke="#7F97A8" stroke-width="2" fill="none" marker-end="url(#ah)"/>
+
+  <rect x="482" y="82" width="190" height="104" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="496" y="106" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E9EEF2">3. noise filter</text>
+  <text x="496" y="126" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">substring-matches</text>
+  <text x="496" y="146" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">on hosts. No host</text>
+  <text x="496" y="166" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">in the string.</text>
+
+  <path d="M 676 134 L 704 134" stroke="#7F97A8" stroke-width="2" fill="none" marker-end="url(#ah)"/>
+
+  <rect x="708" y="82" width="142" height="104" rx="8" fill="#11212D" stroke="#C86A5A" stroke-width="2"/>
+  <text x="722" y="112" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#C86A5A">CI red</text>
+  <text x="722" y="136" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">4 unreadable</text>
+  <text x="722" y="156" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">lines; expected</text>
+  <text x="722" y="176" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">noise called a bug</text>
+
+  <line x1="30" y1="222" x2="850" y2="222" stroke="#24384A" stroke-width="1"/>
+
+  <!-- ================= LANE B: after ================= -->
+  <text x="30" y="262" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#88B868">After — resolving msg.args() handles</text>
+
+  <rect x="30" y="274" width="190" height="126" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="44" y="298" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E9EEF2">1. maplibre logs</text>
+  <text x="44" y="318" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">an AJAXError</text>
+  <text x="44" y="338" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">object. It carries</text>
+  <text x="44" y="358" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">the tile host URL.</text>
+  <text x="44" y="382" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">(unchanged)</text>
+
+  <path d="M 224 336 L 252 336" stroke="#7F97A8" stroke-width="2" fill="none" marker-end="url(#ah)"/>
+
+  <rect x="256" y="274" width="190" height="126" rx="8" fill="#11212D" stroke="#88B868" stroke-width="2"/>
+  <text x="270" y="298" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E9EEF2">2. arg.evaluate()</text>
+  <text x="270" y="318" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">runs in the page,</text>
+  <text x="270" y="338" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">reads name and</text>
+  <text x="270" y="358" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">message off the</text>
+  <text x="270" y="378" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">real object.</text>
+
+  <path d="M 450 336 L 478 336" stroke="#7F97A8" stroke-width="2" fill="none" marker-end="url(#ah)"/>
+
+  <rect x="482" y="274" width="190" height="126" rx="8" fill="#11212D" stroke="#24384A" stroke-width="1"/>
+  <text x="496" y="298" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E9EEF2">3. noise filter</text>
+  <text x="496" y="318" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">sees the whole</text>
+  <text x="496" y="338" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">string, including</text>
+  <text x="496" y="358" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">the tile host it</text>
+  <text x="496" y="378" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">already allows.</text>
+
+  <path d="M 676 336 L 704 336" stroke="#7F97A8" stroke-width="2" fill="none" marker-end="url(#ah)"/>
+
+  <rect x="708" y="274" width="142" height="126" rx="8" fill="#11212D" stroke="#88B868" stroke-width="2"/>
+  <text x="722" y="304" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#88B868">CI green</text>
+  <text x="722" y="328" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">expected offline</text>
+  <text x="722" y="348" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">noise classified</text>
+  <text x="722" y="368" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">as noise; a real</text>
+  <text x="722" y="388" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#C8D2DA">crash still fails</text>
+
+  <text x="30" y="434" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#7F97A8">Resolving a handle is asynchronous — which is why collection has to be separated from judgement.</text>
+
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7F97A8"/>
+    </marker>
+  </defs>
+</svg>
